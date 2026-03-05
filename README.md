@@ -1,16 +1,42 @@
-# React + Vite
+## FDM Employee Portal — Summary
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The FDM Employee Portal is a centralised web platform that simplifies HR processes and internal communication for a distributed workforce. It provides role-based workflows and self-service tools (leave requests and approvals, announcements, messaging, and IT tickets) to reduce reliance on fragmented email and spreadsheet workflows and improve visibility and efficiency for consultants, managers, HR and IT staff.
 
-Currently, two official plugins are available:
+## Running the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To run the frontend locally:
 
-## React Compiler
+```bash
+cd frontend
+npm install
+npm run dev
+# open http://localhost:5173 in your browser
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Project structure
 
-## Expanding the ESLint configuration
+- frontend/
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- frontend/
+	- package.json
+	- index.html
+	- vite.config.js
+	- public/ (static assets)
+	- src/
+		- app/         (routing and app entry)
+		- pages/       (route-level pages)
+		- components/  (reusable UI components and layout)
+			- layout/
+			- common/
+		- api/         (backend API clients)
+		- auth/        (auth context and hooks)
+		- data/        (constants and seeded data)
+		- assets/      (images, svgs)
+		- App.jsx
+		- App.css
+		- index.css
+		- main.jsx
+
+- backend/
+	- package.json
+	- src/
