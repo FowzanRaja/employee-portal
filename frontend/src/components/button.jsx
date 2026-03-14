@@ -1,3 +1,6 @@
+// Needs to be actually made
+// Just a placeholder for example
+
 import React from 'react'
 
 export default function Button({ children, onClick, className = '' }) {
