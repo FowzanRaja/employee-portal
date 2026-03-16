@@ -1,4 +1,3 @@
-import SidebarLayout from '../components/sidebar';
 import AnnouncementCard from '../components/AnnouncementCard';
 
 const announcements = [
@@ -27,8 +26,8 @@ const announcements = [
 
 export default function AnnouncementsPage() {
   return (
+    
     <div className="flex h-screen">
-      <SidebarLayout />
 
       <main
         className="flex-1 overflow-y-auto"
