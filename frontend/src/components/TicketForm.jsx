@@ -2,26 +2,26 @@ import { useState } from 'react';
 
 export default function TicketForm({ onSubmit }) {
   const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [content, setContent] = useState('');
   const [priority, setPriority] = useState('medium');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !description) {
+    if (!title || !content) {
       alert('Please fill all fields');
       return;
     }
 
     onSubmit({
       title,
-      description,
+      content,
       priority,
       date: new Date().toLocaleDateString(),
     });
 
     setTitle('');
-    setDescription('');
+    setContent('');
     setPriority('medium');
   };
 
@@ -38,8 +38,8 @@ export default function TicketForm({ onSubmit }) {
       <textarea
         placeholder="Description"
         className="w-full mb-2 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
       />
 
       <select
