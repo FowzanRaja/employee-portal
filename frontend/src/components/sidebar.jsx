@@ -1,185 +1,162 @@
-// -- Import --
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import {
-  Home,
-  Plug,
-  PlusSquare,
-  HelpCircle,
-  UserCircle,
   ChevronLeft,
   ChevronRight,
-  List,
-  Sun,
-  Moon,
-} from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+  MessageSquare,
+  UserCircle,
+} from 'lucide-react'
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-} from '@/components/ui/dropdown-menu';
-import { useTheme } from '../theme-provider';
-import { useLocation } from 'react-router-dom';
+  SIDEBAR_EXPANDED_WIDTH,
+  SIDEBAR_COLLAPSED_WIDTH,
+  exampleUser,
+  navItems,
+} from './sidebarConfig'
 
-// Sidebar navigation items
-
-const navItems = [
-  { label: 'Home', icon: <Home size={20} />, href: '#' },
-  {
-    label: 'New Workflow',
-    icon: <PlusSquare size={20} />,
-    href: '/Workflow-Main',
-  },
-  { label: 'Workflows', icon: <List size={20} />, href: '/Workflow-Dashboard' },
-  { label: 'Connectors', icon: <Plug size={20} />, href: '/Connectors' },
-  { label: 'Help', icon: <HelpCircle size={20} />, href: '#' },
-];
-
-// Sidebar layout
-
-export default function SidebarLayout({}) {
-  // Sidebar open/close state
-  const [isOpen, setIsOpen] = useState(false);
-  const [showText, setShowText] = useState(false);
-  const { setTheme } = useTheme(); // 3. Get the setTheme function
-
-  // Pathname detection
-  let pathname = '';
-
-  try {
-    pathname = window.location.pathname;
-  } catch {}
-
-  try {
-    const location = useLocation();
-    pathname = location.pathname;
-  } catch {}
-
-  // Text animation
-  useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
-    if (isOpen) {
-      timeout = setTimeout(() => setShowText(true), 200);
-    } else {
-      setShowText(false);
-    }
-    return () => clearTimeout(timeout);
-  }, [isOpen]);
+function SidebarNavItem({ item, isCollapsed }) {
+  const Icon = item.icon
 
   return (
-    <div className="flex h-screen overflow-hidden bg-background">
-      {/* Sidebar */}
-      <aside
-        className={cn(
-          'top-0 left-0 z-50 transition-all duration-300 ease-in-out border-r border-border',
-          isOpen ? 'w-64 bg-background' : 'w-16 bg-background'
-        )}
-      >
-        <div className="flex flex-col h-full justify-between">
-          {/* Top: logo & toggle */}
-          <div>
-            <div className="flex items-center justify-between px-4 py-4">
-              <span className="text-lg font-bold text-primary">
-                {isOpen && 'M3Labs'}
-              </span>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-primary hover:bg-primary/10"
-              >
-                {isOpen ? <ChevronLeft /> : <ChevronRight />}
-              </Button>
-            </div>
+    <NavLink
+      to={item.to}
+      end={item.to === '/'}
+      aria-label={item.label}
+      title={isCollapsed ? item.label : undefined}
+      className={({ isActive }) =>
+        [
+          'group flex items-center rounded-2xl border text-sm font-medium transition-all duration-200 ease-out',
+          isCollapsed ? 'justify-center px-0 py-3' : 'gap-3 px-4 py-3',
+          isActive
+            ? 'border-[color:var(--fdm-border-strong)] bg-[rgba(215,255,0,0.12)] text-[var(--fdm-text)] shadow-[0_14px_28px_rgba(0,0,0,0.22)]'
+            : 'border-transparent text-[var(--fdm-text-soft)] hover:border-[color:var(--fdm-border)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[var(--fdm-text)]',
+        ].join(' ')
+      }
+    >
+      {({ isActive }) => (
+        <>
+          <span
+            className={[
+              'flex h-10 w-10 items-center justify-center rounded-2xl transition-colors duration-200',
+              isActive
+                ? 'bg-[rgba(215,255,0,0.16)] text-[var(--fdm-lime)]'
+                : 'bg-[rgba(255,255,255,0.04)] text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-text)]',
+            ].join(' ')}
+          >
+            <Icon size={18} strokeWidth={2.2} />
+          </span>
 
-            {/* navigation items */}
-            <nav className="flex flex-col space-y-1 px-2 mt-2">
-              {navItems.map((item) => (
-                // Render each navigation item as a link
-                <a
-                  key={item.label}
-                  href={item.href}
-                  // Apply styles based on whether the current path matches the item's href
-                  className={cn(
-                    'flex items-center w-full gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors',
-                    pathname === item.href
-                      ? 'bg-muted text-primary' // Highlight if active
-                      : 'hover:bg-primary hover:text-primary-foreground text-muted-foreground' // Default/hover styles
-                  )}
-                >
-                  {/* Display the item's icon */}
-                  {item.icon}
-                  {/* Show the label text only if the sidebar is open */}
-                  {showText && item.label}
-                </a>
-              ))}
-            </nav>
-          </div>
+          <span
+            className={[
+              'overflow-hidden whitespace-nowrap transition-all duration-200 ease-out',
+              isCollapsed ? 'max-w-0 -translate-x-2 opacity-0' : 'max-w-[160px] translate-x-0 opacity-100',
+            ].join(' ')}
+          >
+            {item.label}
+          </span>
+        </>
+      )}
+    </NavLink>
+  )
+}
 
-          {/* Bottom: Profile dropdown & Theme Toggle */}
-          <div className="p-2">
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className={cn(
-                    'flex items-center w-full gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer',
-                    'hover:bg-primary hover:text-primary-foreground',
-                    'text-muted-foreground'
-                  )}
-                >
-                  <Sun className="h-5 w-5 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                  {showText && <span>Toggle Theme</span>}
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent side="top" align="start" sideOffset={8}>
-                <DropdownMenuItem onClick={() => setTheme('light')}>
-                  Light
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme('dark')}>
-                  Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => setTheme('system')}>
-                  System
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+export default function Sidebar({
+  user = exampleUser,
+  items = navItems,
+  onCollapseChange,
+}) {
+  const [isCollapsed, setIsCollapsed] = useState(() => {
+    if (typeof window === 'undefined') {
+      return false
+    }
 
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button
-                  className={cn(
-                    'flex items-center w-full gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer',
-                    'hover:bg-primary hover:text-primary-foreground',
-                    'text-muted-foreground'
-                  )}
-                >
-                  <UserCircle size={20} />
-                  {showText && 'User Name'}
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                side="top"
-                align="start"
-                sideOffset={8}
-                className="w-56"
-              >
-                <div className="px-3 py-2 text-sm font-medium text-primary">
-                  My Account
-                </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <a href="/">Log out</a>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+    return window.innerWidth < 1024
+  })
+
+  useEffect(() => {
+    onCollapseChange?.(isCollapsed)
+  }, [isCollapsed, onCollapseChange])
+
+  return (
+    <aside
+      className="fixed inset-y-0 left-0 z-40 flex h-screen flex-col border-r border-[color:var(--fdm-border)] bg-[linear-gradient(180deg,rgba(32,32,32,0.96),rgba(23,23,23,0.99))] px-3 py-4 shadow-[0_22px_48px_rgba(0,0,0,0.34)] backdrop-blur-xl transition-[width] duration-300 ease-out"
+      style={{ width: isCollapsed ? SIDEBAR_COLLAPSED_WIDTH : SIDEBAR_EXPANDED_WIDTH }}
+    >
+      <div className={['mb-8 flex', isCollapsed ? 'flex-col items-center gap-3' : 'items-center justify-between gap-3 px-1'].join(' ')}>
+        <div
+          className={[
+            'flex min-w-0 items-center rounded-[24px] border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] transition-all duration-300 ease-out',
+            isCollapsed ? 'justify-center p-3' : 'gap-3 px-4 py-3',
+          ].join(' ')}
+        >
+          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--fdm-lime)] text-sm font-black tracking-[0.16em] text-[var(--fdm-text-dark)] shadow-[0_12px_28px_rgba(215,255,0,0.18)]">
+            FDM
+          </span>
+
+          <div
+            className={[
+              'min-w-0 overflow-hidden whitespace-nowrap transition-all duration-200 ease-out',
+              isCollapsed ? 'max-w-0 opacity-0' : 'max-w-[150px] opacity-100',
+            ].join(' ')}
+          >
+            <p className="text-sm font-semibold text-[var(--fdm-text)]">Employee Portal</p>
+            <p className="text-xs text-[var(--fdm-text-muted)]">Staff workspace</p>
           </div>
         </div>
-      </aside>
-    </div>
-  );
+
+        <button
+          type="button"
+          onClick={() => setIsCollapsed((current) => !current)}
+          aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] text-[var(--fdm-text-soft)] transition-colors duration-200 hover:border-[color:var(--fdm-border-strong)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--fdm-text)]"
+        >
+          {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+        </button>
+      </div>
+
+      <div className="flex flex-1 flex-col overflow-hidden">
+        <nav aria-label="Primary navigation" className="flex flex-col gap-2 px-1">
+          {items.map((item) => (
+            <SidebarNavItem key={item.to} item={item} isCollapsed={isCollapsed} />
+          ))}
+        </nav>
+
+        <div className="mt-auto flex flex-col gap-4 border-t border-[color:var(--fdm-border)] px-1 pt-4">
+          <SidebarNavItem
+            item={{
+              to: '/messages',
+              label: 'Messaging',
+              icon: MessageSquare,
+            }}
+            isCollapsed={isCollapsed}
+          />
+
+          <div
+            className={[
+              'rounded-[26px] border border-[color:var(--fdm-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] shadow-[0_16px_36px_rgba(0,0,0,0.24)]',
+              isCollapsed ? 'px-3 py-4' : 'px-4 py-4',
+            ].join(' ')}
+            title={isCollapsed ? `${user.name} - ${user.role}` : undefined}
+            aria-label="Current user profile"
+          >
+            <div className={['flex items-center', isCollapsed ? 'justify-center' : 'gap-3'].join(' ')}>
+              <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[rgba(215,255,0,0.12)] text-[var(--fdm-lime)]">
+                <UserCircle size={26} />
+                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[var(--fdm-surface)] bg-[var(--fdm-lime)]" />
+              </div>
+
+              <div
+                className={[
+                  'min-w-0 overflow-hidden whitespace-nowrap transition-all duration-200 ease-out',
+                  isCollapsed ? 'max-w-0 opacity-0' : 'max-w-[150px] opacity-100',
+                ].join(' ')}
+              >
+                <p className="truncate text-sm font-semibold text-[var(--fdm-text)]">{user.name}</p>
+                <p className="truncate text-xs text-[var(--fdm-text-muted)]">{user.role}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+  )
 }
