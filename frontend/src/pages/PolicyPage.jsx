@@ -1,3 +1,4 @@
+
 import "./PolicyPage.css";
 import { FileText, Calendar, Folder, File } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -103,3 +104,4 @@ function PolicyPage() {
 }
 
 export default PolicyPage;
+
