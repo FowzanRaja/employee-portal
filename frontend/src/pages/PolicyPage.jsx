@@ -1,6 +1,6 @@
 
 import "./PolicyPage.css";
-import { FileText, Calendar, Folder, File } from "lucide-react";
+import { FileText, ClipboardList, Folder, File } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 function PolicyPage() {
@@ -35,11 +35,11 @@ function PolicyPage() {
 
         <div className="policy-card">
           <div className="policy-header">
-            <Calendar size={28} />
-            <h2>Schedule</h2>
+            <ClipboardList size={28} />
+            <h2>HR Policies</h2>
           </div>
           
-          <p className="policy-desc">Working hours and shift schedules</p>
+          <p className="policy-desc">Company rules, leave policies and employee guidelines</p>
 
           <div className="policy-meta">
             <span>Updated: 05 Feb 2026</span>
@@ -48,7 +48,7 @@ function PolicyPage() {
 
           <button 
             className="policy-btn"
-            onClick={() => navigate("/schedule")}
+            onClick={() => navigate("/hr-policies")}
           >
             View
           </button>

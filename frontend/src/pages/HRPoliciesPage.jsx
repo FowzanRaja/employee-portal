@@ -4,14 +4,14 @@ function SchedulePage() {
   const documents = [
     {
       id: 1,
-      title: "Weekly Shift Schedule",
+      title: "Leave Policy",
       updated: "05 Feb 2026",
       size: "512 KB",
       thumbnail: "/images/download (1).jpeg",
     },
     {
       id: 2,
-      title: "Holiday Schedule",
+      title: "Attendance Policy",
       updated: "18 Jan 2026",
       size: "120 KB",
       thumbnail: "/images/download.jpeg",
@@ -20,7 +20,7 @@ function SchedulePage() {
 
   return (
     <div className="documents-page">
-      <h1 className="documents-title">Schedule</h1>
+      <h1 className="documents-title">HR Policies</h1>
 
       <div className="thumb-grid">
         {documents.map((doc) => (

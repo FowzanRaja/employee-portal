@@ -1,36 +1,41 @@
 .policy-container {
-  padding: 24px;
+  padding: 32px;
   min-height: 100vh;
   width: 100%;
-  max-width: 1600px;   
-  margin: 0 auto; 
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 
-.policy-title {
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 35px;
+.policy-title,
+.documents-title {
+  font-size: 42px;
+  font-weight: 800;
   text-align: center;
+  margin-bottom: 28px;
+  color: #f5f5f5;
+  letter-spacing: -0.02em;
 }
 
 .policy-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
   width: 100%;
 }
 
 .policy-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  min-height: 460px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  color: #111827;
+  background: linear-gradient(180deg, rgba(38, 38, 38, 0.96), rgba(28, 28, 28, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 24px;
+  min-height: 300px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  color: #f5f5f5;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 .policy-card h2 {
@@ -38,116 +43,70 @@
   font-weight: bold;
 }
 
+.policy-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #f5f5f5;
+}
+
 .policy-desc {
   font-size: 20px;
-  color: #6b7280;
-  margin: 10px 0;
+  line-height: 1.6;
+  color: #a3a3a3;
+  margin: 0 0 18px 0;
 }
 
 .policy-meta {
   display: flex;
   justify-content: space-between;
-  font-size: 18px;
-  color: #9ca3af;
+  font-size: 16px;
+  color: #8a8a8a;
 }
 
 .policy-btn {
-  margin-top: 15px;
-  padding: 10px;
+  width: 100%;
+  padding: 12px 16px;
   border: none;
-  border-radius: 10px;
-  background-color: #111827;
-  color: white;
+  border-radius: 14px;
+  background: #c7f200;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 800;
   cursor: pointer;
-  transition: 0.2s;
+  transition: transform 0.15s ease;
 }
 
 .policy-btn:hover {
-  background-color: #374151;
+  transform: translateY(-2px);
 }
 
-.policy-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 
 
 .documents-page {
   min-height: 100vh;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 24px;
-}
-
-.documents-title {
-  text-align: center;
-  font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 36px;
-  color: white;
-}
-
-.documents-list {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.document-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  color: #111827;
-  transition: all 0.2s ease;
-}
-
-.document-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
-}
-
-.document-card h3 {
-  font-size: 20px;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.document-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  color: #6b7280;
-}
-
-.document-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.document-desc {
-  font-size: 14px;
-  color: #6b7280;
-  margin-bottom: 12px;
+  padding: 32px;
 }
 
 .document-btn {
-  margin-top: 12px;
-  padding: 8px 14px;
+  margin-top: 16px;
+  padding: 10px 18px;
   border: none;
-  border-radius: 8px;
-  background-color: #111827;
-  color: white;
-  font-size: 14px;
+  border-radius: 12px;
+  background: #c7f200;
+  color: #111111;
+  font-size: 16px;
+  font-weight: 800;
   cursor: pointer;
+  transition: transform 0.15s ease;
 }
 
 .document-btn:hover {
-  background-color: #1f2937;
+  transform: translateY(-2px);
 }
 
 .thumb-grid {
@@ -159,13 +118,14 @@
 }
 
 .thumb-card {
-  background: white;
-  border-radius: 16px;
-  padding: 20px;
+  background: linear-gradient(180deg, rgba(38, 38, 38, 0.96), rgba(28, 28, 28, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  padding: 22px;
   text-align: center;
-  color: #111827;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  min-height: 320px;
+  color: #f5f5f5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  min-height: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -184,11 +144,12 @@
   font-size: 22px;
   font-weight: 700;
   margin-bottom: 8px;
+  color: #f5f5f5;
 }
 
 .thumb-date,
 .thumb-size {
   font-size: 15px;
-  color: #6b7280;
+  color: #9a9a9a;
   margin: 2px 0;
 }
