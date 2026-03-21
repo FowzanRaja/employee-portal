@@ -1,16 +1,13 @@
-import 'dotenv/config'
-import path from 'path'
-import express from 'express'
-import cors from 'cors'
-
 // .env file exists outside of the src folder, so this helps redirect to access the .env file
-dotenv.config({ path: path.join(__dirname, '../.env') })
+require('dotenv').config()
+const cors = require('cors')
+const express = require('express')
 
 const app = express()
 
 app.use(cors({
     // Whitelisted links that are allowed to communicate with the backend speecifically (i.e. the frontend)
-    origin: ['https://localhost:5173', 'https://127.0.0.1:5173']
+    origin: ['http://localhost:5173', 'http://127.0.0.1:5173']
 }))
 
 // Simple use method to keep track of get requests when navigating through the pages.
