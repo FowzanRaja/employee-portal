@@ -1,107 +1,85 @@
-
 import "./PolicyPage.css";
-import { FileText, ClipboardList, Folder, File } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 function PolicyPage() {
-  const navigate = useNavigate();
+  const documents = [
+    {
+      id: 1,
+      title: "Company Handbook",
+      updated: "10 Jan 2026",
+      size: "704 KB",
+      thumbnail: "/images/download (1).jpeg",
+      file: "/documents/sample1.pdf"
+    },
+    {
+      id: 2,
+      title: "IT Guidelines",
+      updated: "28 Jan 2026",
+      size: "98 KB",
+      thumbnail: "/images/download.jpeg",
+      file: "/documents/sample2.pdf"
+    },
+    {
+      id: 3,
+      title: "Leave Policy",
+      updated: "05 Feb 2026",
+      size: "120 KB",
+      thumbnail: "/images/download (1).jpeg",
+      file: "/documents/sample1.pdf"
+    },
+    {
+      id: 4,
+      title: "Code of Conduct",
+      updated: "01 Feb 2026",
+      size: "300 KB",
+      thumbnail: "/images/download.jpeg",
+      file: "/documents/sample2.pdf"
+    },
+    {
+      id: 5,
+      title: "Remote Work Policy",
+      updated: "15 Feb 2026",
+      size: "210 KB",
+      thumbnail: "/images/download (1).jpeg",
+      file: "/documents/sample1.pdf"
+    },
+    {
+      id: 6,
+      title: "Health & Safety Policy",
+      updated: "20 Feb 2026",
+      size: "180 KB",
+      thumbnail: "/images/download.jpeg",
+      file: "/documents/sample2.pdf"
+    },
+  ];
+
   return (
-    <div className="policy-container">
-      <h1 className="policy-title">Policies</h1>
+    <div className="documents-page">
+      <h1 className="documents-title">Policies</h1>
 
-      <div className="policy-grid">
+      <div className="thumb-grid">
+        {documents.map((doc) => (
+          <div key={doc.id} className="thumb-card">
+            <img
+              src={doc.thumbnail}
+              alt={doc.title}
+              className="thumb-image"
+            />
 
-        <div className="policy-card">
-          <div className="policy-header">
-            <FileText size={28} />
-            <h2>Contracts</h2>
+            <h3 className="thumb-title">{doc.title}</h3>
+            <p className="thumb-date">{doc.updated}</p>
+            <p className="thumb-size">{doc.size}</p>
+
+            <button
+              className="document-btn"
+              onClick={() => window.open(doc.file, "_blank")}
+            >
+              Open
+            </button>
           </div>
-
-          <p className="policy-desc">Employee agreements and legal documents</p>
-
-          <div className="policy-meta">
-            <span>Updated: 12 Feb 2026</span>
-            <span>Version: v2.1</span>
-          </div>
-
-          <button 
-            className="policy-btn"
-            onClick={() => navigate("/contracts")}
-          >
-            View
-          </button>
-        </div>
-
-
-        <div className="policy-card">
-          <div className="policy-header">
-            <ClipboardList size={28} />
-            <h2>HR Policies</h2>
-          </div>
-          
-          <p className="policy-desc">Company rules, leave policies and employee guidelines</p>
-
-          <div className="policy-meta">
-            <span>Updated: 05 Feb 2026</span>
-            <span>Version: v1.4</span>
-          </div>
-
-          <button 
-            className="policy-btn"
-            onClick={() => navigate("/hr-policies")}
-          >
-            View
-          </button>
-        </div>
-
-
-        <div className="policy-card">
-          <div className="policy-header">
-            <File size={28} />
-            <h2>Policy Documents</h2>
-          </div>
-
-          <p className="policy-desc">Company policies and regulations</p>
-
-          <div className="policy-meta">
-            <span>Updated: 01 Feb 2026</span>
-            <span>Version: v3.0</span>
-          </div>
-
-          <button 
-            className="policy-btn"
-            onClick={() => navigate("/policy-documents")}
-          >
-            View
-          </button>
-        </div>
-
-
-        <div className="policy-card">
-          <div className="policy-header">
-            <Folder size={28} />
-            <h2>Other Documents</h2>
-          </div>
-
-          <p className="policy-desc">Miscellaneous internal documents</p>
-
-          <div className="policy-meta">
-            <span>Updated: 20 Jan 2026</span>
-            <span>Version: v1.2</span>
-          </div>
-
-          <button 
-            className="policy-btn"
-            onClick={() => navigate("/other-documents")}
-          >
-            View
-          </button>
-        </div>
-
+        ))}
       </div>
     </div>
   );
 }
 
 export default PolicyPage;
-

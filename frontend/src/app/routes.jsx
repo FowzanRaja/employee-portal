@@ -9,10 +9,6 @@ import MessagesPage from '../pages/MessagesPage'
 import NotFound from '../pages/NotFound'
 import PolicyPage from '../pages/PolicyPage'
 import TicketPage from '../pages/TicketPage'
-import ContractsPage from "../pages/ContractsPage";
-import HRPoliciesPage from "../pages/HRPoliciesPage";
-import PolicyDocumentsPage from "../pages/PolicyDocumentsPage";
-import OtherDocumentsPage from "../pages/OtherDocumentsPage";
 
 export default function AppRoutes() {
   return (
@@ -30,10 +26,6 @@ export default function AppRoutes() {
         <Route path="announcements" element={<AnnouncementsPage />} />
         <Route path="messages" element={<MessagesPage />} />
         <Route path="consultants" element={<ConsultantsPage />} />
-        <Route path="contracts" element={<ContractsPage />} />
-        <Route path="hr-policies" element={<HRPoliciesPage />} />
-        <Route path="policy-documents" element={<PolicyDocumentsPage />} />
-        <Route path="other-documents" element={<OtherDocumentsPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
