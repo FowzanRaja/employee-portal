@@ -1,5 +1,6 @@
 import {
   CalendarDays,
+  GraduationCap,
   LayoutDashboard,
   Megaphone,
   ShieldCheck,
@@ -39,5 +40,10 @@ export const navItems = [
     to: '/announcements',
     label: 'Announcements',
     icon: Megaphone,
+  },
+  {
+    to: '/programme',
+    label: 'Programme',
+    icon: GraduationCap,
   },
 ]
