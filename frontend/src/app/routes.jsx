@@ -8,6 +8,8 @@ import LoginPage from '../pages/LoginPage'
 import MessagesPage from '../pages/MessagesPage'
 import NotFound from '../pages/NotFound'
 import PolicyPage from '../pages/PolicyPage'
+import ProgrammePage from '../pages/ProgrammePage'
+import ProgrammeViewPage from '../pages/ProgrammeViewPage'
 import TicketPage from '../pages/TicketPage'
 
 export default function AppRoutes() {
@@ -26,6 +28,8 @@ export default function AppRoutes() {
         <Route path="announcements" element={<AnnouncementsPage />} />
         <Route path="messages" element={<MessagesPage />} />
         <Route path="consultants" element={<ConsultantsPage />} />
+        <Route path="programme" element={<ProgrammePage />} />
+        <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
