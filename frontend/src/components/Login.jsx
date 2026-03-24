@@ -57,15 +57,15 @@ export default function LoginForm(){
           <img src={fdmLogo} alt="FDM Logo" className="w-22 absolute left-0"/> 
           <p className="text-center text-4xl font-bold flex-1 w-full"> Login </p> 
       </div>
-      <div className='mb-4'> <p className="text-center text-xl"> Welcome to the FDM Employee Portal </p> </div>
+      <div className='mb-4'> <p className="text-center text-xl text-[#a3a3a3]"> Welcome to the FDM Employee Portal </p> </div>
       <div className='flex flex-col items-center'>
-          <input placeholder="Email Address" name="email" onChange={handleChange} className={`focus:outline-none focus:ring-1 w-9/10 p-2 border ${showEmailError ? "border-red-500 focus:border-red-400 focus:ring-red-400" : "border-gray-300 "} rounded-md bg-[#1a1a1a]`}></input>
+          <input placeholder="Email Address" name="email" onChange={handleChange} className={`transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 w-9/10 p-2 border ${showEmailError ? "border-red-500 focus:border-red-400 focus:ring-red-400" : "focus:border-[#c5ff00] focus:ring-[#c5ff00] border-[#303030] "} rounded-md bg-[#1a1a1a]`}></input>
           {showEmailError && (<p className="text-red-500 text-s text-left w-18/20"> Please enter a valid email address. </p>)}
 
-          <input placeholder="Password" type="password" name="password" onChange={handleChange} className={`focus:outline-none focus:ring-1 w-9/10  p-2 border ${showEmailError ? "mt-2 " : "mt-6 "} ${showPasswordError ? "border-red-500 focus:border-red-400 focus:ring-red-400" : "border-gray-300 mb-2"} rounded-md bg-[#1a1a1a]`}></input>
+          <input placeholder="Password" type="password" name="password" onChange={handleChange} className={`transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 w-9/10  p-2 border ${showEmailError ? "mt-2 " : "mt-6 "} ${showPasswordError ? "border-red-500 focus:border-red-400 focus:ring-red-400" : " focus:border-[#c5ff00] focus:ring-[#c5ff00] border-[#303030] mb-2"} rounded-md bg-[#1a1a1a]`}></input>
           {showPasswordError && (<p className="text-red-500 text-s text-left w-18/20"> Please enter a password. </p>)}
       </div>
-      <div className="flex justify-center"> <button type="submit" className="w-1/4 mt-4 mb-6 p-2 py-5 bg-[#c5ff00] text-black rounded-3xl hover:bg-[#a3dd00]"> <h3> Login </h3> </button> </div>
+      <div className="flex justify-center"> <button type="submit" className="transition-all duration-300 ease-in-out w-1/4 mt-6 mb-1 p-2 py-5 bg-[#c5ff00] text-black rounded-3xl hover:bg-[#a3dd00] hover:-translate-y-0.75"> <h3> Login </h3> </button> </div>
     </form>
   </div>
 }
