@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import TicketCard from '../components/TicketCard';
 import TicketForm from '../components/TicketForm';
+import pfp4 from '../assets/pfp images/pfp4.jpg';
 
 const initialTickets = [
   {
     id: 1,
     title: 'Laptop not working',
+    name: 'Ava Thompson',
+    profilePic: pfp4,
     priority: 'medium',
     status: 'Closed',
     date: 'March 17 2026',
@@ -14,6 +17,8 @@ const initialTickets = [
   {
     id: 2,
     title: 'Access request',
+    name: 'Ava Thompson',
+    profilePic: pfp4,
     priority: 'low',
     status: 'Open',
     date: 'March 15 2026',
@@ -22,6 +27,8 @@ const initialTickets = [
   {
     id: 3,
     title: 'Lost my soul to VP Online',
+    name: 'Ava Thompson',
+    profilePic: pfp4,
     priority: 'high',
     status: 'In Progress',
     date: 'March 12 2026',
@@ -68,6 +75,8 @@ export default function TicketPage() {
               <TicketCard
                 key={t.id}
                 title={t.title}
+                name={t.name}
+                profilePic={t.profilePic}
                 priority={t.priority}
                 status={t.status}
                 date={t.date}

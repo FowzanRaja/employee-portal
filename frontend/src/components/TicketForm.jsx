@@ -3,12 +3,12 @@ import { useState } from 'react';
 export default function TicketForm({ onSubmit }) {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [priority, setPriority] = useState('medium');
+  const [priority, setPriority] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !content) {
+    if (!title || !content || !priority) {
       alert('Please fill all fields');
       return;
     }
@@ -22,7 +22,7 @@ export default function TicketForm({ onSubmit }) {
 
     setTitle('');
     setContent('');
-    setPriority('medium');
+    setPriority('');
   };
 
   return (
@@ -47,9 +47,12 @@ export default function TicketForm({ onSubmit }) {
         value={priority}
         onChange={(e) => setPriority(e.target.value)}
       >
-        <option value="low" className="text-black">Low</option>
-        <option value="medium" className="text-black">Medium</option>
-        <option value="high" className="text-black">High</option>
+        <option value="" disabled className="text-grey-400">
+          Select priority
+        </option>
+        <option value="low" className="text-white">Low</option>
+        <option value="medium" className="text-white">Medium</option>
+        <option value="high" className="text-white">High</option>
       </select>
 
       <button className="bg-lime-500 text-white px-4 py-2 rounded hover:bg-lime-600 transition">
