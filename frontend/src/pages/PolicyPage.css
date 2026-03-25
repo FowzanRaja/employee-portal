@@ -61,7 +61,8 @@
 }
 
 .thumb-date,
-.thumb-size {
+.thumb-size,
+.thumb-id {
   font-size: 14px;
   color: #9a9a9a;
   margin: 2px 0;
@@ -82,4 +83,5 @@
 
 .document-btn:hover {
   transform: translateY(-1px);
+  color: #111111;
 }

@@ -4,49 +4,55 @@ function PolicyPage() {
   const documents = [
     {
       id: 1,
+      policyId: "PD-001",
       title: "Company Handbook",
-      updated: "10 Jan 2026",
-      size: "704 KB",
+      createdAt: "10 Jan 2026",
+      version: "v1.0",
       thumbnail: "/images/download (1).jpeg",
       file: "/documents/sample1.pdf"
     },
     {
       id: 2,
+      policyId: "PD-002",
       title: "IT Guidelines",
-      updated: "28 Jan 2026",
-      size: "98 KB",
+      createdAt: "28 Jan 2026",
+      version: "v2.1",
       thumbnail: "/images/download.jpeg",
       file: "/documents/sample2.pdf"
     },
     {
       id: 3,
+      policyId: "PD-003",
       title: "Leave Policy",
-      updated: "05 Feb 2026",
-      size: "120 KB",
+      createdAt: "05 Feb 2026",
+      version: "v1.3",
       thumbnail: "/images/download (1).jpeg",
       file: "/documents/sample1.pdf"
     },
     {
       id: 4,
+      policyId: "PD-004",
       title: "Code of Conduct",
-      updated: "01 Feb 2026",
-      size: "300 KB",
+      createdAt: "01 Feb 2026",
+      version: "v3.0",
       thumbnail: "/images/download.jpeg",
       file: "/documents/sample2.pdf"
     },
     {
       id: 5,
+      policyId: "PD-005",
       title: "Remote Work Policy",
-      updated: "15 Feb 2026",
-      size: "210 KB",
+      createdAt: "20 Feb 2026",
+      version: "v2.0",
       thumbnail: "/images/download (1).jpeg",
       file: "/documents/sample1.pdf"
     },
     {
       id: 6,
+      policyId: "PD-006",
       title: "Health & Safety Policy",
-      updated: "20 Feb 2026",
-      size: "180 KB",
+      createdAt: "29 Feb 2026",
+      version: "v2.2",
       thumbnail: "/images/download.jpeg",
       file: "/documents/sample2.pdf"
     },
@@ -66,15 +72,13 @@ function PolicyPage() {
             />
 
             <h3 className="thumb-title">{doc.title}</h3>
-            <p className="thumb-date">{doc.updated}</p>
-            <p className="thumb-size">{doc.size}</p>
+            <p className="thumb-date">Created at: {doc.createdAt}</p>
+            <p className="thumb-size">Version: {doc.version}</p>
+            <p className="thumb-id">ID: {doc.policyId}</p>
 
-            <button
-              className="document-btn"
-              onClick={() => window.open(doc.file, "_blank")}
-            >
-              Open
-            </button>
+            <a href={doc.file} download className="document-btn">
+              Download
+            </a>
           </div>
         ))}
       </div>
