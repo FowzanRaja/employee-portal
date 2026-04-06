@@ -11,6 +11,7 @@ import PolicyPage from '../pages/PolicyPage'
 import ProgrammePage from '../pages/ProgrammePage'
 import ProgrammeViewPage from '../pages/ProgrammeViewPage'
 import TicketPage from '../pages/TicketPage'
+import HRPage from '../pages/HRPage'
 
 export default function AppRoutes() {
   return (
@@ -30,6 +31,7 @@ export default function AppRoutes() {
         <Route path="consultants" element={<ConsultantsPage />} />
         <Route path="programme" element={<ProgrammePage />} />
         <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
+        <Route path="hr" element={<HRPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
