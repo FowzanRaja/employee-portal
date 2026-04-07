@@ -92,24 +92,78 @@ export default function ITViewPage() {
         </h1>
       </header>
 
-      {/* TICKETS */}
-      <div className="fdm-stack">
-        {filteredTickets.map((t) => (
-          <TicketCard
-            key={t.id}
-            id={t.id}
-            title={t.title}
-            name={t.name}
-            profilePic={t.profilePic}
-            priority={t.priority}
-            status={t.status}
-            date={t.date}
-            content={t.content}
-            onStatusChange={handleStatusChange}
-            isAdmin={true}
-          />
-        ))}
+<div className="fdm-stack">
+  {filteredTickets.map((t) => (
+
+      <div
+        key={t.id}
+        className="
+          fdm-card-soft
+          transition-all duration-200
+          hover:-translate-y-1
+          hover:ring-1 hover:ring-[var(--fdm-lime-soft)]
+          cursor-pointer
+        "
+      >
+
+      {/* Ticket display */}
+      <TicketCard
+        title={t.title}
+        name={t.name}
+        profilePic={t.profilePic}
+        priority={t.priority}
+        status={t.status}
+        date={t.date}
+        content={t.content}
+      />
+
+      {/* ADMIN BUTTONS */}
+      <div className="mt-4 flex items-center justify-between">
+
+        <p className="text-base text-gray-300 font-semibold tracking-wide">
+          Update Status
+        </p>
+
+        <div className="flex gap-2">
+
+          {t.status !== 'Open' && (
+            <button
+              onClick={() => handleStatusChange(t.id, 'Open')}
+              className="px-3 py-1 text-sm rounded-lg border border-blue-400/30 text-blue-300 
+                         hover:bg-blue-400/10 transition"
+            >
+              Open
+            </button>
+          )}
+
+          {t.status !== 'In Progress' && (
+            <button
+              onClick={() => handleStatusChange(t.id, 'In Progress')}
+              className="px-3 py-1 text-sm rounded-lg border border-purple-400/30 text-purple-300 
+                         hover:bg-purple-400/10 transition"
+            >
+              In Progress
+            </button>
+          )}
+
+          {t.status !== 'Closed' && (
+            <button
+              onClick={() => handleStatusChange(t.id, 'Closed')}
+              className="px-3 py-1 text-sm rounded-lg border border-red-400/30 text-red-300 
+                         hover:bg-red-400/10 transition"
+            >
+              Close
+            </button>
+          )}
+
+        </div>
       </div>
+
+    </div>
+
+  ))}
+</div>
+
     </section>
   )
 }
