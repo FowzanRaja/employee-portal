@@ -30,6 +30,7 @@ export default function AppRoutes() {
         <Route path="consultants" element={<ConsultantsPage />} />
         <Route path="programme" element={<ProgrammePage />} />
         <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
+        <Route path="/leave-booking" element={<LeavePage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />
