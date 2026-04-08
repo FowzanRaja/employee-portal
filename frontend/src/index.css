@@ -1134,16 +1134,20 @@ p {
 .hr-leave-request{
   display: flex;
   flex-direction: row;
+  padding:1%;
   gap: 0.75rem;
   padding-bottom: 0.4em;
   border-bottom: 1px solid var(--fdm-border);
   border-radius: 2px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
   transition: all 0.3s ease-in-out;
 }
 
 .hr-leave-request:hover{
   border-color: var(--fdm-lime-soft);
   font-size: 1.015em;
+  background-color: #1a1a1a;
 
 }
 
