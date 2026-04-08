@@ -1148,7 +1148,7 @@ p {
 }
 
 .hr-leave-request:hover .leave-button{
-  border-color: var(--fdm-text-muted);
+  border-color: #c6f20056;
 }
 
 .hr-leave-request:hover .leave-button:hover{
@@ -1211,4 +1211,42 @@ p {
   cursor: pointer;
 
   transition: all 0.3s ease-in-out;
+}
+
+#hr-announcements{
+  display: flex;
+  flex-direction: column;
+}
+
+#hr-announcements input,#hr-announcements textarea{
+  transition: all 0.3s ease-in-out;
+  border: solid 1px #303030;
+}
+
+#hr-announcements:hover input,#hr-announcements:hover textarea{
+  border: 1px solid #525252;
+}
+
+#hr-announcements input:hover, #hr-announcements textarea:hover{
+  border: 1px solid #c6f20056;
+}
+
+
+.announcement-button{
+  border-radius: 1em;
+
+  height: 3em;
+  width:60%;
+
+  background-color: var(--fdm-lime-soft);
+  color: var(--fdm-text-dark);
+  font-weight: bold;
+  cursor:pointer;
+
+  transition: all 0.3s ease-in-out;
+}
+
+.announcement-button:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(208, 255, 0, 0.22);
 }
