@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import styles from './MessagesPage.module.css'
 
-import arrow_button from '../../assets/black_send_arrow.svg';
+import arrow_button from '../../assets/lime_send_arrow.svg';
 // TODO: Draw a personal wireframe of what you will try and make the page look like. Split it up into components and build the page!
 
 const chats = [
@@ -69,13 +69,7 @@ function SearchBar() {
   )
 }
 
-function UserInput({value, onChange, onSend}) {
-  document.getElementById("user-input-textarea").addEventListener("keypress", event => {
-    if(event.key === "Enter" && !event.shiftKey) {
-      event.preventDefault();
-    }
-  })
-
+function UserInput({inputValue, onChange, onSend}) {
   return (
     <div id='user-input' className={`${styles['user-input']}`}>
       <textarea
@@ -83,24 +77,38 @@ function UserInput({value, onChange, onSend}) {
         rows={2}
         placeholder="Type a message..."
         spellCheck={true}
-        value={value}
+        value={inputValue}
         onChange={onChange}
-        onSubmit={onSend}
+        onKeyDown={(event) => {
+          if(event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            onSend();
+          }
+        }}
         style={{ width: '100%', resize: 'none'}}
       />
-      <button className={`${styles['submit-button']}`} onClick={onSend}>
-        <img src={arrow_button} style={{width: '25px', height: '25px'}}/>
+      <button onClick={onSend} className={`${styles['submit-button']}`}>
+        <img src={arrow_button}/>
       </button>
     </div>
   )
 }
 
 function ChatMessages({messages}) {
+  const bottomRef = useRef(null);
+
+  useEffect(() => {
+    bottomRef.current?.scrollIntoView({ behaviour: 'smooth' });
+  }, [messages])
+
   return (
-    <div id='chat-messages' className={`${styles['chat-messages']}`}>
+    <div id='chat-messages' className={`${styles['chat-messages']} fdm-stack`}>
       {messages.map((message, index) => (
-        <p key={index}>{message}</p>
+        <div key={index} className={styles['user-message']}>
+          <p>{message}</p>
+        </div>
       ))}
+      <div ref={bottomRef} />
     </div>
   )
 }
@@ -112,14 +120,14 @@ function ChatContent() {
   const handleUserInput = () => {
     if(!input.trim()) return;
     setMessages([...messages, input]);
-    setInputValue("");
+    setUserInput("");
   }
 
   return(
     <div id='chat-content' className={`${styles['chat-content']} fdm-panel-2`}>
       <ChatMessages messages={messages}/>
       <UserInput
-        value={input}
+        inputValue={input}
         onChange={(event) => setUserInput(event.target.value)}
         onSend={handleUserInput}
       />
@@ -161,7 +169,7 @@ function MainContent() {
 
 export default function MessagesPage() {
   return (
-    <div id='messages-page' className={`${styles['messages-page']} fdm-container`}>
+    <div id='messages-page' className={`${styles['messages-page']} fdm-container fdm-panel`}>
       <SearchBar />
       <MainContent />
     </div>
