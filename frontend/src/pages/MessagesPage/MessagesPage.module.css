@@ -1,0 +1,140 @@
+/* Note that this is paired with main-content in regards to flex proportions */
+.search-bar {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 10%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+}
+
+/* Note that this is paired with chat-side-bar content in regards to flex proportions */
+.chat-content {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 80%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    justify-content: space-between;
+    border-radius: 0;
+    overflow-y: auto;
+    width: 100%;
+    min-width: 0;
+}
+
+.user-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #363636;
+    border-style: solid;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: black;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.chat-message {
+    
+}
+
+.submit-button {
+
+}
+
+.submit-button:hover {
+  transform: translateY(-1px);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.chat {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+    cursor: pointer;
+    padding: 0.5rem;
+    overflow-y: hidden;
+    overflow-x: auto;
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease,
+        background-color 0.2s ease,
+        color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.chat::-webkit-scrollbar {
+    /* width: 6px; */
+    height: 6px;
+}
+
+.chat:hover {
+    border-style: solid;
+    border-radius: 0;
+    border-width: 1px;
+    border-color: black;
+    transform: translateY(-1px);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.chat:active {
+    transform: translateY(0);
+}
+
+.profile-pic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #4a90e2;
+    color: white;
+    font-size: 1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Note that this is paired with chat-content in regards to flex proportions */
+.chat-side-bar {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 20%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    align-items: flex-start;
+    /* overflow: auto; */
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-radius: 0;
+    min-width: 0;
+}
+
+/* Note that this is paired with top-bar in regards to flex proportions */
+.main-content {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 90%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.messages-page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
