@@ -74,6 +74,12 @@ export default function LeavePage() {
   };  
 
   const handleClearHistory = () => {
+    const isConfirmed = window.confirm(
+      "Are you sure you want to clear the request history?"
+    );
+
+    if (!isConfirmed) return;
+
     setRequests([]);
   };
 
