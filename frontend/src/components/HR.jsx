@@ -1,5 +1,6 @@
 import pfp from '../assets/pfp images/pfp3.jpg'
 import { useState } from 'react'
+import {Check, X} from 'lucide-react'
 
 
 export default function HRDisplay(){
@@ -85,8 +86,8 @@ export default function HRDisplay(){
                             </div>
 
                             <div className="leave-request-buttons-container">
-                                <button className="leave-button"> :) </button>
-                                <button className="leave-button">:( </button>
+                                <button className="leave-button"> <Check/> </button>
+                                <button className="leave-button"> <X/> </button>
                             </div>
 
                         </div>
@@ -108,8 +109,8 @@ export default function HRDisplay(){
                             </div>
 
                             <div className="leave-request-buttons-container">
-                                <button className="leave-button"> :) </button>
-                                <button className="leave-button">:( </button>
+                                <button className="leave-button"> <Check/> </button>
+                                <button className="leave-button"> <X/> </button>
                             </div>
 
                         </div>
@@ -131,8 +132,31 @@ export default function HRDisplay(){
                             </div>
 
                             <div className="leave-request-buttons-container">
-                                <button className="leave-button"> :) </button>
-                                <button className="leave-button">:( </button>
+                                <button className="leave-button"> <Check/> </button>
+                                <button className="leave-button"> <X/> </button>
+                            </div>
+
+                        </div>
+
+                                                <div className="hr-leave-request"> 
+
+                            <div className="leave-request-image-container"> <img src={pfp} alt="Profile Picture"/> </div>
+
+                            <div className="leave-request-content-container">
+                                <div className="leave-request-primary-info"> 
+                                    <p className="request-name"> John Johnson </p>
+                                </div>
+                                <div className="leave-request-secondary-info">
+                                    <p className="request-type"> Annual leave </p>
+                                    <p className="request-dates"> 19 May - 28 May </p>
+                                    <p className="request-employee-type"> Line Manager </p>
+                                </div>
+
+                            </div>
+
+                            <div className="leave-request-buttons-container">
+                                <button className="leave-button"> <Check/> </button>
+                                <button className="leave-button"> <X/> </button>
                             </div>
 
                         </div>
