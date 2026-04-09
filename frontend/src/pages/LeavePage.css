@@ -217,6 +217,10 @@
   color: black;
 }
 
+.leave-form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
 .leave-form-group input:focus,
 .leave-form-group select:focus,
 .leave-form-group textarea:focus {
@@ -460,5 +464,159 @@
   margin: 0;
   color: #aaaaaa;
   font-size: 0.92rem;
+}
+
+@media (max-width: 1100px) {
+  .leave-main-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .leave-side-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .leave-page {
+    padding: 20px 16px 32px;
+  }
+
+  .leave-page__container {
+    max-width: 100%;
+  }
+
+  .leave-hero,
+  .leave-form-card,
+  .leave-info-card,
+  .leave-requests-card {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  .leave-title {
+    font-size: 2.6rem;
+    line-height: 1.05;
+  }
+
+  .leave-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .leave-stats {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .leave-stat-card {
+    padding: 18px;
+  }
+
+  .leave-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .leave-card-header h2 {
+    font-size: 1.6rem;
+  }
+
+  .leave-history-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .leave-form-row {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .leave-form-group input,
+  .leave-form-group select,
+  .leave-form-group textarea {
+    padding: 13px 14px;
+    font-size: 0.95rem;
+  }
+
+  .leave-summary-box div {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .leave-submit-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .leave-request-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .leave-request-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .leave-request-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .leave-modal {
+    padding: 22px;
+    border-radius: 22px;
+  }
+
+  .leave-modal h3 {
+    font-size: 1.5rem;
+  }
+
+  .leave-modal-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .leave-modal-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .leave-page {
+    padding: 16px 12px 24px;
+  }
+
+  .leave-title {
+    font-size: 2.2rem;
+  }
+
+  .leave-card-header h2 {
+    font-size: 1.35rem;
+  }
+
+  .leave-stat-card h3 {
+    font-size: 1.6rem;
+  }
+
+  .leave-request-item {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .leave-status,
+  .leave-delete-btn,
+  .leave-clear-btn,
+  .leave-badge {
+    font-size: 0.75rem;
+    padding: 7px 12px;
+  }
 }
 
