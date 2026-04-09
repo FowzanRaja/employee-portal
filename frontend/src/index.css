@@ -1125,9 +1125,8 @@ p {
 .leave-requests-container{
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  padding: 0.5em;
-  height: 85%;
+  gap: 10px;
+  max-height: 33vh;
   overflow-y: scroll;
 }
 
@@ -1146,7 +1145,7 @@ p {
 
 .hr-leave-request:hover{
   border-color: var(--fdm-lime-soft);
-  font-size: 1.015em;
+  font-size: 1.03em;
   background-color: #1a1a1a;
 
 }
@@ -1160,12 +1159,18 @@ p {
 }
 
 .leave-request-image-container{
-  height: 70px;
-  width: 70px;
-  border-radius: 15px;
-  overflow: hidden;
-  border: 1px solid var(--fdm-border-strong);
-  
+  width: 5%;
+  height: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:1%;
+}
+
+.icon{
+  height: 100%;
+  width: 100%;
+  color: var(--fdm-lime-soft);
 }
 
 .leave-request-content-container{
@@ -1175,6 +1180,7 @@ p {
   gap: 0.25rem;
   justify-content: space-between;
   padding: 0.1em;
+  white-space: nowrap;
 }
 
 .leave-request-primary-info{
@@ -1194,7 +1200,7 @@ p {
   display: flex;
   flex-direction: row;
   gap: 0.75em;
-  justify-items: right;
+  justify-content: right;
   align-items: center;
 }
 
@@ -1215,6 +1221,16 @@ p {
   cursor: pointer;
 
   transition: all 0.3s ease-in-out;
+}
+
+.leave-button:hover #approve{
+  transition: all 0.3s ease-in-out;
+  color:var(--fdm-green);
+}
+
+.leave-button:hover #deny{
+  transition: all 0.3s ease-in-out;
+  color: red;
 }
 
 #hr-announcements{

@@ -14,6 +14,10 @@ import TicketPage from '../pages/TicketPage'
 import HRPage from '../pages/HRPage'
 import ITPage from '../pages/ITPage'
 import ITViewPage from '../pages/ITViewPage'
+import HRNewPage from '../pages/HRNEwPage'
+import HRLeavePage from '../pages/HRLeavePage'
+import HRPolicyPage from '../pages/HRPolicyPage'
+import HRAnnouncementPage from '../pages/HRAnnouncementsPage'
 
 export default function AppRoutes() {
   return (
@@ -35,6 +39,10 @@ export default function AppRoutes() {
         <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
         <Route path="/leave-booking" element={<LeavePage />} />
         <Route path="hr" element={<HRPage />} />
+        <Route path="hrnew" element={<HRNewPage />} />
+        <Route path="hrnew/leave" element={<HRLeavePage />} />
+        <Route path="hrnew/announcements" element={<HRAnnouncementPage />} />
+        <Route path="hrnew/policy" element={<HRPolicyPage />} />
         <Route path="it" element={<ITPage />} />
         <Route path="it/:section" element={<ITViewPage />} />
       </Route>

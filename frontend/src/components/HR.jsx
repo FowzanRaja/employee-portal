@@ -138,7 +138,7 @@ export default function HRDisplay(){
 
                         </div>
 
-                                                <div className="hr-leave-request"> 
+                        <div className="hr-leave-request"> 
 
                             <div className="leave-request-image-container"> <img src={pfp} alt="Profile Picture"/> </div>
 
