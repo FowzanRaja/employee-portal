@@ -8,10 +8,7 @@ export default function LeaveRequest({name, reason, leaveType, startDate, endDat
 
             <div className="leave-request-content-container">
                 <div className="leave-request-primary-info"> 
-                    <p className="request-name"> {name} </p>
-                </div>
-                <div className="leave-request-reason-info">
-                    <p className="request-reason"> {reason} </p>
+                    <p className="request-name"> {name} &nbsp; • &nbsp; <span id="reason-text"> {reason} </span></p>
                 </div>
                 <div className="leave-request-secondary-info">
                     <p className="request-type"> {leaveType} </p>
