@@ -5,6 +5,7 @@ import {
   ChevronRight,
   MessageSquare,
   UserCircle,
+  CalendarCheck,
 } from 'lucide-react'
 import {
   SIDEBAR_EXPANDED_WIDTH,
@@ -116,18 +117,27 @@ export default function Sidebar({
       </div>
 
       <div className="flex flex-1 flex-col overflow-hidden">
-        <nav aria-label="Primary navigation" className="flex flex-col gap-2 px-1">
+        <nav aria-label="Primary navigation" className="flex flex-col gap-2 px-1 flex-1 overflow-y-auto">
           {items.map((item) => (
             <SidebarNavItem key={item.to} item={item} isCollapsed={isCollapsed} />
           ))}
         </nav>
 
-        <div className="mt-auto flex flex-col gap-4 border-t border-[color:var(--fdm-border)] px-1 pt-4">
+        <div className="flex flex-col gap-4 border-t border-[color:var(--fdm-border)] px-1 pt-4 shrink-0">
           <SidebarNavItem
             item={{
               to: '/messages',
               label: 'Messaging',
               icon: MessageSquare,
+            }}
+            isCollapsed={isCollapsed}
+          />
+
+          <SidebarNavItem
+            item={{
+              to: '/consultants',
+              label: 'Schedule',
+              icon: CalendarCheck,
             }}
             isCollapsed={isCollapsed}
           />
