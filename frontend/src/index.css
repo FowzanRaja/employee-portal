@@ -455,6 +455,39 @@ p {
   color: var(--fdm-lime);
 }
 
+.fdm-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+
+  background: transparent;
+  color: var(--fdm-text);
+
+  border: 1px solid var(--fdm-border-strong);
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+/* 🔥 Hover = your green */
+.fdm-nav-btn:hover {
+  border-color: var(--fdm-lime-soft);
+  color: var(--fdm-lime-soft);
+  background: rgba(215, 255, 0, 0.06);
+  box-shadow: 0 6px 16px rgba(215, 255, 0, 0.15);
+}
+
+/* 🔥 Optional active state */
+.fdm-nav-btn-active {
+  border-color: var(--fdm-lime);
+  color: var(--fdm-lime);
+  background: rgba(215, 255, 0, 0.1);
+}
 /* =========================
    Inputs / Forms
    ========================= */

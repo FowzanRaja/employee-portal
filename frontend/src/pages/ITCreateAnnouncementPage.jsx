@@ -69,10 +69,9 @@ export default function ITCreateAnnouncementPage() {
 
       {/* TITLE */}
       <h1 className="programme-page-title" style={{ marginBottom: '1.5rem' }}>
-        Create Announcement
+        New Announcement
       </h1>
 
-      {/* 🔥 KEEP YOUR NAV BUTTONS */}
       <div
         style={{
           display: 'flex',
@@ -82,7 +81,7 @@ export default function ITCreateAnnouncementPage() {
       >
         <Link
           to="/it"
-          className="fdm-button fdm-button-secondary"
+          className="fdm-nav-btn"
           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
           <ArrowLeft size={18} />
@@ -91,7 +90,7 @@ export default function ITCreateAnnouncementPage() {
 
         <Link
           to="/it/announcements"
-          className="fdm-button"
+          className="fdm-nav-btn"
           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
           <Inbox size={18} />
@@ -99,7 +98,7 @@ export default function ITCreateAnnouncementPage() {
         </Link>
       </div>
 
-      {/* 🔥 HR-STYLE CENTERED FORM */}
+      {/* HR-STYLE FORM */}
       <div className="announcements-section-container">
         <div className="hr-section" id="hr-announcements">
 

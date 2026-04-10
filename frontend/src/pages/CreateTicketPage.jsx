@@ -45,7 +45,7 @@ export default function CreateTicketPage() {
             {/* BACK BUTTON */}
             <Link
               to="/tickets"
-              className="fdm-button fdm-button-secondary"
+              className="fdm-nav-btn"
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <ArrowLeft size={18} />
@@ -55,7 +55,7 @@ export default function CreateTicketPage() {
             {/* MY TICKETS */}
             <Link
               to="/tickets/list"
-              className="fdm-button"
+              className="fdm-nav-btn"
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <Inbox size={18} />

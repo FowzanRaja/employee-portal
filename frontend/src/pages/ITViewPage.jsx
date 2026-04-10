@@ -102,7 +102,7 @@ export default function ITViewPage() {
         {/* BACK TO IT */}
         <Link
           to="/it"
-          className="fdm-button fdm-button-secondary"
+          className="fdm-nav-btn"
           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
           <ArrowLeft size={18} />
@@ -113,7 +113,7 @@ export default function ITViewPage() {
         {section === 'open' ? (
           <Link
             to="/it/archive"
-            className="fdm-button"
+            className="fdm-nav-btn"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >
             <Archive size={18} />
@@ -122,7 +122,7 @@ export default function ITViewPage() {
         ) : (
           <Link
             to="/it/open"
-            className="fdm-button"
+            className="fdm-nav-btn"
             style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
           >
             <Inbox size={18} />

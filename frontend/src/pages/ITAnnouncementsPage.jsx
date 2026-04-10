@@ -68,7 +68,7 @@ export default function ITAnnouncementsPage() {
         {/* BACK TO IT */}
         <Link
           to="/it"
-          className="fdm-button fdm-button-secondary"
+          className="fdm-nav-btn"
           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
           <ArrowLeft size={18} />
@@ -78,7 +78,7 @@ export default function ITAnnouncementsPage() {
         {/* NEW ANNOUNCEMENT */}
         <Link
           to="/it/announcements/new"
-          className="fdm-button"
+          className="fdm-nav-btn"
           style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
         >
           <Plus size={18} />

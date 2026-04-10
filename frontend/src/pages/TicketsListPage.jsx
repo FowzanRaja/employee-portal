@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Plus } from 'lucide-react';
 import TicketCard from '../components/TicketCard';
-import pfp4 from '../assets/pfp images/pfp3.png';
+import pfp3 from '../assets/pfp images/pfp3.png';
 
 const initialTickets = [
   {
     id: 1,
     title: 'Laptop not working',
     name: 'Ava Thompson',
-    profilePic: pfp4,
+    profilePic: pfp3,
     priority: 'medium',
     status: 'Closed',
     date: 'March 17 2026',
@@ -19,7 +19,7 @@ const initialTickets = [
     id: 2,
     title: 'Access request',
     name: 'Ava Thompson',
-    profilePic: pfp4,
+    profilePic: pfp3,
     priority: 'low',
     status: 'Open',
     date: 'March 15 2026',
@@ -29,7 +29,7 @@ const initialTickets = [
     id: 3,
     title: 'Lost my soul to VP Online',
     name: 'Ava Thompson',
-    profilePic: pfp4,
+    profilePic: pfp3,
     priority: 'high',
     status: 'In Progress',
     date: 'March 12 2026',
@@ -61,7 +61,7 @@ export default function TicketsListPage() {
             {/* BACK BUTTON */}
             <Link
               to="/tickets"
-              className="fdm-button fdm-button-secondary"
+              className="fdm-nav-btn"
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <ArrowLeft size={18} />
@@ -71,7 +71,7 @@ export default function TicketsListPage() {
             {/* NEW TICKET BUTTON */}
             <Link
               to="/tickets/new"
-              className="fdm-button"
+              className="fdm-nav-btn"
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
             >
               <Plus size={18} />
