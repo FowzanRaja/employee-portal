@@ -7,12 +7,14 @@ const IT_SECTIONS = [
     title: 'Open Tickets',
     description: 'View and manage active support tickets.',
     icon: Inbox,
+    buttonText: 'View Tickets',
   },
   {
     to: '/it/archive',
     title: 'Ticket Archive',
     description: 'View resolved and closed tickets.',
     icon: Archive,
+    buttonText: 'View Archive',
   },
 ]
 
@@ -34,6 +36,7 @@ export default function ITPage() {
             description={section.description}
             to={section.to}
             icon={section.icon}
+            buttonText={section.buttonText}
           />
         ))}
       </div>
