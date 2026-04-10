@@ -23,43 +23,39 @@ const mockChats = [
   },
   {
     name: "Peter Parker",
-    profilePicPath: ""
+    profilePicPath: "",
+    messages: [
+      { text: "Hey!", timeStamp: "10/04/2026 - 09:00", isCurrentUser: false},
+      { text: "Hi there!", timeStamp: "10/04/2026 - 09:01", isCurrentUser: true }
+    ],
+    id: 2
   },
   {
     name: "Bruce Bayne",
-    profilePicPath: ""
+    profilePicPath: "",
+    messages: [
+      { text: "Hey!", timeStamp: "10/04/2026 - 09:00", isCurrentUser: false},
+      { text: "Hi there!", timeStamp: "10/04/2026 - 09:01", isCurrentUser: true }
+    ],
+    id: 3
   },
   {
     name: "Ava Thompson",
     profilePicPath: "",
+    messages: [
+      { text: "Hey!", timeStamp: "10/04/2026 - 09:00", isCurrentUser: false},
+      { text: "Hi there!", timeStamp: "10/04/2026 - 09:01", isCurrentUser: true }
+    ],
+    id: 4
   },
   {
     name: "Ana Hathaway",
-    profilePicPath: ""
-  },
-  {
-    name: "Ana Hathaway",
-    profilePicPath: ""
-  },
-  {
-    name: "Ana Hathaway",
-    profilePicPath: ""
-  },
-  {
-    name: "Ana Hathaway",
-    profilePicPath: ""
-  },
-  {
-    name: "Ana Hathaway",
-    profilePicPath: ""
-  },
-  {
-    name: "Ana Hathaway",
-    profilePicPath: ""
-  },
-  {
-    name: "Ana Hathaway",
-    profilePicPath: ""
+    profilePicPath: "",
+    messages: [
+      { text: "Hey!", timeStamp: "10/04/2026 - 09:00", isCurrentUser: false},
+      { text: "Hi there!", timeStamp: "10/04/2026 - 09:01", isCurrentUser: true }
+    ],
+    id: 5
   }
 ]
 
@@ -131,7 +127,7 @@ function ChatMessages({messages}) {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behaviour: 'smooth' });
+    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages])
 
   return (
@@ -220,7 +216,7 @@ function ChatSideBar({ chats, selectedChat, setSelectedChat }) {
   return (
     <div id='chat-side-bar' className={`${styles['chat-side-bar']} fdm-panel-2`}>
       {chats.map((chat, index) => (
-        <Chat setSelectedChat={setSelectedChat} selectedChat={selectedChat} chat={chat} index={index}/>
+        <Chat setSelectedChat={setSelectedChat} selectedChat={selectedChat} chat={chat} index={index} key={index}/>
       ))}
     </div>
   )
