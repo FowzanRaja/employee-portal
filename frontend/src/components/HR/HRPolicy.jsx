@@ -204,7 +204,7 @@ export default function HRPolicies() {
                                 </button>
                                 <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
                             </div>
-                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
+                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${!firstSubmit && (showFileError || showTitleError || showVersionError) ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
                             <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handlePublish}> Publish document </button> </div>
                         </div>
@@ -219,15 +219,15 @@ export default function HRPolicies() {
                         </div>
                         <hr className="hr-line"/>
                         <div className="new-doc-container" onMouseLeave={() => document.activeElement.blur()}> 
-                            <input  value={`${docToModify.title}`} autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
-                            <input  value={`${docToModify.version}`} autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
+                            <input  defaultValue={`${docToModify.title}`} autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
+                            <input  defaultValue={`${docToModify.version}`} autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
                             <div className="file-btn-container">
                                 <button className={`${!firstSubmit && showFileError ? "fdm-nav-btn-error": "fdm-nav-btn"}`} id="file-btn">  
                                     <label id="upload-label"> Upload updated document <input  className="hidden" type="file" onChange={handleFile} placeholder='Upload file' accept=".pdf,.docx,.doc,.txt"/> </label>
                                 </button>
                                 <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
                             </div>
-                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
+                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${!firstSubmit && (showFileError || showTitleError || showVersionError) ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
                             <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handleModify}> Modify </button> </div>
                         </div>
