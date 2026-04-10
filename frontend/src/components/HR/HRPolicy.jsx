@@ -219,8 +219,8 @@ export default function HRPolicies() {
                         </div>
                         <hr className="hr-line"/>
                         <div className="new-doc-container" onMouseLeave={() => document.activeElement.blur()}> 
-                            <input  value={`${docToModify.title}`} autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
-                            <input  value={`${docToModify.version}`} autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
+                            <input  defaultValue={`${docToModify.title}`} autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
+                            <input  defaultValue={`${docToModify.version}`} autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
                             <div className="file-btn-container">
                                 <button className={`${!firstSubmit && showFileError ? "fdm-nav-btn-error": "fdm-nav-btn"}`} id="file-btn">  
                                     <label id="upload-label"> Upload updated document <input  className="hidden" type="file" onChange={handleFile} placeholder='Upload file' accept=".pdf,.docx,.doc,.txt"/> </label>
