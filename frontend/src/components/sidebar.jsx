@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import {
   ChevronLeft,
   ChevronRight,
@@ -64,6 +64,8 @@ export default function Sidebar({
   items = navItems,
   onCollapseChange,
 }) {
+  const navigate = useNavigate()
+
   const [isCollapsed, setIsCollapsed] = useState(() => {
     if (typeof window === 'undefined') {
       return false
@@ -130,13 +132,19 @@ export default function Sidebar({
             isCollapsed={isCollapsed}
           />
 
-          <div
-            className={[
-              'rounded-[26px] border border-[color:var(--fdm-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] shadow-[0_16px_36px_rgba(0,0,0,0.24)]',
-              isCollapsed ? 'px-3 py-4' : 'px-4 py-4',
-            ].join(' ')}
-            title={isCollapsed ? `${user.name} - ${user.role}` : undefined}
-            aria-label="Current user profile"
+          <NavLink
+            to="/profile"
+            title={isCollapsed ? `${user.name} — ${user.role}` : undefined}
+            aria-label="View my profile"
+            className={({ isActive }) =>
+              [
+                'rounded-[26px] border transition-all duration-200 ease-out cursor-pointer',
+                isCollapsed ? 'px-3 py-4' : 'px-4 py-4',
+                isActive
+                  ? 'border-[rgba(215,255,0,0.28)] bg-[rgba(215,255,0,0.08)] shadow-[0_16px_36px_rgba(0,0,0,0.24)]'
+                  : 'border-[color:var(--fdm-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] shadow-[0_16px_36px_rgba(0,0,0,0.24)] hover:border-[rgba(215,255,0,0.2)] hover:bg-[rgba(215,255,0,0.04)]',
+              ].join(' ')
+            }
           >
             <div className={['flex items-center', isCollapsed ? 'justify-center' : 'gap-3'].join(' ')}>
               <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[rgba(215,255,0,0.12)] text-[var(--fdm-lime)]">
@@ -154,7 +162,7 @@ export default function Sidebar({
                 <p className="truncate text-xs text-[var(--fdm-text-muted)]">{user.role}</p>
               </div>
             </div>
-          </div>
+          </NavLink>
         </div>
       </div>
     </aside>

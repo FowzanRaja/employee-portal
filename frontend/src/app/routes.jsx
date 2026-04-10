@@ -10,6 +10,7 @@ import NotFound from '../pages/NotFound'
 import PolicyPage from '../pages/PolicyPage'
 import ProgrammePage from '../pages/ProgrammePage'
 import ProgrammeViewPage from '../pages/ProgrammeViewPage'
+import ProfilePage from '../pages/ProfilePage'
 import TicketPage from '../pages/TicketPage'
 import HRPage from '../pages/HRPage'
 import ITPage from '../pages/ITPage'
@@ -37,6 +38,7 @@ export default function AppRoutes() {
         <Route path="consultants" element={<ConsultantsPage />} />
         <Route path="programme" element={<ProgrammePage />} />
         <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="/leave-booking" element={<LeavePage />} />
         <Route path="hr" element={<HRPage />} />
         <Route path="hrnew" element={<HRNewPage />} />

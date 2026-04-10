@@ -5,6 +5,7 @@ import {
   Megaphone,
   ShieldCheck,
   Ticket,
+  UserCircle,
 } from 'lucide-react'
 
 export const SIDEBAR_EXPANDED_WIDTH = 280
