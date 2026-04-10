@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
-export default function TicketTypeCard({ title, description, to, icon: Icon, buttonText }) {
+export default function HRActionCard({ title, description, to, icon: Icon, buttonLabel }) {
   const navigate = useNavigate()
 
   return (
@@ -9,17 +9,19 @@ export default function TicketTypeCard({ title, description, to, icon: Icon, but
       <p className="programme-card-description">
         {description}
       </p>
+
       {Icon && (
         <div className="programme-card-icon">
           <Icon size={140} strokeWidth={1.5} />
         </div>
       )}
+
       <button
         type="button"
         className="programme-card-button"
         onClick={() => navigate(to)}
       >
-        {buttonText}
+        {buttonLabel}
       </button>
     </article>
   )
