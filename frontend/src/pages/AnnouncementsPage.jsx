@@ -1,7 +1,7 @@
 import AnnouncementCard from '../components/AnnouncementCard';
-import pfp1 from '../assets/pfp images/pfp1.jpg';
-import pfp2 from '../assets/pfp images/pfp2.jpg';
-import pfp3 from '../assets/pfp images/pfp3.jpg';
+import pfp1 from '../assets/pfp images/pfp1.png';
+import pfp2 from '../assets/pfp images/pfp2.png';
+import pfp3 from '../assets/pfp images/pfp3.png';
 
 
 const announcements = [
