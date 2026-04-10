@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
 import { ArrowLeft, Plus } from 'lucide-react';
 import TicketCard from '../components/TicketCard';
 import pfp3 from '../assets/pfp images/pfp3.png';
@@ -38,7 +38,20 @@ const initialTickets = [
 ];
 
 export default function TicketsListPage() {
-  const [tickets] = useState(initialTickets);
+  const location = useLocation();
+  const newTicket = location.state?.newTicket;
+
+  const [tickets, setTickets] = useState(initialTickets);
+
+  // inject new ticket from navigation
+  useEffect(() => {
+    if (newTicket) {
+      setTickets((prev) => {
+        const exists = prev.some((t) => t.id === newTicket.id);
+        return exists ? prev : [newTicket, ...prev];
+      });
+    }
+  }, [newTicket]);
 
   return (
     <div className="flex h-screen">
