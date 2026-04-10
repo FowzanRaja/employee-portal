@@ -1,6 +1,6 @@
 import {Check, X, CircleUser} from 'lucide-react';
 
-export default function LeaveRequest({name, reason, leaveType, startDate, endDate, employeeType, status}) {
+export default function LeaveRequest({id, name, reason, leaveType, startDate, endDate, employeeType, status, onApprove, onDeny}) {
     return(
         <div className="hr-leave-request"> 
 
@@ -20,8 +20,8 @@ export default function LeaveRequest({name, reason, leaveType, startDate, endDat
             {status == "pending" &&
                 <div className="leave-request-buttons-container">
                     <span className="leave-status leave-status-pending"> Pending </span>
-                    <button className="leave-button"> <Check id="approve"/> </button>
-                    <button className="leave-button"> <X id="deny"/> </button>
+                    <button className="leave-button" onClick={() => onApprove(id)}> <Check id="approve"/> </button>
+                    <button className="leave-button" onClick={() => onDeny(id)}> <X id="deny"/> </button>
                 </div>
             }
 
