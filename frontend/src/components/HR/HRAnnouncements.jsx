@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
+import { ArrowLeft} from 'lucide-react';
 
 export default function HRAnnouncements() {
     const [firstSubmit, setFirstSubmit] = useState(true);
@@ -33,15 +35,23 @@ export default function HRAnnouncements() {
 
     return(
         <div className="announcement-page-container"> {/* Whole view wrapper*/}
-            <div className="flex flex-row items-left justify-left w-8/10">
+            <div className="flex flex-row items-center justify-between w-1/1">
                 <header className="programme-page-header">
                     <h1 className="programme-page-title">Announcements</h1>
                     <p className="programme-page-subtitle">  Publish announcements to staff. </p>
                 </header>
+                <Link
+                    to="/hr"
+                    className="fdm-nav-btn"
+                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: 'fit-content', justifyContent: 'center' }}
+                >
+                    <ArrowLeft size={18} />
+                    Back to HR Dashboard
+                </Link>
             </div>
 
             <div className="announcements-section-container">
-                <div  className="hr-section" id="hr-announcements"> {/* Create/View announcements */}
+                <div  className="hr-section !h-7/10" id="hr-announcements"> {/* Create/View announcements */}
                     <h2 className="hr-section-title"> Create announcements </h2>
                     <hr className="hr-line"/>
                     <form onSubmit={createAnnouncement} onMouseEnter={() => setHovered(true)} onMouseLeave={() => setHovered(false)} className="transition-all duration-300 ease-in-out p-2 pb-0 gap-2 flex flex-col items-center justify-top h-full">

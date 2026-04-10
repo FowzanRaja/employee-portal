@@ -1359,7 +1359,7 @@ p {
   border-radius: 28px;
   border: 1px solid var(--fdm-border);
   height: 80vh;
-  width:50%;
+  width:60%;
   padding: 1%;
   background: linear-gradient(
     180deg,
@@ -1368,6 +1368,133 @@ p {
   );
 
   transition: border-color 0.3s ease-in-out;
+}
+
+#new-docs{
+  height:fit-content !important;
+  width: 40% !important;
+  
+}
+
+.new-doc-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#new-docs .policy-inputs{
+  background-color: #1a1a1a;
+
+  padding:2%;
+  margin-bottom:2%;
+
+  width:100%;
+  height:6vh;
+
+  border: solid 1px #303030;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+}
+
+#new-docs:hover .policy-inputs{
+  border-color:#525252;
+}
+
+#new-docs .policy-inputs:hover{
+  border-color:#c6f20056;
+}
+
+#new-docs .policy-inputs:focus{
+  border-color:var(--fdm-lime);
+  outline: none;
+}
+
+    #new-docs .policy-inputs-error{
+      background-color: #1a1a1a;
+
+      padding:2%;
+      margin-bottom:2%;
+
+      width:100%;
+      height:6vh;
+
+      border:solid 1px #303030;
+      border-radius: 12px;
+      transition: all 0.3s ease-in-out;
+    }
+
+
+
+    #new-docs:hover .policy-inputs-error{
+      border-color:#ff0000;
+    }
+
+
+    #new-docs .policy-inputs-error:focus{
+      border-color: #ff6666;
+      outline: none;
+    }
+
+
+.file-btn-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:100%;
+}
+
+.file-text{
+  white-space: nowrap;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  color:var(--fdm-text-muted);
+}
+#file-btn{
+  white-space: nowrap;
+  margin-bottom: 2%;
+  width: fit-content;
+}
+
+#upload-label{
+  cursor: pointer;
+}
+
+#new-docs .fdm-nav-btn-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+
+  background: transparent;
+  color: #ffffff;
+
+  border: 1px solid #303030;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+#new-docs:hover .fdm-nav-btn-error {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+
+  background: transparent;
+  color: #ffffff;
+
+  border: 1px solid #ff0000;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
 .thumb-grid-HR{
@@ -1386,8 +1513,8 @@ p {
   flex-direction: column;
   align-items: center;
 
-  min-width: 15vw;
-  max-width:15vw;
+  max-width: fit-content;
+  min-width:45%;
 
   padding:5%;
   margin-bottom: 4%;
