@@ -1,7 +1,7 @@
 import { CalendarDays , Megaphone, ShieldCheck, Ticket } from "lucide-react";
 import HRActionCard from "./HRActionCard";
 
-export default function HRNewDisplay() {
+export default function HRDisplay() {
     const HR_SECTIONS =[
         {
             to: "leave",
