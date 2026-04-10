@@ -14,12 +14,15 @@ import ProfilePage from '../pages/ProfilePage'
 import TicketPage from '../pages/TicketPage'
 import TicketsListPage from '../pages/TicketsListPage'
 import CreateTicketPage from '../pages/CreateTicketPage'
+
 import ITPage from '../pages/ITPage'
 import ITViewPage from '../pages/ITViewPage'
 import HRPage from '../pages/HRPage'
 import HRLeavePage from '../pages/HRLeavePage'
 import HRPolicyPage from '../pages/HRPolicyPage'
 import HRAnnouncementPage from '../pages/HRAnnouncementsPage'
+import ITAnnouncementsPage from '../pages/ITAnnouncementsPage'
+import ITCreateAnnouncementPage from '../pages/ITCreateAnnouncementPage'
 
 export default function AppRoutes() {
   return (
@@ -49,6 +52,8 @@ export default function AppRoutes() {
         <Route path="hr/policy" element={<HRPolicyPage />} />
         <Route path="it" element={<ITPage />} />
         <Route path="it/:section" element={<ITViewPage />} />
+        <Route path="it/announcements" element={<ITAnnouncementsPage />} />
+        <Route path="it/announcements/new" element={<ITCreateAnnouncementPage />} />
       </Route>
 
       <Route path="*" element={<NotFound />} />

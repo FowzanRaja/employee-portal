@@ -18,7 +18,7 @@ const TICKET_SECTIONS = [
   },
 ]
 
-export default function TicketsPage() {
+export default function TicketPage() {
   return (
     <section className="programme-page">
       <header className="programme-page-header">
