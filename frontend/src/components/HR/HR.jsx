@@ -1,12 +1,13 @@
 import { CalendarDays , Megaphone, ShieldCheck, Ticket } from "lucide-react";
-import TicketTypeCard from "../TicketManagementCard";
+import HRActionCard from "./HRActionCard";
 
-export default function HRNewDisplay() {
+export default function HRDisplay() {
     const HR_SECTIONS =[
         {
             to: "leave",
             title: "Review Leave Requests",
             description: "View and manage employee leave requests.",
+            buttonLabel: "View Requests",
             icon: CalendarDays
         },
 
@@ -14,6 +15,7 @@ export default function HRNewDisplay() {
             to: "announcements",
             title: "Announcements",
             description: "Post announcements to staff.",
+            buttonLabel: "View Announcements",
             icon: Megaphone
         },
 
@@ -21,6 +23,7 @@ export default function HRNewDisplay() {
             to: "policy",
             title: "Policies",
             description: "Create and update policy documents.",
+            buttonLabel: "View Policies",
             icon: ShieldCheck
         }
     ]
@@ -34,12 +37,13 @@ export default function HRNewDisplay() {
 
             <div className="programme-grid">
                 {HR_SECTIONS.map((section) => (
-                    <TicketTypeCard
+                    <HRActionCard
                         key = {section.to}
                         title = {section.title}
                         description = {section.description}
                         to = {section.to}
                         icon = {section.icon}
+                        buttonLabel = {section.buttonLabel}
                     />
                 ))
                 }
