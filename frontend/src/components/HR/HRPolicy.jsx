@@ -10,6 +10,7 @@ export default function HRPolicies() {
     const [showTitleError, setShowTitleError] = useState(false);
     const [showVersionError, setShowVersionError] = useState(false);
     const [showFileError, setShowFileError] = useState(false);
+    const [docToModify, setDocToModify] = useState(null);
 
     const handleTitleChange = (e) => {
         setTitle(e.target.value);
@@ -59,7 +60,41 @@ export default function HRPolicies() {
     }
 
     const modify = (id) => {
+        setFirstSubmit(true);
+        setDocToModify(documents.find(doc => doc.id === id));
 
+        setTitle(doc.title);
+        setVersion(doc.version);
+        setFile(null);
+
+        setShowTitleError(!title || title.length === 0);
+        setShowVersionError(!version || version.length === 0);
+        setShowFileError(!file);
+
+    }
+
+    const handleModify = (e) => {
+        e.preventDefault();
+        setFirstSubmit(false);
+
+        setShowTitleError(!title || title.length === 0);
+        setShowVersionError(!version || version.length === 0);
+        setShowFileError(!file);
+
+        let canSubmit = (!(!title || title.length === 0) && !(!version || version.length === 0) && file);
+        if (canSubmit) {
+            setDocuments(prev => prev.map(doc => {
+                if (doc.id === docToModify.id){
+                    return { ...doc, title, version, thumbnail: file ? URL.createObjectURL(file) : doc.thumbnail };
+                }
+                return doc;
+            }));
+            setDocToModify(null);
+        }
+    }
+
+    const handleCancelModify = () => {
+        setDocToModify(null);
     }
     
     const [documents,setDocuments] = useState([
@@ -155,26 +190,49 @@ export default function HRPolicies() {
                             ))}
                         </div>
                 </div>
+                {!docToModify &&
+                    <div className="hr-section HR-policy-card" id="new-docs">
+                        <h2 className="hr-section-title"> Publish new document </h2>
+                        <hr className="hr-line"/>
+                        <div className="new-doc-container" onMouseLeave={() => document.activeElement.blur()}> 
+                            <input  autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
+                            <input  autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
+                            <div className="file-btn-container">
+                                <button className={`${!firstSubmit && showFileError ? "fdm-nav-btn-error": "fdm-nav-btn"}`} id="file-btn">  
+                                    <label id="upload-label"> Upload document <input  className="hidden" type="file" onChange={handleFile} placeholder='Upload file' accept=".pdf,.docx,.doc,.txt"/> </label>
+                                </button>
+                                <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
+                            </div>
+                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
-                <div className="hr-section HR-policy-card" id="new-docs">
-                    <h2 className="hr-section-title"> Publish new document </h2>
-                    <hr className="hr-line"/>
-                    <div className="new-doc-container" onMouseLeave={() => document.activeElement.blur()}> 
-                        <input  autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
-                        <input  autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
-                        <div className="file-btn-container">
-                            <button className={`${!firstSubmit && showFileError ? "fdm-nav-btn-error": "fdm-nav-btn"}`} id="file-btn">  
-                                <label id="upload-label"> Upload document <input  className="hidden" type="file" onChange={handleFile} placeholder='Upload file' accept=".pdf,.docx,.doc,.txt"/> </label>
-                            </button>
-                            <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
+                            <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handlePublish}> Publish document </button> </div>
                         </div>
-                        <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
-                        <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handlePublish}> Publish announcement </button> </div>
                     </div>
+                }
+                {docToModify &&
+                    <div className="hr-section HR-policy-card" id="new-docs">
+                        <div className='w-full flex flex-row justify-between items-center'> 
+                            <h2 className="hr-section-title"> Modify document </h2>
+                            <button className="fdm-nav-btn" onClick={handleCancelModify}> Cancel </button>
+                        </div>
+                        <hr className="hr-line"/>
+                        <div className="new-doc-container" onMouseLeave={() => document.activeElement.blur()}> 
+                            <input  value={`${docToModify.title}`} autoComplete="off" className={`${!firstSubmit && showTitleError ? "policy-inputs-error": "policy-inputs"}`} type="text" name="title" placeholder='Title' onChange={handleTitleChange}/>
+                            <input  value={`${docToModify.version}`} autoComplete="off" className={`${!firstSubmit && showVersionError ? "policy-inputs-error" : "policy-inputs"}`} type="text" name="version" placeholder='Version  -  e.g. v1.2'onChange={handleVersionChange}/>
+                            <div className="file-btn-container">
+                                <button className={`${!firstSubmit && showFileError ? "fdm-nav-btn-error": "fdm-nav-btn"}`} id="file-btn">  
+                                    <label id="upload-label"> Upload updated document <input  className="hidden" type="file" onChange={handleFile} placeholder='Upload file' accept=".pdf,.docx,.doc,.txt"/> </label>
+                                </button>
+                                <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
+                            </div>
+                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
-                </div>
-                
+                            <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handleModify}> Modify </button> </div>
+                        </div>
+
+                    </div>
+                }
             </div>
         </div>
     )
