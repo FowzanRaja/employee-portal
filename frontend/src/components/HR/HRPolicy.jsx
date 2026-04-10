@@ -204,7 +204,7 @@ export default function HRPolicies() {
                                 </button>
                                 <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
                             </div>
-                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
+                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${!firstSubmit && (showFileError || showTitleError || showVersionError) ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
                             <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handlePublish}> Publish document </button> </div>
                         </div>
@@ -227,7 +227,7 @@ export default function HRPolicies() {
                                 </button>
                                 <p className={`text-[var(--fdm-text-muted)] transition-all duration-300 ease-in-out ${file ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> File uploaded: {file ? file.name : ""} </p>
                             </div>
-                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${showFileError || showTitleError || showVersionError ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
+                            <p className={`text-red-500 transition-all duration-300 ease-in-out ${!firstSubmit && (showFileError || showTitleError || showVersionError) ? "max-h-10 opacity-100 translate-y-0":"max-h-0 opacity-0 -translate-y-1"}`}> Please complete all fields.</p>
 
                             <div className="mt-2 h-1/4 w-full flex flex-col items-center justify-center"> <button className="announcement-button" onClick={handleModify}> Modify </button> </div>
                         </div>
