@@ -37,13 +37,12 @@ export default function HRPolicies() {
 
         let canSubmit = (!(!title || title.length === 0) && !(!version || version.length === 0) && file);
         if (canSubmit) {
-            createAnnouncement(title,version);
+            createDocument(title,version);
         }
     }
 
-    const createAnnouncement = (title, version) => {
+    const createDocument = (title, version) => {
         setDocuments(prev => [
-        ...prev,
         {
             id: prev.length + 1,
             policyId: `PD-00${prev.length + 1}`,
@@ -55,7 +54,7 @@ export default function HRPolicies() {
             year: 'numeric'
             }),
             thumbnail: "/images/download (1).jpeg"
-        }
+        }, ...prev
         ]);
     }
 
