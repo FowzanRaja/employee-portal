@@ -61,7 +61,8 @@ export default function HRPolicies() {
 
     const modify = (id) => {
         setFirstSubmit(true);
-        setDocToModify(documents.find(doc => doc.id === id));
+        const doc = documents.find(doc => doc.id === id);
+        setDocToModify(doc);
 
         setTitle(doc.title);
         setVersion(doc.version);
