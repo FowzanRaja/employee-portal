@@ -35,7 +35,7 @@ export default function LoginForm(){
     let canSubmit = ((isValidEmail(email)) && !(!password || password.length === 0));
 
     if (canSubmit){
-      navigate('/Dashboard');
+      navigate('/dashboard');
     }
   }
 

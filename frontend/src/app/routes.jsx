@@ -5,7 +5,7 @@ import ConsultantsPage from '../pages/ConsultantsPage'
 import DashboardPage from '../pages/DashboardPage'
 import LeavePage from '../pages/LeavePage'
 import LoginPage from '../pages/LoginPage'
-import MessagesPage from '../pages/MessagesPage/MessagesPage'
+import MessagesPage from '../pages/MessagesPage'
 import NotFound from '../pages/NotFound'
 import PolicyPage from '../pages/PolicyPage'
 import ProgrammePage from '../pages/ProgrammePage'
@@ -33,7 +33,7 @@ export default function AppRoutes() {
 
       <Route path="/" element={<AppShell />}>
         <Route index element={<DashboardPage />} />
-        <Route path="dashboard" element={<Navigate to="/" replace />} />
+        <Route path="dashboard" element={<DashboardPage />} />
         <Route path="tickets" element={<TicketPage />} />
         <Route path="tickets/list" element={<TicketsListPage />} />
         <Route path="tickets/new" element={<CreateTicketPage />} />

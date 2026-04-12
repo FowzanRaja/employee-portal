@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 
 import styles from './MessagesPage.module.css'
 
-import arrow_button from '../../assets/lime_send_arrow.svg';
+import arrow_button from '../assets/lime_send_arrow.svg';
 // TODO: 
 // Show how a message looks like from the other person.
 // Need timestamps for messages.
