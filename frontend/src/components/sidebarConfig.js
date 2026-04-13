@@ -7,45 +7,28 @@ import {
   Ticket,
   UserCircle,
   CalendarCheck,
+  MessageSquare,
 } from 'lucide-react'
 
+import JoelAvatar from '../assets/pfp images/Joel.jpeg'
+
 export const SIDEBAR_EXPANDED_WIDTH = 280
-export const SIDEBAR_COLLAPSED_WIDTH = 92
+// increased collapsed width to give slightly more room when collapsed
+export const SIDEBAR_COLLAPSED_WIDTH = 112
 
 export const exampleUser = {
-  name: 'Ava Thompson',
-  role: 'People Operations',
+  name: 'Joel Lima',
+  role: 'Consultant',
+  avatar: JoelAvatar,
 }
 
 export const navItems = [
-  {
-    to: '/',
-    label: 'Dashboard',
-    icon: LayoutDashboard,
-  },
-  {
-    to: '/tickets',
-    label: 'Tickets',
-    icon: Ticket,
-  },
-  {
-    to: '/policies',
-    label: 'Policies',
-    icon: ShieldCheck,
-  },
-  {
-    to: '/leave',
-    label: 'Leave Booking',
-    icon: CalendarDays,
-  },
-  {
-    to: '/announcements',
-    label: 'Announcements',
-    icon: Megaphone,
-  },
-  {
-    to: '/programme',
-    label: 'Programme',
-    icon: GraduationCap,
-  },
+  { to: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/messages', label: 'Messaging', icon: MessageSquare },
+  { to: '/announcements', label: 'Announcements', icon: Megaphone },
+  { to: '/tickets', label: 'Tickets', icon: Ticket },
+  { to: '/leave', label: 'Leave Booking', icon: CalendarDays },
+  { to: '/policies', label: 'Policies', icon: ShieldCheck },
+  { to: '/programme', label: 'Programme', icon: GraduationCap },
+  { to: '/consultants', label: 'Schedule', icon: CalendarCheck },
 ]

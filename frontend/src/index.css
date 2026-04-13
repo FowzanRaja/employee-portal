@@ -398,6 +398,13 @@ p {
   border: 1px solid var(--fdm-border-strong);
 }
 
+/* Sidebar text selection uses brand lime instead of default blue */
+aside ::selection,
+aside *::selection {
+  background: rgba(215, 255, 0, 0.32);
+  color: #111;
+}
+
 .fdm-btn-outline:hover {
   background: rgba(255, 255, 255, 0.04);
 }
