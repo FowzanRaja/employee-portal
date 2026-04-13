@@ -75,11 +75,11 @@ function AnnouncementItem({ text, time }) {
 export default function DashboardPage() {
   const actions = [
     {
-      title: 'Leave Requests',
-      count: '2 pending',
-      description: 'Manage your leave requests',
-      to: '/leave',
-      icon: CalendarCheck,
+      title: 'Messages',
+      count: '1 unread',
+      description: 'Check your conversations',
+      to: '/messages',
+      icon: MessageSquare,
     },
     {
       title: 'Tickets',
@@ -89,11 +89,11 @@ export default function DashboardPage() {
       icon: Ticket,
     },
     {
-      title: 'Messages',
-      count: '1 unread',
-      description: 'Check your conversations',
-      to: '/messages',
-      icon: MessageSquare,
+      title: 'Leave Requests',
+      count: '2 pending',
+      description: 'Manage your leave requests',
+      to: '/leave',
+      icon: CalendarCheck,
     },
     {
       title: 'Announcements',
@@ -130,22 +130,12 @@ export default function DashboardPage() {
                 Dashboard
               </h1>
               <p className="max-w-2xl text-sm text-[var(--fdm-text-soft)] sm:text-base">
-                Welcome back. Quick links to leave, tickets, messages and announcements.
+                Welcome back, Joel. Quick links to messages, tickets, leave, and announcements.
               </p>
             </div>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <button
-              type="button"
-              className="inline-flex items-center gap-2 rounded-2xl bg-[var(--fdm-lime)] px-4 py-3 text-sm font-semibold text-[var(--fdm-text-dark)] shadow-[0_14px_32px_rgba(215,255,0,0.14)] transition-transform duration-200 hover:-translate-y-0.5"
-            >
-              Review updates
-            </button>
-            <div className="rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.04)] px-4 py-3 text-sm text-[var(--fdm-text-soft)]">
-              Next checkpoint in 45 minutes
-            </div>
-          </div>
+          {/* controls removed per request */}
         </div>
       </section>
 
@@ -164,9 +154,9 @@ export default function DashboardPage() {
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">My Activity</p>
               <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">Recent actions</h2>
             </div>
-            <Link to="/activity" className="text-sm text-[var(--fdm-text-soft)] inline-flex items-center gap-2">
-              View all
-              <ChevronRight size={14} />
+            <Link to="/activity" className="text-sm inline-flex items-center gap-2 group">
+              <span className="text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-lime)]">View all</span>
+              <ChevronRight size={14} className="text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-lime)]" />
             </Link>
           </div>
 

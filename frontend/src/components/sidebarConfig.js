@@ -25,9 +25,9 @@ export const exampleUser = {
 export const navItems = [
   { to: '/', label: 'Dashboard', icon: LayoutDashboard },
   { to: '/messages', label: 'Messaging', icon: MessageSquare },
-  { to: '/announcements', label: 'Announcements', icon: Megaphone },
   { to: '/tickets', label: 'Tickets', icon: Ticket },
   { to: '/leave', label: 'Leave Booking', icon: CalendarDays },
+  { to: '/announcements', label: 'Announcements', icon: Megaphone },
   { to: '/policies', label: 'Policies', icon: ShieldCheck },
   { to: '/programme', label: 'Programme', icon: GraduationCap },
   { to: '/consultants', label: 'Schedule', icon: CalendarCheck },
