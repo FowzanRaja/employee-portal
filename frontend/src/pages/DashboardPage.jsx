@@ -105,9 +105,9 @@ export default function DashboardPage() {
   ]
 
   const myActivity = [
-    { title: 'Annual Leave', date: 'Mar 2 — Mar 6', status: 'Approved', icon: CalendarCheck },
     { title: 'Laptop issue', date: 'Apr 9', status: 'Open', icon: Ticket },
     { title: 'Compassionate leave', date: 'Apr 1', status: 'Pending', icon: CalendarCheck },
+    { title: 'Annual Leave', date: 'Mar 2 — Mar 6', status: 'Approved', icon: CalendarCheck },
   ]
 
   const announcements = [
