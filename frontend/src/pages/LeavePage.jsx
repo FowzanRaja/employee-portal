@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LeavePage.css";
+import Title from "../components/Title";
 
 const initialRequests = [
   {
@@ -119,18 +120,12 @@ export default function LeavePage() {
   };
 
   return (
-    <div className="leave-page">
-      <div className="leave-page-container">
-        <section className="leave-hero">
-          <div>
-            <p className="leave-eyebrow">TIME OFF MANAGEMENT</p>
-            <h1 className="leave-title">Leave Booking</h1>
-            <p className="leave-subtitle">
-              Request annual leave, sick leave, or remote working days and track
-              the status of your recent submissions.
-            </p>
-          </div>
-        </section>
+    <>
+        <Title
+          badge="TIME OFF MANAGEMENT"
+          title="Leave Booking"
+          subtitle="Request annual leave, sick leave, or remote working days and track the status of your recent submissions."
+        />
 
         <section className="leave-stats">
           <div className="leave-stat-card">
@@ -333,7 +328,6 @@ export default function LeavePage() {
             </div>
           </div>
         </section>
-      </div>
-    </div>
+    </>
   );
 }

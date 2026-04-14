@@ -137,8 +137,8 @@ export default function DashboardPage() {
         <section className="rounded-[28px] border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">My Activity</p>
-              <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">Recent actions</h2>
+              <p className="text-sm text-[var(--fdm-text-muted)]">My Activity</p>
+              <h2 className="mt-3 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">Recent actions</h2>
             </div>
             <Link to="/activity" className="text-sm inline-flex items-center gap-2 group">
               <span className="text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-lime)]">View all</span>
@@ -156,8 +156,8 @@ export default function DashboardPage() {
         <section className="rounded-[28px] border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">Latest Announcements</p>
-              <h2 className="mt-2 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">Latest Announcements</h2>
+              <p className="text-sm text-[var(--fdm-text-muted)]">Information</p>
+              <h2 className="mt-3 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">Latest Announcements</h2>
             </div>
             <span className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--fdm-lime)]">Updated now</span>
           </div>
