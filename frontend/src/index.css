@@ -485,8 +485,7 @@ aside *::selection {
 .fdm-nav-btn:hover {
   border-color: var(--fdm-lime-soft);
   color: var(--fdm-lime-soft);
-  background: rgba(215, 255, 0, 0.06);
-  box-shadow: 0 6px 16px rgba(215, 255, 0, 0.15);
+  /* background and glow intentionally removed to keep hover subtle */
 }
 
 /* 🔥 Optional active state */

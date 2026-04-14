@@ -57,20 +57,23 @@ export default function TicketForm({ onSubmit }) {
         <input
           type="text"
           placeholder="Title"
-          className="w-full mb-2 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
+          className="w-full mb-2 p-2 rounded-lg"
+          style={{ border: '1px solid var(--fdm-border)', background: 'var(--fdm-surface-2)', color: 'var(--fdm-text)' }}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
 
         <textarea
           placeholder="Description"
-          className="w-full mb-2 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
+          className="w-full mb-2 p-2 rounded-lg"
+          style={{ border: '1px solid var(--fdm-border)', background: 'var(--fdm-surface-2)', color: 'var(--fdm-text)' }}
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
 
         <select
-          className="w-full mb-4 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
+          className="w-full mb-4 p-2 rounded-lg"
+          style={{ border: '1px solid var(--fdm-border)', background: 'var(--fdm-surface-2)', color: 'var(--fdm-text)' }}
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
         >
@@ -83,7 +86,7 @@ export default function TicketForm({ onSubmit }) {
         </select>
 
         <div className="flex justify-center mt-4">
-          <button type="submit" className="announcement-button">
+          <button type="submit" className="announcement-button" style={{ border: '1px solid var(--fdm-border-strong)' }}>
             Submit Ticket
           </button>
         </div>

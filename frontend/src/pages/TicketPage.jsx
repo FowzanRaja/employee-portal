@@ -25,7 +25,7 @@ export default function TicketPage() {
       <Title
         badge="IT Support"
         title="Ticket Management"
-        subtitle="Submit, track, and manage your support requests."
+        subtitle="Submit and track your support requests."
       />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -103,7 +103,7 @@ export default function Sidebar({
           type="button"
           onClick={() => setIsCollapsed((current) => !current)}
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] text-[var(--fdm-text-soft)] transition-colors duration-200 hover:border-[color:var(--fdm-border-strong)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--fdm-text)]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] text-[var(--fdm-text-soft)] transition-colors duration-200 hover:border-[color:var(--fdm-border-strong)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--fdm-lime)]"
         >
           {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>

@@ -2,38 +2,45 @@ import { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { ArrowLeft, Plus } from 'lucide-react';
 import TicketCard from '../components/TicketCard';
-import pfp3 from '../assets/pfp images/pfp3.png';
+import JoelPic from '../assets/pfp images/Joel.jpeg';
+import Title from '../components/Title'
 
 const initialTickets = [
   {
     id: 1,
-    title: 'Laptop not working',
-    name: 'Ava Thompson',
-    profilePic: pfp3,
-    priority: 'medium',
-    status: 'Closed',
-    date: 'March 17 2026',
-    content: 'My laptop keeps crashing when I click internal tools.',
+    title: 'Schedule page loads but shows no sessions',
+    name: 'Joel Lima',
+    profilePic: JoelPic,
+    priority: 'low',
+    status: 'Open',
+    date: 'Apr 14 2026',
+    timestamp: '09:59 AM',
+    content:
+      'The schedule page is opening correctly, but it is not displaying any sessions for me. I am expected to have sessions scheduled this week, but nothing is appearing. I have refreshed the page and logged out/in, but the issue is still there.',
   },
   {
     id: 2,
-    title: 'Access request',
-    name: 'Ava Thompson',
-    profilePic: pfp3,
-    priority: 'low',
-    status: 'Open',
-    date: 'March 15 2026',
-    content: 'Requesting access to the internal HR system.',
+    title: 'Laptop not working when accessing internal systems',
+    name: 'Joel Lima',
+    profilePic: JoelPic,
+    priority: 'high',
+    status: 'Closed',
+    date: 'Apr 12 2026',
+    timestamp: '02:11 PM',
+    content:
+      'My laptop is not functioning properly when I try to access internal systems. It becomes unresponsive and prevents me from completing my work. I have restarted the device, but the issue persists and I am unable to continue working.',
   },
   {
     id: 3,
-    title: 'Lost my soul to VP Online',
-    name: 'Ava Thompson',
-    profilePic: pfp3,
-    priority: 'high',
-    status: 'In Progress',
-    date: 'March 12 2026',
-    content: 'Multiplicities in VP Online have come to claim my soul.',
+    title: 'Unable to access programme page (possible outage)',
+    name: 'Joel Lima',
+    profilePic: JoelPic,
+    priority: 'medium',
+    status: 'Closed',
+    date: 'Apr 11 2026',
+    timestamp: '08:47 AM',
+    content:
+      'I am currently unable to access the programme page as it is not loading properly. I have checked with a few colleagues and they are experiencing the same issue, so it may be a wider system problem. This is affecting our ability to prepare for upcoming sessions.',
   },
 ];
 
@@ -54,53 +61,35 @@ export default function TicketsListPage() {
   }, [newTicket]);
 
   return (
-    <div className="flex h-screen">
-      <main className="flex-1 overflow-y-auto" style={{ padding: '3rem 2rem' }}>
-        <div style={{ maxWidth: '850px', marginInline: 'auto' }}>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title badge="IT Support" title="View Tickets" subtitle="Browse your submitted support requests." />
 
-          <h1 className="fdm-section-title" style={{ marginBottom: '1.5rem' }}>
-            Tickets
-          </h1>
+      {/* NAV BAR */}
+      <div className="flex items-center justify-between">
+        <Link
+          to="/tickets"
+          className="fdm-nav-btn"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderRadius: '12px', background: '#262626' }}
+        >
+          <ArrowLeft size={18} />
+          Back to Tickets
+        </Link>
 
-          {/* NAV BAR */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '2rem',
-            }}
-          >
-            {/* BACK BUTTON */}
-            <Link
-              to="/tickets"
-              className="fdm-nav-btn"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-            >
-              <ArrowLeft size={18} />
-              Back to Tickets
-            </Link>
+        <Link
+          to="/tickets/new"
+          className="fdm-nav-btn"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderRadius: '12px', background: '#262626' }}
+        >
+          <Plus size={18} />
+          New Ticket
+        </Link>
+      </div>
 
-            {/* NEW TICKET BUTTON */}
-            <Link
-              to="/tickets/new"
-              className="fdm-nav-btn"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-            >
-              <Plus size={18} />
-              New Ticket
-            </Link>
-          </div>
-
-          {/* LIST */}
-          <div className="fdm-stack" style={{ gap: '1.5rem' }}>
-            {tickets.map((t) => (
-              <TicketCard key={t.id} {...t} />
-            ))}
-          </div>
-
-        </div>
-      </main>
-    </div>
+      <div className="fdm-stack" style={{ gap: '1.5rem' }}>
+        {tickets.map((t) => (
+          <TicketCard key={t.id} {...t} />
+        ))}
+      </div>
+    </section>
   );
 }
