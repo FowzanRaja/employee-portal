@@ -3,7 +3,6 @@ import AppShell from './AppShell'
 import AnnouncementsPage from '../pages/AnnouncementsPage'
 import ConsultantsPage from '../pages/ConsultantsPage'
 import DashboardPage from '../pages/DashboardPage'
-import LeavePage from '../pages/LeavePage'
 import LeaveBooking from '../pages/LeaveBooking'
 import LoginPage from '../pages/LoginPage'
 import MessagesPage from '../pages/MessagesPage'
@@ -39,7 +38,7 @@ export default function AppRoutes() {
         <Route path="tickets/list" element={<TicketsListPage />} />
         <Route path="tickets/new" element={<CreateTicketPage />} />
         <Route path="policies" element={<PolicyPage />} />
-        <Route path="leave" element={<LeavePage />} />
+        <Route path="leave" element={<LeaveBooking />} />
         <Route path="announcements" element={<AnnouncementsPage />} />
         <Route path="messages" element={<MessagesPage />} />
         <Route path="consultants" element={<ConsultantsPage />} />
