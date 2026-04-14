@@ -1,41 +1,99 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Title from '../components/Title'
-import './LeaveBooking.css'
+
 
 export default function LeaveBooking() {
-  const [formData, setFormData] = useState({ priority: '', startDate: '', endDate: '', reason: '' })
-
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData((p) => ({ ...p, [name]: value }))
-  }
-
-  const calculateDays = (start, end) => {
-    if (!start || !end) return 0
-    const s = new Date(start)
-    const e = new Date(end)
-    if (e < s) return 0
-    return Math.floor((e.getTime() - s.getTime()) / (1000 * 60 * 60 * 24)) + 1
-  }
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const { priority, startDate, endDate, reason } = formData
-    if (!priority || !startDate || !endDate || !reason.trim()) {
-      alert('Please fill all fields')
-      return
-    }
-    if (new Date(endDate) < new Date(startDate)) {
-      alert('End date cannot be earlier than start date')
-      return
-    }
-
-    alert(`Request submitted (${calculateDays(startDate, endDate)} day(s))`)
-    setFormData({ priority: '', startDate: '', endDate: '', reason: '' })
-  }
-
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <style>{`
+/* Styles scoped to the LeaveBooking sandbox to avoid colliding with LeavePage.css */
+
+.leave-card {
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.06),
+    rgba(255, 255, 255, 0.025)
+  );
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.24),
+    0 0 0 1px rgba(255, 255, 255, 0.015) inset;
+}
+
+
+.leave-form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+.leave-form-group input:focus,
+.leave-form-group select:focus,
+.leave-form-group textarea:focus {
+  border-color: rgba(208, 255, 0, 0.45);
+  box-shadow: 0 0 0 4px rgba(208, 255, 0, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.leave-form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.leave-summary-box {
+  padding: 18px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.leave-summary-box div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.leave-summary-box span {
+  color: #bdbdbd;
+  font-size: 0.92rem;
+}
+
+.leave-summary-box strong {
+  color: #d7ff00;
+  font-size: 1rem;
+}
+
+.leave-summary-box p {
+  margin: 0;
+  color: #9a9a9a;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.leave-submit-btn {
+  align-self: flex-start;
+  border: none;
+  border-radius: 16px;
+  padding: 14px 24px;
+  background: #d7ff00;
+  color: #111111;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 10px 24px rgba(208, 255, 0, 0.18);
+}
+
+.leave-submit-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(208, 255, 0, 0.22);
+}
+
+.leave-submit-btn:active {
+  transform: translateY(0);
+}
+      `}</style>
       <Title
         badge="TIME OFF"
         title="Leave Booking"
@@ -74,57 +132,7 @@ export default function LeaveBooking() {
         </div>
       </div>
 
-      <div className="leave-card leave-form-card">
-        <div className="leave-card-header">
-          <div>
-            <p className="text-sm text-[var(--fdm-text-muted)]">New request</p>
-            <h2>Book time off</h2>
-          </div>
-        </div>
-
-        <form className="leave-form mt-4" onSubmit={handleSubmit}>
-          <div className="leave-form-group">
-            <label htmlFor="priority">Priority</label>
-            <div className="select-wrapper">
-              <select id="priority" name="priority" value={formData.priority} onChange={handleChange} required>
-                <option value="" disabled>
-                  Select priority
-                </option>
-                <option value="low">Low</option>
-                <option value="medium">Medium</option>
-                <option value="high">High</option>
-              </select>
-            </div>
-          </div>
-
-          <div className="leave-form-row">
-            <div className="leave-form-group">
-              <label htmlFor="startDate">Start date</label>
-              <input type="date" id="startDate" name="startDate" value={formData.startDate} onChange={handleChange} />
-            </div>
-
-            <div className="leave-form-group">
-              <label htmlFor="endDate">End date</label>
-              <input type="date" id="endDate" name="endDate" value={formData.endDate} onChange={handleChange} />
-            </div>
-          </div>
-
-          <div className="leave-form-group">
-            <label htmlFor="reason">Reason</label>
-            <textarea id="reason" name="reason" rows="5" placeholder="Add a short reason for your request..." value={formData.reason} onChange={handleChange} />
-          </div>
-
-          <div className="leave-summary-box">
-            <div>
-              <span>Requested duration</span>
-              <strong>{calculateDays(formData.startDate, formData.endDate)} day(s)</strong>
-            </div>
-            <p>Requests are sent to your line manager for review before final approval.</p>
-          </div>
-
-          <button type="submit" className="leave-submit-btn mt-4">Submit Request</button>
-        </form>
-      </div>
+      
     </section>
   )
 }

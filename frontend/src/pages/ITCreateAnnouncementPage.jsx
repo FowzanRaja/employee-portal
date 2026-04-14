@@ -48,7 +48,7 @@ export default function ITCreateAnnouncementPage() {
 
       setTimeout(() => {
         setShowToast(false);
-        navigate('/it/announcements', { state: newAnnouncement });
+        navigate('/it', { state: newAnnouncement });
       }, 1500);
     }
   };
@@ -88,14 +88,7 @@ export default function ITCreateAnnouncementPage() {
           Back to IT
         </Link>
 
-        <Link
-          to="/it/announcements"
-          className="fdm-nav-btn"
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-        >
-          <Inbox size={18} />
-          My Announcements
-        </Link>
+        {/* My Announcements link removed — IT announcements page removed */}
       </div>
 
       {/* HR-STYLE FORM */}

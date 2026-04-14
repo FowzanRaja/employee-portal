@@ -1,4 +1,5 @@
 import "./PolicyPage.css";
+import Title from '../components/Title'
 
 function PolicyPage() {
   const documents = [
@@ -59,30 +60,24 @@ function PolicyPage() {
   ];
 
   return (
-    <div className="documents-page">
-      <h1 className="documents-title">Policies</h1>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title badge="FDM Staff Portal" title="Policies" subtitle="Company policies and documents" />
 
       <div className="thumb-grid">
         {documents.map((doc) => (
           <div key={doc.id} className="thumb-card">
-            <img
-              src={doc.thumbnail}
-              alt={doc.title}
-              className="thumb-image"
-            />
+            <img src={doc.thumbnail} alt={doc.title} className="thumb-image" />
 
             <h3 className="thumb-title">{doc.title}</h3>
             <p className="thumb-date">Created at: {doc.createdAt}</p>
             <p className="thumb-size">Version: {doc.version}</p>
             <p className="thumb-id">ID: {doc.policyId}</p>
 
-            <a href={doc.file} download className="document-btn">
-              Download
-            </a>
+            <a href={doc.file} download className="document-btn">Download</a>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

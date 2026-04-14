@@ -2,6 +2,7 @@ import {ArrowLeft} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import LeaveRequest from './LeaveRequest';
+import Title from '../Title'
 
 export default function HRLeave() {
     const approveRequest = (id) => {
@@ -49,24 +50,24 @@ export default function HRLeave() {
         { id:21,  name: 'Victoria Lee', reason: 'Unpaid leave', leaveType: 'Personal', startDate: '05 February 2025', endDate: '12 February 2025', employeeType: 'Employee', status: 'denied' },
     ]);
 
-    return(
-        <div className="flex flex-col items-center w-full max-h-screen gap-5">
-            <div className="flex flex-row items-center justify-between w-9/10">
-                <header className="programme-page-header">
-                    <h1 className="programme-page-title">Review Leave Requests</h1>
-                    <p className="programme-page-subtitle">  Approve or deny pending leave requests. </p>
-                </header>
-                <Link
-                    to="/hr"
-                    className="fdm-nav-btn"
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: 'fit-content', justifyContent: 'center' }}
-                >
-                    <ArrowLeft size={18} />
-                    Back to HR Dashboard
-                </Link>
+    return (
+        <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+            <div>
+                <Title badge="FDM Staff Portal" title="Review Leave Requests" subtitle="Approve or deny pending leave requests." />
+
+                <div className="mt-4">
+                    <Link
+                        to="/hr"
+                        className="fdm-nav-btn"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', height: 'fit-content', justifyContent: 'center' }}
+                    >
+                        <ArrowLeft size={18} />
+                        Back to HR Dashboard
+                    </Link>
+                </div>
             </div>
 
-            <div  className="hr-section w-9/10 h-1/2"> {/* Review leave requests */}
+            <div className="hr-section w-full"> {/* Review leave requests */}
                 <h2 className="hr-section-title"> Pending leave requests </h2>
                 <hr className="hr-line"/>
                 <div className="leave-requests-container">
@@ -92,9 +93,9 @@ export default function HRLeave() {
                 </div>
             </div>
 
-            <div className="flex flex-row items-center justify-between w-9/10 h-1/3"> {/* Approved and denied leave requests */}
+            <div className="flex flex-col lg:flex-row items-stretch gap-6"> {/* Approved and denied leave requests */}
 
-                    <div  className="hr-section w-39/80 "> {/* View Approved leave requests */}
+                <div className="hr-section flex-1"> {/* View Approved leave requests */}
                     <h2 className="hr-section-title"> Approved leave requests </h2>
                     <hr className="hr-line"/>
                     <div className="leave-requests-container">
@@ -118,7 +119,7 @@ export default function HRLeave() {
                     </div>
                 </div>
 
-                <div  className="hr-section w-39/80 "> {/* View Denied leave requests */}
+                <div className="hr-section flex-1"> {/* View Denied leave requests */}
                     <h2 className="hr-section-title"> Denied leave requests </h2>
                     <hr className="hr-line"/>
                     <div className="leave-requests-container">
@@ -142,8 +143,6 @@ export default function HRLeave() {
                     </div>
                 </div>
             </div>
-            
-        </div>
-
+        </section>
     )
 }

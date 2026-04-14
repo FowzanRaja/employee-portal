@@ -1,4 +1,5 @@
 import AnnouncementCard from '../components/AnnouncementCard';
+import Title from '../components/Title'
 import pfp1 from '../assets/pfp images/pfp1.png';
 import pfp2 from '../assets/pfp images/pfp2.png';
 import pfp3 from '../assets/pfp images/pfp3.png';
@@ -33,37 +34,25 @@ const announcements = [
 
 export default function AnnouncementsPage() {
   return (
-    
-    <div className="flex h-screen">
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title
+        badge="FDM Staff Portal"
+        title="Announcements"
+        subtitle="Latest updates and notices from across the organisation."
+      />
 
-      <main
-        className="flex-1 overflow-y-auto"
-        style={{ padding: '3rem 2rem' }}
-      >
-        <div
-          style={{
-            maxWidth: '850px',
-            marginInline: 'auto',
-          }}
-        >
-          <h1 className="fdm-section-title" style={{ marginBottom: '2rem' }}>
-            Announcements
-          </h1>
-
-          <div className="fdm-stack" style={{ gap: '1.5rem' }}>
-            {announcements.map((a, index) => (
-              <AnnouncementCard
-                key={index}
-                title={a.title}
-                name={a.name}
-                profilePic={a.profilePic}
-                date={a.date}
-                content={a.content}
-              />
-            ))}
-          </div>
-        </div>
-      </main>
-    </div>
-  );
+      <div className="space-y-4">
+        {announcements.map((a, index) => (
+          <AnnouncementCard
+            key={index}
+            title={a.title}
+            name={a.name}
+            profilePic={a.profilePic}
+            date={a.date}
+            content={a.content}
+          />
+        ))}
+      </div>
+    </section>
+  )
 }

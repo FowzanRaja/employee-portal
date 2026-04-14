@@ -1,4 +1,5 @@
 import ProgrammeCard from '../components/ProgrammeCard'
+import Title from '../components/Title'
 import { 
     IterationCw,
     Medal,
@@ -31,13 +32,8 @@ const PROGRAMMES = [
 
 export default function ProgrammePage() {
   return (
-    <section className="programme-page">
-      <header className="programme-page-header">
-        <h1 className="programme-page-title">Programmes</h1>
-        <p className="programme-page-subtitle">
-          Choose a training track to open the programme interface.
-        </p>
-      </header>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title badge="FDM Staff Portal" title="Programmes" subtitle="Choose a training track to open the programme interface." />
 
       <div className="programme-grid" role="list">
         {PROGRAMMES.map((programme) => (

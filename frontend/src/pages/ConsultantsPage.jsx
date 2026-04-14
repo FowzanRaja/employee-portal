@@ -8,6 +8,7 @@ import {
   Users,
   BookOpen,
 } from 'lucide-react'
+import Title from '../components/Title'
 
 const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri']
 const FULL_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
@@ -198,35 +199,11 @@ export default function ConsultantsPage() {
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
 
-      <Surface className="overflow-hidden p-0">
-        <div className="flex flex-col gap-6 bg-[linear-gradient(135deg,rgba(215,255,0,0.09),rgba(255,255,255,0.02)_38%,rgba(255,255,255,0.01))] px-6 py-6 lg:flex-row lg:items-end lg:justify-between">
-          <div className="space-y-3">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-[rgba(215,255,0,0.22)] bg-[rgba(215,255,0,0.1)] px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-[var(--fdm-lime)]">
-              <CalendarCheck size={12} />
-              Consultant Schedule
-            </span>
-            <div className="space-y-10">
-              <h1 className="text-4xl font-black tracking-[-0.04em] text-[var(--fdm-text)] sm:text-5xl">
-                My Schedule
-              </h1>
-              <p className="max-w-xl text-sm text-[var(--fdm-text-soft)] sm:text-base">
-                View your assigned programme sessions for the week. Sessions are managed by your Line Manager.
-              </p>
-            </div>
-          </div>
-
-          <div className="flex flex-wrap gap-3">
-            <div className="flex items-center gap-2 rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.04)] px-4 py-3">
-              <Users size={15} className="text-[var(--fdm-text-muted)]" />
-              <span className="text-sm text-[var(--fdm-text-soft)]">{totalSessions} sessions this week</span>
-            </div>
-            <div className="flex items-center gap-2 rounded-2xl border border-[rgba(215,255,0,0.18)] bg-[rgba(215,255,0,0.08)] px-4 py-3">
-              <span className="h-2 w-2 rounded-full bg-[var(--fdm-lime)]" />
-              <span className="text-sm font-semibold text-[var(--fdm-lime)]">{sessionsForDay.length} today</span>
-            </div>
-          </div>
-        </div>
-      </Surface>
+      <Title
+        badge="Consultant Schedule"
+        title="My Schedule"
+        subtitle="View your assigned programme sessions for the week. Sessions are managed by your Line Manager."
+      />
 
       <Surface>
         <div className="mb-5 flex items-center justify-between gap-4">
