@@ -4,6 +4,7 @@ import AnnouncementsPage from '../pages/AnnouncementsPage'
 import ConsultantsPage from '../pages/ConsultantsPage'
 import DashboardPage from '../pages/DashboardPage'
 import LeavePage from '../pages/LeavePage'
+import LeaveBooking from '../pages/LeaveBooking'
 import LoginPage from '../pages/LoginPage'
 import MessagesPage from '../pages/MessagesPage'
 import NotFound from '../pages/NotFound'
@@ -45,7 +46,7 @@ export default function AppRoutes() {
         <Route path="programme" element={<ProgrammePage />} />
         <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
         <Route path="profile" element={<ProfilePage />} />
-        <Route path="/leave-booking" element={<LeavePage />} />
+        <Route path="/leave-booking" element={<LeaveBooking />} />
         <Route path="hr" element={<HRPage />} />
         <Route path="hr/leave" element={<HRLeavePage />} />
         <Route path="hr/announcements" element={<HRAnnouncementPage />} />

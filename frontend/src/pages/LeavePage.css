@@ -213,8 +213,68 @@
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
+  /* show a 'V' chevron on the right of selects */
+  .select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .select-wrapper select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding-right: 2.5rem; /* room for the chevron */
+    background: rgba(255, 255, 255, 0.03);
+    color: #f5f5f5;
+  }
+  .select-wrapper::after {
+    content: '▾'; /* down-pointing chevron symbol */
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #ffffff; /* make the chevron white */
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
 .leave-form-group select option {
   color: black;
+}
+
+/* make the empty placeholder option look muted and make the closed select show muted text when unselected */
+.select-wrapper select:required:invalid {
+  color: #9a9a9a;
+}
+.select-wrapper select option[value=""] {
+  color: #9a9a9a;
+}
+
+/* Try to style dropdown options and select appearance. Note: styling of native
+   option dropdowns is limited across browsers; this improves appearance where
+   supported and sets the select closed state consistently. */
+.leave-form-group select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  accent-color: #d7ff00;
+  background: rgba(255, 255, 255, 0.03);
+  color: #f5f5f5;
+}
+
+.leave-form-group select option {
+  background: rgba(0,0,0,0.65);
+  color: #f5f5f5;
+}
+
+/* Selected / hovered option styling (best-effort; may not apply in Chromium).
+   Uses a subtle lime background and dark text for contrast. */
+.leave-form-group select option:checked,
+.leave-form-group select option:hover,
+.leave-form-group select option:focus {
+  background: rgba(215,255,0,0.12) !important;
+  color: #111 !important;
 }
 
 .leave-form-group input[type="date"]::-webkit-calendar-picker-indicator {

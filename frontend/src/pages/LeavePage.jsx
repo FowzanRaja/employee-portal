@@ -122,7 +122,7 @@ export default function LeavePage() {
   return (
     <>
         <Title
-          badge="TIME OFF MANAGEMENT"
+          badge="TIME OFF"
           title="Leave Booking"
           subtitle="Request annual leave, sick leave, or remote working days and track the status of your recent submissions."
         />
