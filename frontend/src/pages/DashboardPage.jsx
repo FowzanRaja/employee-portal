@@ -12,15 +12,15 @@ function DashboardCard({ to, title, count, description, Icon }) {
   return (
     <Link
       to={to}
-      className="group block rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.02)] p-5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition"
+      className="group block rounded-2xl border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5 hover:shadow-[0_12px_30px_rgba(0,0,0,0.35)] transition"
     >
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-sm text-[var(--fdm-text-muted)]">{title}</p>
           <p className="mt-3 text-2xl font-extrabold text-[var(--fdm-text)]">{count}</p>
-          <p className="mt-2 text-sm text-[var(--fdm-text-soft)]">{description}</p>
+          <p className="mt-2 text-sm text-[var(--fdm-text-soft)] font-normal">{description}</p>
         </div>
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[rgba(255,255,255,0.03)] text-[var(--fdm-text-soft)] group-hover:bg-[rgba(215,255,0,0.08)]">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--fdm-surface-2)] text-[var(--fdm-text-soft)] group-hover:bg-[rgba(215,255,0,0.16)]">
           <Icon size={20} />
         </div>
       </div>
@@ -134,7 +134,7 @@ export default function DashboardPage() {
 
       {/* Two-column area: My Activity (left) & Latest Announcements (right) */}
       <div className="grid gap-6 lg:grid-cols-[1.45fr_0.95fr]">
-        <section className="rounded-[28px] border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.02)] p-5">
+        <section className="rounded-[28px] border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">My Activity</p>
@@ -153,7 +153,7 @@ export default function DashboardPage() {
           </div>
         </section>
 
-        <section className="rounded-[28px] border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.02)] p-5">
+        <section className="rounded-[28px] border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">Latest Announcements</p>

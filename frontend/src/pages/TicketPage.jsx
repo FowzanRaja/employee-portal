@@ -1,5 +1,6 @@
 import TicketTypeCard from '../components/TicketManagementCard'
 import { Inbox, PlusCircle } from 'lucide-react';
+import Title from '../components/Title'
 
 const TICKET_SECTIONS = [
   {
@@ -20,15 +21,14 @@ const TICKET_SECTIONS = [
 
 export default function TicketPage() {
   return (
-    <section className="programme-page">
-      <header className="programme-page-header">
-        <h1 className="programme-page-title">Ticket Management</h1>
-        <p className="programme-page-subtitle">
-          Manage and create support tickets.
-        </p>
-      </header>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title
+        badge="IT Support"
+        title="Ticket Management"
+        subtitle="Submit, track, and manage your support requests."
+      />
 
-      <div className="programme-grid">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {TICKET_SECTIONS.map((section) => (
           <TicketTypeCard
             key={section.to}
