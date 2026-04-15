@@ -10,7 +10,7 @@ export default function ProgrammeCard({ title, description, slug, icon: Icon }) 
 
       {Icon && (
         <div className="programme-card-icon">
-          <Icon size={140} strokeWidth={1.5} />
+          <Icon strokeWidth={1.5} />
         </div>
       )}
 

@@ -8,7 +8,7 @@ import Sampriti from '../assets/pfp images/Sampriti.jpeg';
 const announcements = [
   {
     title: 'Scheduled system maintenance – Thursday evening',
-    name: 'IT Support',
+    name: 'Alexander Michael-Iacovou',
     profilePic: Alexander,
     date: 'March 15 2026 · 06:35 AM',
     content:

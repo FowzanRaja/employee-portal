@@ -113,11 +113,11 @@ export default function LeaveBooking() {
           </div>
         </div>
 
-        <div className="block rounded-2xl border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
+          <div className="block rounded-2xl border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
           <div className="flex items-start gap-4">
             <div>
               <p className="text-sm text-[var(--fdm-text-muted)]">Used</p>
-              <p className="mt-3 text-2xl font-extrabold text-[var(--fdm-text)]">8 days</p>
+              <p className="mt-3 text-2xl font-extrabold text-[var(--fdm-text)]">3 days</p>
               <p className="mt-2 text-sm text-[var(--fdm-text-soft)]">Already approved</p>
             </div>
           </div>
@@ -127,7 +127,7 @@ export default function LeaveBooking() {
           <div className="flex items-start gap-4">
             <div>
               <p className="text-sm text-[var(--fdm-text-muted)]">Remaining</p>
-              <p className="mt-3 text-2xl font-extrabold text-[var(--fdm-text)]">15 days</p>
+              <p className="mt-3 text-2xl font-extrabold text-[var(--fdm-text)]">22 days</p>
               <p className="mt-2 text-sm text-[var(--fdm-text-soft)]">Including pending review</p>
             </div>
           </div>

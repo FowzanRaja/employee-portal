@@ -7,61 +7,61 @@ function PolicyPage() {
       id: 1,
       policyId: "PD-001",
       title: "Company Handbook",
-      createdAt: "10 Jan 2026 · 09:00 AM",
+      createdAt: "January 10 2026 · 09:08 AM",
       lastModified: "N/A",
       version: "v1.0",
-      thumbnail: "/images/download (1).jpeg",
-      file: "/documents/sample1.pdf"
+      thumbnail: "/images/Handbook.png",
+      file: "/documents/CompanyHandbook.pdf"
     },
     {
       id: 2,
       policyId: "PD-002",
       title: "IT Guidelines",
-      createdAt: "28 Jan 2026 · 11:23 AM",
-      lastModified: "02 Mar 2026 · 09:15 AM",
+      createdAt: "January 28 2026 · 11:23 AM",
+      lastModified: "March 2 2026 · 09:14 AM",
       version: "v2.1",
-      thumbnail: "/images/download.jpeg",
-      file: "/documents/sample2.pdf"
+      thumbnail: "/images/IT.png",
+      file: "/documents/ITAcceptableUsePolicy.pdf"
     },
     {
       id: 3,
       policyId: "PD-003",
       title: "Leave Policy",
-      createdAt: "05 Feb 2026 · 02:15 PM",
-      lastModified: "06 Feb 2026 · 01:00 PM",
+      createdAt: "February 5 2026 · 02:21 PM",
+      lastModified: "February 6 2026 · 01:18 PM",
       version: "v1.3",
-      thumbnail: "/images/download (1).jpeg",
-      file: "/documents/sample1.pdf"
+      thumbnail: "/images/Leave.png",
+      file: "/documents/LeavePolicy.pdf"
     },
     {
       id: 4,
       policyId: "PD-004",
       title: "Code of Conduct",
-      createdAt: "01 Feb 2026 · 08:40 AM",
-      lastModified: "10 Mar 2026 · 08:40 AM",
+      createdAt: "February 1 2026 · 08:41 AM",
+      lastModified: "March 10 2026 · 08:25 AM",
       version: "v3.0",
-      thumbnail: "/images/download.jpeg",
-      file: "/documents/sample2.pdf"
+      thumbnail: "/images/Conduct.png",
+      file: "/documents/CodeOfConduct.pdf"
     },
     {
       id: 5,
       policyId: "PD-005",
       title: "Remote Work Policy",
-      createdAt: "20 Feb 2026 · 05:30 PM",
-      lastModified: "21 Feb 2026 · 12:00 PM",
+      createdAt: "February 20 2026 · 05:39 PM",
+      lastModified: "February 21 2026 · 12:16 PM",
       version: "v2.0",
-      thumbnail: "/images/download (1).jpeg",
-      file: "/documents/sample1.pdf"
+      thumbnail: "/images/Remote.png",
+      file: "/documents/RemoteWorkPolicy.pdf"
     },
     {
       id: 6,
       policyId: "PD-006",
       title: "Health & Safety Policy",
-      createdAt: "29 Feb 2026 · 10:05 AM",
-      lastModified: "03 Mar 2026 · 02:30 PM",
+      createdAt: "February 29 2026 · 10:01 AM",
+      lastModified: "March 3 2026 · 02:06 PM",
       version: "v2.2",
-      thumbnail: "/images/download.jpeg",
-      file: "/documents/sample2.pdf"
+      thumbnail: "/images/Health.png",
+      file: "/documents/HealthAndSafetyPolicy.pdf"
     },
   ];
 

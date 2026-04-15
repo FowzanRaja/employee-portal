@@ -167,21 +167,21 @@ const documents = [
   },
   {
     icon: GraduationCap,
-    title: 'AWS Cloud Practitioner',
-    subtitle: 'Training certificate — Amazon Web Services',
-    date: 'Issued 03 Sep 2023',
-    file: '/documents/sample2.pdf',
-    accent: 'text-sky-300',
-    accentBg: 'bg-[rgba(125,211,252,0.12)]',
-  },
-  {
-    icon: GraduationCap,
     title: 'Agile & Scrum Foundations',
     subtitle: 'Training certificate — FDM Academy',
     date: 'Issued 22 Mar 2023',
     file: '/documents/sample3.pdf',
     accent: 'text-emerald-300',
     accentBg: 'bg-[rgba(110,231,183,0.12)]',
+  },
+  {
+    icon: GraduationCap,
+    title: 'AWS Cloud Practitioner',
+    subtitle: 'Training certificate — Amazon Web Services',
+    date: 'Issued 03 Sep 2023',
+    file: '/documents/sample2.pdf',
+    accent: 'text-sky-300',
+    accentBg: 'bg-[rgba(125,211,252,0.12)]',
   },
 ]
 
