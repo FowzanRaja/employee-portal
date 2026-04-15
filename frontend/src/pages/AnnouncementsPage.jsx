@@ -1,34 +1,34 @@
 import AnnouncementCard from '../components/AnnouncementCard';
 import Title from '../components/Title'
-import pfp1 from '../assets/pfp images/pfp1.png';
-import pfp2 from '../assets/pfp images/pfp2.png';
-import pfp3 from '../assets/pfp images/pfp3.png';
+import Ahmad from '../assets/pfp images/Ahmad.jpeg';
+import Alexander from '../assets/pfp images/Alexander.jpeg';
+import Sampriti from '../assets/pfp images/Sampriti.jpeg';
 
 
 const announcements = [
   {
-    title: 'Test 1',
-    name: 'HR Department',
-    profilePic: pfp3,
-    date: 'March 15 2026',
+    title: 'Scheduled system maintenance – Thursday evening',
+    name: 'IT Support',
+    profilePic: Alexander,
+    date: 'March 15 2026 · 09:59 AM',
     content:
-      'Testing the announcement card component. This is a sample announcement to demonstrate the layout and styling of the announcement cards on the Announcements page. The content can be of varying length and will adjust accordingly.',
+      'We will be carrying out scheduled maintenance on the employee portal this Thursday from 6:00 PM to 8:00 PM. During this time, some features may be temporarily unavailable. Please ensure any important work is saved in advance.',
   },
   {
-    title: 'Test 2',
-    name: 'Larry Barry',
-    profilePic: pfp1,
-    date: 'March 6 2026',
+    title: 'Updated programme schedule released',
+    name: 'Ahmad Ahmadzai',
+    profilePic: Ahmad,
+    date: 'March 6 2026 · 11:23 AM',
     content:
-      'Join us at brunch this Wednesday at 12pm to celebrate sucessfully finishing the FDM portal. ',
+      'The latest programme schedule has now been updated. Please review your assigned sessions to ensure you are prepared for the upcoming week. Contact your line manager if you notice any discrepancies.',
   },
   {
-    title: 'Test 3',
-    name: 'Dr Farry Marry',
-    profilePic: pfp2,
-    date: 'March 2, 2026',
+    title: 'Team check-in session',
+    name: 'Sampriti Patro',
+    profilePic: Sampriti,
+    date: 'March 2 2026 · 04:45 PM',
     content:
-      'Testing whether this announcement will show up at the bottom or the top of the page.',
+      'We will be hosting a team check-in session this Friday at 2 PM. This is a great opportunity to share feedback and discuss any challenges you are facing. Attendance is encouraged.',
   }
 ];
 
@@ -36,7 +36,7 @@ export default function AnnouncementsPage() {
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
       <Title
-        badge="FDM Staff Portal"
+        badge="INTERNAL COMMUNICATIONS"
         title="Announcements"
         subtitle="Latest updates and notices from across the organisation."
       />

@@ -1,5 +1,7 @@
 import React from 'react'
 import Title from '../components/Title'
+import RecentRequests from '../components/RecentRequests'
+import BookLeaveForm from '../components/BookLeaveForm'
 
 
 export default function LeaveBooking() {
@@ -129,6 +131,16 @@ export default function LeaveBooking() {
               <p className="mt-2 text-sm text-[var(--fdm-text-soft)]">Including pending review</p>
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-4 grid gap-4 grid-cols-1 md:grid-cols-3">
+        <div className="md:col-span-2">
+          <BookLeaveForm />
+        </div>
+
+        <div>
+          <RecentRequests />
         </div>
       </div>
 

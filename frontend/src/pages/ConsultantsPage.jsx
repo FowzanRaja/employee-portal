@@ -200,8 +200,8 @@ export default function ConsultantsPage() {
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
 
       <Title
-        badge="Consultant Schedule"
-        title="My Schedule"
+        badge="CONSULTANT"
+        title="Schedule"
         subtitle="View your assigned programme sessions for the week. Sessions are managed by your Line Manager."
       />
 

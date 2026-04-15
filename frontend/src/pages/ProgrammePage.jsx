@@ -33,7 +33,7 @@ const PROGRAMMES = [
 export default function ProgrammePage() {
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
-      <Title badge="FDM Staff Portal" title="Programmes" subtitle="Choose a training track to open the programme interface." />
+      <Title badge="TRAINING" title="Programmes" subtitle="Choose a training track to open the programme interface." />
 
       <div className="programme-grid" role="list">
         {PROGRAMMES.map((programme) => (

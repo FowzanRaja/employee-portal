@@ -214,7 +214,12 @@ export default function ProfilePage() {
         <section className="pf-section">
           <div className="pf-section-header">
             <div>
-              <p className="pf-section-kicker">Account details</p>
+              <p
+                className="pf-section-kicker"
+                style={{ textTransform: 'none', letterSpacing: 'normal', fontSize: '0.85rem', color: 'var(--fdm-text-muted)', margin: '0 0 5px' }}
+              >
+                Account details
+              </p>
               <h2 className="pf-section-title">Personal information</h2>
             </div>
             <p className="pf-section-hint">Hover any editable field and click the pencil to update</p>
@@ -233,7 +238,12 @@ export default function ProfilePage() {
         <section className="pf-section">
           <div className="pf-section-header">
             <div>
-              <p className="pf-section-kicker">Personal documents</p>
+              <p
+                className="pf-section-kicker"
+                style={{ textTransform: 'none', letterSpacing: 'normal', fontSize: '0.85rem', color: 'var(--fdm-text-muted)', margin: '0 0 5px' }}
+              >
+                Personal documents
+              </p>
               <h2 className="pf-section-title">My documents</h2>
             </div>
             <span className="pf-doc-count-badge">{documents.length} files</span>
