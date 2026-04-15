@@ -19,7 +19,7 @@ export default function LeaveRequest({id, name, reason, leaveType, startDate, en
             </div>
             {status == "pending" &&
                 <div className="leave-request-buttons-container">
-                    <span className="leave-status leave-status-pending"> Pending </span>
+                    <span className='inline-flex items-center gap-2 rounded-full px-4 py-2 mr-2 text-xs font-semibold bg-[rgba(234,179,8,0.06)] text-[var(--fdm-lime)] border border-[rgba(215,255,0,0.06)]'> Pending </span>
                     <button className="leave-button" onClick={() => onApprove(id)}> <Check id="approve"/> </button>
                     <button className="leave-button" onClick={() => onDeny(id)}> <X id="deny"/> </button>
                 </div>
@@ -27,13 +27,13 @@ export default function LeaveRequest({id, name, reason, leaveType, startDate, en
 
             {status == "approved" &&
                 <div className="leave-request-buttons-container">
-                    <span className="leave-status leave-status-approved"> Approved </span>
+                    <span className='inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold bg-[rgba(34,197,94,0.12)] text-emerald-300 border border-[rgba(34,197,94,0.06)]'> Approved </span>
                 </div>
                 }
 
             {status == "denied" &&
                 <div className="leave-request-buttons-container">
-                    <span className="leave-status leave-status-rejected"> Denied </span>
+                    <span className='inline-flex items-center gap-2 rounded-full px-3 py-2 text-xs font-semibold bg-[rgba(239,68,68,0.06)] text-rose-400 border border-[rgba(239,68,68,0.06)]'> Denied </span>
                 </div>
             }
 
