@@ -1,5 +1,5 @@
 import { CalendarDays , Megaphone, ShieldCheck, Ticket } from "lucide-react";
-import HRActionCard from "./HRActionCard";
+import TicketTypeCard from '../../components/TicketManagementCard'
 import Title from '../Title'
 
 export default function HRDisplay() {
@@ -39,13 +39,13 @@ export default function HRDisplay() {
 
             <div className="programme-grid">
                 {HR_SECTIONS.map((section) => (
-                    <HRActionCard
+                    <TicketTypeCard
                         key={section.to}
                         title={section.title}
                         description={section.description}
                         to={section.to}
                         icon={section.icon}
-                        buttonLabel={section.buttonLabel}
+                        buttonText={section.buttonLabel}
                     />
                 ))}
             </div>
