@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
-import pfp3 from '../assets/pfp images/pfp3.png';
+import JoelPic from '../assets/pfp images/Joel.jpeg';
 import CustomSelect from './CustomSelect';
 
 export default function TicketForm({ onSubmit }) {
@@ -22,14 +22,17 @@ export default function TicketForm({ onSubmit }) {
       return;
     }
 
+    const now = new Date();
+    const timeStr = now.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
     const newTicket = {
       id: Date.now(),
       title,
-      name: 'Ava Thompson',
-      profilePic: pfp3,
+      name: 'Joel Lima',
+      profilePic: JoelPic,
       priority,
       status: 'Open',
-      date: new Date().toLocaleDateString(),
+      date: `${now.toLocaleString('en-US', { month: 'long' })} ${now.getDate()} ${now.getFullYear()}`,
+      timestamp: timeStr,
       content,
     };
 
@@ -37,8 +40,7 @@ export default function TicketForm({ onSubmit }) {
       onSubmit(newTicket);
     }
 
-    const time = new Date().toLocaleTimeString();
-    setTimestamp(time);
+    setTimestamp(timeStr);
     setShowToast(true);
 
     setTimeout(() => {
@@ -93,11 +95,19 @@ export default function TicketForm({ onSubmit }) {
               ]}
               value={priority}
               onChange={(v) => setPriority(v)}
+              shape="rect"
             />
           </div>
 
           <div className="mt-4 flex justify-start">
-            <button type="button" onClick={handleSubmit} className="fdm-btn fdm-btn-primary">
+            {/** disable until all fields are filled */}
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={!(title.trim() && content.trim() && priority)}
+              aria-disabled={! (title.trim() && content.trim() && priority)}
+              className={`fdm-btn fdm-btn-primary ${!(title.trim() && content.trim() && priority) ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
               Submit Ticket
             </button>
           </div>

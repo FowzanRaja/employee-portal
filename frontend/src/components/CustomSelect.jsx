@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 
-export default function CustomSelect({ label, options = [], value, onChange }) {
+export default function CustomSelect({ label, options = [], value, onChange, shape = 'pill' }) {
   const normalized = options.map((o) => (typeof o === 'string' ? { value: o, label: o } : o))
 
   const [open, setOpen] = useState(false)
@@ -41,7 +41,10 @@ export default function CustomSelect({ label, options = [], value, onChange }) {
         aria-haspopup="listbox"
         aria-expanded={open}
         onClick={() => setOpen((s) => !s)}
-        className="w-full flex items-center justify-between gap-3 rounded-2xl bg-[#2D2D2D] border border-[color:var(--fdm-border)] px-3 py-2 text-sm text-[var(--fdm-text)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.45)] transition"
+        className={
+          "w-full flex items-center justify-between gap-3 bg-[#2D2D2D] border border-[color:var(--fdm-border)] px-3 py-2 text-sm text-[var(--fdm-text)] hover:shadow-[0_8px_20px_rgba(0,0,0,0.45)] transition " +
+          (shape === 'rect' ? 'rounded-lg' : 'rounded-2xl')
+        }
       >
         <span className="truncate">
           {selected ? selected.label : <span className="text-[var(--fdm-text-soft)]">Select...</span>}

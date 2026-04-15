@@ -130,13 +130,15 @@ function DocumentCard({ icon: Icon, title, subtitle, date, accent = 'text-[var(-
         <p className="mt-1 text-xs text-[var(--fdm-text-soft)]">{date}</p>
       </div>
 
-      <button
-        type="button"
+      {/* download link - opens file download */}
+      <a
+        href={typeof title === 'string' ? `/documents/${title.replace(/\s+/g, '_').toLowerCase()}.pdf` : '#'}
+        download
         aria-label={`Download ${title}`}
-        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.04)] text-[var(--fdm-text-soft)] opacity-0 transition-all duration-150 group-hover:opacity-100 hover:border-[rgba(255,255,255,0.18)] hover:text-[var(--fdm-text)]"
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.04)] text-[var(--fdm-text-soft)] opacity-0 transition-all duration-150 group-hover:opacity-100 hover:border-[rgba(215,255,0,0.18)] hover:text-[var(--fdm-lime)]"
       >
         <Download size={15} />
-      </button>
+      </a>
     </div>
   )
 }
@@ -159,6 +161,7 @@ const documents = [
     title: 'Employment Contract',
     subtitle: 'Full-time permanent — FDM Group Ltd',
     date: 'Signed 14 Jan 2022',
+    file: '/documents/sample1.pdf',
     accent: 'text-[var(--fdm-lime)]',
     accentBg: 'bg-[rgba(215,255,0,0.12)]',
   },
@@ -167,6 +170,7 @@ const documents = [
     title: 'AWS Cloud Practitioner',
     subtitle: 'Training certificate — Amazon Web Services',
     date: 'Issued 03 Sep 2023',
+    file: '/documents/sample2.pdf',
     accent: 'text-sky-300',
     accentBg: 'bg-[rgba(125,211,252,0.12)]',
   },
@@ -175,6 +179,7 @@ const documents = [
     title: 'Agile & Scrum Foundations',
     subtitle: 'Training certificate — FDM Academy',
     date: 'Issued 22 Mar 2023',
+    file: '/documents/sample3.pdf',
     accent: 'text-emerald-300',
     accentBg: 'bg-[rgba(110,231,183,0.12)]',
   },
@@ -251,9 +256,7 @@ export default function ProfilePage() {
           ))}
         </div>
 
-        <p className="mt-4 text-xs text-[var(--fdm-text-muted)]">
-          Documents are managed by HR. Contact People Operations to request additions or amendments.
-        </p>
+        
       </Surface>
     </section>
   )

@@ -99,7 +99,7 @@ export default function LeaveBooking() {
       <Title
         badge="TIME OFF"
         title="Leave Booking"
-        subtitle="Request annual leave, sick leave, or remote working days and track the status of your recent submissions."
+        subtitle="Request leave and track the status of your submissions."
       />
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-3">

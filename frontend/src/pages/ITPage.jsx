@@ -29,7 +29,7 @@ const IT_SECTIONS = [
 export default function ITPage() {
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
-      <Title badge="FDM Staff Portal" title="IT Management" subtitle="Manage support tickets and system issues." />
+      <Title badge="FDM Staff Portal" title="IT Management" subtitle="View, manage, and resolve support tickets, and publish system announcements." />
 
       <div className="programme-grid">
         {IT_SECTIONS.map((section) => (

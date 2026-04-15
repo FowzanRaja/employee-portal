@@ -202,7 +202,7 @@ export default function ConsultantsPage() {
       <Title
         badge="CONSULTANT"
         title="Schedule"
-        subtitle="View your assigned programme sessions for the week. Sessions are managed by your Line Manager."
+        subtitle="View your upcoming sessions and weekly schedule."
       />
 
       <Surface>

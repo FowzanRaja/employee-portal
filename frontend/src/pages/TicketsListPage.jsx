@@ -13,7 +13,7 @@ const initialTickets = [
     profilePic: JoelPic,
     priority: 'low',
     status: 'Open',
-    date: 'Apr 14 2026',
+    date: 'April 14 2026',
     timestamp: '09:59 AM',
     content:
       'The schedule page is opening correctly, but it is not displaying any sessions for me. I am expected to have sessions scheduled this week, but nothing is appearing. I have refreshed the page and logged out/in, but the issue is still there.',
@@ -25,7 +25,7 @@ const initialTickets = [
     profilePic: JoelPic,
     priority: 'high',
     status: 'Closed',
-    date: 'Apr 12 2026',
+    date: 'April 12 2026',
     timestamp: '02:11 PM',
     content:
       'My laptop is not functioning properly when I try to access internal systems. It becomes unresponsive and prevents me from completing my work. I have restarted the device, but the issue persists and I am unable to continue working.',
@@ -37,7 +37,7 @@ const initialTickets = [
     profilePic: JoelPic,
     priority: 'medium',
     status: 'Closed',
-    date: 'Apr 11 2026',
+    date: 'April 11 2026',
     timestamp: '08:47 AM',
     content:
       'I am currently unable to access the programme page as it is not loading properly. I have checked with a few colleagues and they are experiencing the same issue, so it may be a wider system problem. This is affecting our ability to prepare for upcoming sessions.',

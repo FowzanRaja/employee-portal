@@ -67,7 +67,7 @@ function PolicyPage() {
 
   return (
     <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
-      <Title badge="DOCUMENTS" title="Policies" subtitle="Company policies and documents" />
+      <Title badge="DOCUMENTS" title="Policies" subtitle="Access company policies and official documents." />
 
       <div className="thumb-grid">
         {documents.map((doc) => (

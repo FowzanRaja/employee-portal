@@ -92,6 +92,7 @@ export default function BookLeaveForm() {
           ]}
           value={leaveType}
           onChange={(v) => setLeaveType(v)}
+          shape="rect"
         />
 
         <div className="grid gap-3 grid-cols-1 sm:grid-cols-2">
@@ -151,7 +152,7 @@ export default function BookLeaveForm() {
           <div className="w-full bg-[var(--fdm-surface)] border border-[color:var(--fdm-border)] rounded-2xl p-4 flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-[var(--fdm-text)]">Requested duration</p>
-              <p className="text-xs text-[var(--fdm-text-muted)] mt-1">Requests are sent to your line manager for review before final approval.</p>
+              <p className="text-xs text-[var(--fdm-text-muted)] mt-1">Requests are sent to HR for review before final approval.</p>
             </div>
             <div className="text-lg font-semibold text-[color:var(--fdm-lime)]">{computeDurationDays()} day(s)</div>
           </div>
