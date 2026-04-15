@@ -16,7 +16,7 @@
 
 .thumb-grid {
   display: grid;
-  grid-template-columns: repeat(3, 300px);
+  grid-template-columns: repeat(3, 340px);
   justify-content: center;
   gap: 40px;
   column-gap: 40px;
@@ -30,7 +30,7 @@
   text-align: center;
   color: var(--fdm-text);
   box-shadow: var(--fdm-shadow-card);
-  min-height: 340px;
+  min-height: 360px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,8 +45,8 @@
 }
 
 .thumb-image {
-  width: 140px;
-  height: 180px;
+  width: 160px;
+  height: 200px;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 18px;
