@@ -37,14 +37,17 @@ const flatpickrOverrides = `
 
 export default function BookLeaveForm() {
   const [leaveType, setLeaveType] = useState('annual')
-  const [startDate, setStartDate] = useState('')
-  const [endDate, setEndDate] = useState('')
+  const [startDate, setStartDate] = useState(null)
+  const [endDate, setEndDate] = useState(null)
   const [reason, setReason] = useState('')
 
   const computeDurationDays = () => {
     if (!startDate || !endDate) return 0
     const s = new Date(startDate)
     const e = new Date(endDate)
+    // normalize to local midnight to avoid timezone shifts
+    s.setHours(0, 0, 0, 0)
+    e.setHours(0, 0, 0, 0)
     if (isNaN(s) || isNaN(e)) return 0
     const msPerDay = 24 * 60 * 60 * 1000
     const diff = Math.floor((e - s) / msPerDay) + 1
@@ -56,8 +59,11 @@ export default function BookLeaveForm() {
     if (!endDate) return
     const s = new Date(startDate)
     const e = new Date(endDate)
+    // normalize to local midnight for comparison
+    s.setHours(0, 0, 0, 0)
+    e.setHours(0, 0, 0, 0)
     if (s > e) {
-      setEndDate(startDate)
+      setEndDate(new Date(startDate))
     }
   }, [startDate])
 
@@ -100,9 +106,9 @@ export default function BookLeaveForm() {
             <label className="text-sm text-[var(--fdm-text-muted)] mb-2 block">Start date</label>
               <div className="relative">
                 <Flatpickr
-                  value={startDate ? new Date(startDate) : null}
-                  onChange={(dates) => setStartDate(dates[0] ? dates[0].toISOString().slice(0, 10) : '')}
-                  options={{ dateFormat: 'Y-m-d', minDate: 'today' }}
+                  value={startDate || null}
+                  onChange={(dates) => setStartDate(dates[0] ? dates[0] : null)}
+                  options={{ dateFormat: 'd-m-Y', minDate: 'today' }}
                   className="w-full rounded-lg border border-[color:var(--fdm-border)] bg-[#2D2D2D] px-3 py-2 text-sm text-[var(--fdm-text)]"
                 />
                 <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">
@@ -120,9 +126,26 @@ export default function BookLeaveForm() {
             <label className="text-sm text-[var(--fdm-text-muted)] mb-2 block">End date</label>
             <div className="relative">
               <Flatpickr
-                value={endDate ? new Date(endDate) : null}
-                onChange={(dates) => setEndDate(dates[0] ? dates[0].toISOString().slice(0, 10) : '')}
-                options={{ dateFormat: 'Y-m-d', minDate: startDate || 'today' }}
+                value={endDate || null}
+                onChange={(dates) => {
+                  const picked = dates[0] ? dates[0] : null
+                  if (!picked) {
+                    setEndDate(null)
+                    return
+                  }
+                  if (startDate) {
+                    const s = new Date(startDate)
+                    const p = new Date(picked)
+                    s.setHours(0, 0, 0, 0)
+                    p.setHours(0, 0, 0, 0)
+                    if (p < s) {
+                      setEndDate(new Date(startDate))
+                      return
+                    }
+                  }
+                  setEndDate(picked)
+                }}
+                options={{ dateFormat: 'd-m-Y', minDate: startDate || 'today' }}
                 className="w-full rounded-lg border border-[color:var(--fdm-border)] bg-[#2D2D2D] px-3 py-2 text-sm text-[var(--fdm-text)]"
               />
               <div className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-white">

@@ -9,23 +9,23 @@ import {
 const PROGRAMMES = [
   {
     slug: 'returns',
-    title: 'Returns',
+    title: 'Returners',
     description:
-      'For returners...',
+      'Programme for consultants rejoining after a career break or internal transition.',
     icon: IterationCw,
   },
   {
     slug: 'graduates',
     title: 'Graduates',
     description:
-      'For recent graduates...',
+      'Training programme designed for new graduates starting their consultancy journey.',
     icon: BookText,
   },
   {
     slug: 'xforces',
-    title: 'Xforces',
+    title: 'Ex-Forces',
     description:
-      'For ex-forces consultants...',
+      'Specialised programme supporting ex-forces consultants transitioning into technology roles.',
     icon: Medal,
   },
 ]

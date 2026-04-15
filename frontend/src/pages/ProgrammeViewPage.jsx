@@ -4,12 +4,12 @@ import fdmLogo from '../assets/fdmLogo.png'
 
 const PROGRAMME_CONTENT = {
   returns: {
-    title: 'Returns Programme',
+    title: 'Returners Programme',
     sections: [
       {
         title: 'Introduction',
         content:
-          'Welcome to the Returns programme.',
+          'Welcome to the Returners programme.',
       },
       {
         title: 'Safety',
@@ -54,12 +54,12 @@ const PROGRAMME_CONTENT = {
     ],
   },
   xforces: {
-    title: 'Xforces Programme',
+    title: 'Ex-Forces Programme',
     sections: [
       {
         title: 'Introduction',
         content:
-          'Welcome to the Xforces programme.',
+          'Welcome to the Ex-Forces programme.',
       },
       {
         title: 'Safety',

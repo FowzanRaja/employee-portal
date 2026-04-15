@@ -53,7 +53,7 @@ const INITIAL_SESSIONS = [
     day: 0, 
     startTime: '13:00',
     endTime: '14:30',
-    programme: 'Returns Programme',
+    programme: 'Returners Programme',
     programmeType: 'ReturnerProgramme',
     location: 'Room 2A, London',
     no: 'RT-03',
@@ -63,7 +63,7 @@ const INITIAL_SESSIONS = [
     day: 1, 
     startTime: '10:00',
     endTime: '12:00',
-    programme: 'Xforces Programme',
+    programme: 'Ex-Forces Programme',
     programmeType: 'ExForcesProgramme',
     location: 'Online (Teams)',
     no: 'XF-02',
@@ -83,7 +83,7 @@ const INITIAL_SESSIONS = [
     day: 3, 
     startTime: '14:00',
     endTime: '15:30',
-    programme: 'Returns Programme',
+    programme: 'Returners Programme',
     programmeType: 'ReturnerProgramme',
     location: 'Room 1C, Manchester',
     no: 'RT-04',
@@ -93,7 +93,7 @@ const INITIAL_SESSIONS = [
     day: 4, 
     startTime: '11:00',
     endTime: '12:30',
-    programme: 'Xforces Programme',
+    programme: 'Ex-Forces Programme',
     programmeType: 'ExForcesProgramme',
     location: 'Online (Teams)',
     no: 'XF-03',
@@ -272,37 +272,57 @@ export default function ConsultantsPage() {
         </div>
       </Surface>
 
-      <div className="grid gap-6 xl:grid-cols-[1.4fr_0.9fr]">
-
-        <Surface>
-          <div className="mb-5 flex items-center justify-between gap-4">
-            <div>
+      <div className="grid gap-6 md:grid-cols-2">
+        <div className="flex flex-col gap-6">
+          <Surface>
+            <div className="mb-5 flex items-center justify-between gap-4">
+              <div>
                 <p className="text-sm text-[var(--fdm-text-muted)]">{FULL_DAYS[selectedDay]}</p>
-              <h2 className="mt-1 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">
-                Sessions
-              </h2>
+                <h2 className="mt-1 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">
+                  Sessions
+                </h2>
+              </div>
+              {sessionsForDay.length > 0 && (
+                <span className="rounded-full border border-[rgba(215,255,0,0.18)] bg-[rgba(215,255,0,0.08)] px-3 py-1 text-xs font-semibold text-[var(--fdm-lime)]">
+                  {sessionsForDay.length} session{sessionsForDay.length !== 1 ? 's' : ''}
+                </span>
+              )}
             </div>
-            {sessionsForDay.length > 0 && (
-              <span className="rounded-full border border-[rgba(215,255,0,0.18)] bg-[rgba(215,255,0,0.08)] px-3 py-1 text-xs font-semibold text-[var(--fdm-lime)]">
-                {sessionsForDay.length} session{sessionsForDay.length !== 1 ? 's' : ''}
-              </span>
-            )}
-          </div>
 
-          {sessionsForDay.length === 0 ? (
-            <div className="flex flex-col items-center justify-center rounded-[24px] border border-dashed border-[rgba(255,255,255,0.08)] py-12 text-center">
-              <CalendarCheck size={32} className="mb-3 text-[var(--fdm-text-muted)]" />
-              <p className="text-sm font-semibold text-[var(--fdm-text-soft)]">No sessions scheduled</p>
-              <p className="mt-1 text-xs text-[var(--fdm-text-muted)]">Enjoy your free day</p>
-            </div>
-          ) : (
+            {sessionsForDay.length === 0 ? (
+              <div className="flex flex-col items-center justify-center rounded-[24px] border border-dashed border-[rgba(255,255,255,0.08)] py-12 text-center">
+                <CalendarCheck size={32} className="mb-3 text-[var(--fdm-text-muted)]" />
+                <p className="text-sm font-semibold text-[var(--fdm-text-soft)]">No sessions scheduled</p>
+                <p className="mt-1 text-xs text-[var(--fdm-text-muted)]">Enjoy your free day</p>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-3">
+                {sessionsForDay.map((session) => (
+                  <SessionCard key={session.id} session={session} />
+                ))}
+              </div>
+            )}
+          </Surface>
+
+          <Surface>
+            <p className="mb-4 text-sm text-[var(--fdm-text-muted)]">Programme key</p>
             <div className="flex flex-col gap-3">
-              {sessionsForDay.map((session) => (
-                <SessionCard key={session.id} session={session} />
-              ))}
+              {Object.entries(PROGRAMME_ACCENTS).map(([type, accent]) => {
+                const label = type
+                  .replace('Programme', ' Programme')
+                  .replace('Returner', 'Returners')
+                  .replace('ExForces', 'Ex-Forces')
+                  .replace('Graduate', 'Graduates')
+                return (
+                  <div key={type} className="flex items-center gap-2">
+                    <span className={`h-2.5 w-2.5 rounded-full ${accent.dot}`} />
+                    <span className="text-sm text-[var(--fdm-text-soft)]">{label}</span>
+                  </div>
+                )
+              })}
             </div>
-          )}
-        </Surface>
+          </Surface>
+        </div>
 
         <Surface>
           <div className="mb-5">
@@ -346,25 +366,6 @@ export default function ConsultantsPage() {
           </div>
         </Surface>
       </div>
-
-      <Surface>
-        <p className="mb-4 text-sm text-[var(--fdm-text-muted)]">Programme key</p>
-        <div className="flex flex-wrap gap-4">
-          {Object.entries(PROGRAMME_ACCENTS).map(([type, accent]) => {
-            const label = type
-              .replace('Programme', ' Programme')
-              .replace('Returner', 'Returns')
-              .replace('ExForces', 'Xforces')
-              .replace('Graduate', 'Graduates')
-            return (
-              <div key={type} className="flex items-center gap-2">
-                <span className={`h-2.5 w-2.5 rounded-full ${accent.dot}`} />
-                <span className="text-sm text-[var(--fdm-text-soft)]">{label}</span>
-              </div>
-            )
-          })}
-        </div>
-      </Surface>
     </section>
   )
 }
