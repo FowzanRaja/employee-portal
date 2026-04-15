@@ -134,8 +134,8 @@ export default function LeaveBooking() {
         </div>
       </div>
 
-      <div className="mt-4 grid gap-4 grid-cols-1 md:grid-cols-3">
-        <div className="md:col-span-2">
+      <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
+        <div>
           <BookLeaveForm />
         </div>
 

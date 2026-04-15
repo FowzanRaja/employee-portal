@@ -521,8 +521,10 @@ aside *::selection {
 .fdm-input:focus,
 .fdm-select:focus,
 .fdm-textarea:focus {
-  border-color: rgba(215, 255, 0, 0.7);
-  box-shadow: 0 0 0 4px rgba(215, 255, 0, 0.14);
+  border-color: var(--fdm-lime);
+  box-shadow:
+    0 0 0 1px rgba(215, 255, 0, 0.12),
+    0 0 70px rgba(215, 255, 0, 0.08);
 }
 
 .fdm-label {

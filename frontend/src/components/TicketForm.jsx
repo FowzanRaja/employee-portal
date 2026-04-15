@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 import pfp3 from '../assets/pfp images/pfp3.png';
+import CustomSelect from './CustomSelect';
 
 export default function TicketForm({ onSubmit }) {
   const [title, setTitle] = useState('');
@@ -53,44 +54,55 @@ export default function TicketForm({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="mb-8">
-        <input
-          type="text"
-          placeholder="Title"
-          className="w-full mb-2 p-2 rounded-lg"
-          style={{ border: '1px solid var(--fdm-border)', background: 'var(--fdm-surface-2)', color: 'var(--fdm-text)' }}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <textarea
-          placeholder="Description"
-          className="w-full mb-2 p-2 rounded-lg"
-          style={{ border: '1px solid var(--fdm-border)', background: 'var(--fdm-surface-2)', color: 'var(--fdm-text)' }}
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-
-        <select
-          className="w-full mb-4 p-2 rounded-lg"
-          style={{ border: '1px solid var(--fdm-border)', background: 'var(--fdm-surface-2)', color: 'var(--fdm-text)' }}
-          value={priority}
-          onChange={(e) => setPriority(e.target.value)}
-        >
-          <option value="" disabled>
-            Select priority
-          </option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-
-        <div className="flex justify-center mt-4">
-          <button type="submit" className="announcement-button" style={{ border: '1px solid var(--fdm-border-strong)' }}>
-            Submit Ticket
-          </button>
+      <section className="rounded-2xl border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5 mb-8">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-[var(--fdm-text-muted)]">Form</p>
+            <h3 className="mt-2 text-2xl font-black text-[var(--fdm-text)]">Create ticket</h3>
+          </div>
         </div>
-      </form>
+
+        <div className="mt-4 space-y-4">
+          <div>
+            <label className="text-sm text-[var(--fdm-text-muted)] mb-2 block">Title</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full rounded-lg border border-[color:var(--fdm-border)] bg-[#2D2D2D] px-3 py-2 text-sm text-[var(--fdm-text)]"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-[var(--fdm-text-muted)] mb-2 block">Description</label>
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              rows={5}
+              className="w-full rounded-lg border border-[color:var(--fdm-border)] bg-[#2D2D2D] px-3 py-2 text-sm text-[var(--fdm-text)] resize-vertical"
+            />
+          </div>
+
+          <div>
+            <CustomSelect
+              label="Priority"
+              options={[
+                { value: 'low', label: 'Low' },
+                { value: 'medium', label: 'Medium' },
+                { value: 'high', label: 'High' },
+              ]}
+              value={priority}
+              onChange={(v) => setPriority(v)}
+            />
+          </div>
+
+          <div className="mt-4 flex justify-start">
+            <button type="button" onClick={handleSubmit} className="fdm-btn fdm-btn-primary">
+              Submit Ticket
+            </button>
+          </div>
+        </div>
+      </section>
 
       {/* TOAST */}
       <div

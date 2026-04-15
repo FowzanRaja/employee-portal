@@ -16,10 +16,10 @@
 
 .thumb-grid {
   display: grid;
-  grid-template-columns: repeat(2, 450px);
+  grid-template-columns: repeat(3, 300px);
   justify-content: center;
-  gap: 60px;
-  column-gap: 80px;
+  gap: 40px;
+  column-gap: 40px;
 }
 
 .thumb-card {

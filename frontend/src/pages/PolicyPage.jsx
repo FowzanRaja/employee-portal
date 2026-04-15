@@ -77,7 +77,7 @@ function PolicyPage() {
             <h3 className="thumb-title">{doc.title}</h3>
             <p className="thumb-date">Created at: {doc.createdAt}</p>
             <p className="thumb-date">Last modified: {doc.lastModified}</p>
-            <p className="thumb-size">Version: {doc.version}</p>
+            <p className="thumb-size">Version: {doc.version ? doc.version.replace(/^v/i, '') : ''}</p>
 
             <a href={doc.file} download className="document-btn">Download</a>
           </div>

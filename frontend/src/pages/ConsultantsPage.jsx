@@ -277,9 +277,7 @@ export default function ConsultantsPage() {
         <Surface>
           <div className="mb-5 flex items-center justify-between gap-4">
             <div>
-              <p className="text-xs uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">
-                {FULL_DAYS[selectedDay]}
-              </p>
+                <p className="text-sm text-[var(--fdm-text-muted)]">{FULL_DAYS[selectedDay]}</p>
               <h2 className="mt-1 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">
                 Sessions
               </h2>
@@ -308,9 +306,7 @@ export default function ConsultantsPage() {
 
         <Surface>
           <div className="mb-5">
-            <p className="text-xs uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">
-              Overview
-            </p>
+            <p className="text-sm text-[var(--fdm-text-muted)]">Overview</p>
             <h2 className="mt-1 text-2xl font-black tracking-[-0.03em] text-[var(--fdm-text)]">
               Week at a glance
             </h2>
@@ -352,9 +348,7 @@ export default function ConsultantsPage() {
       </div>
 
       <Surface>
-        <p className="mb-4 text-xs uppercase tracking-[0.18em] text-[var(--fdm-text-muted)]">
-          Programme key
-        </p>
+        <p className="mb-4 text-sm text-[var(--fdm-text-muted)]">Programme key</p>
         <div className="flex flex-wrap gap-4">
           {Object.entries(PROGRAMME_ACCENTS).map(([type, accent]) => {
             const label = type
