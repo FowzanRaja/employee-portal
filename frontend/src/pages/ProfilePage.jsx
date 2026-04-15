@@ -20,7 +20,7 @@ function Surface({ className = '', children }) {
   return (
     <section
       className={[
-        'rounded-[28px] border border-[color:var(--fdm-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.24)]',
+        'rounded-[28px] border border-[color:var(--fdm-border)] bg-[var(--fdm-surface)] p-5 shadow-[0_18px_40px_rgba(0,0,0,0.24)]',
         className,
       ].join(' ')}
     >
