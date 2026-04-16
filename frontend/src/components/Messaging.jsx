@@ -69,13 +69,48 @@ export default function Messaging() {
   const [query, setQuery] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const messagesEndRef = useRef(null);
+  const threadRef = useRef(null);
+  const inputContainerRef = useRef(null);
+  const prevActiveRef = useRef(activeIdx);
 
   useEffect(() => {
-    scrollToBottom();
+    const el = threadRef.current;
+    const wasActiveChanged = prevActiveRef.current !== activeIdx;
+    prevActiveRef.current = activeIdx;
+
+    if (!el) {
+      scrollToBottom();
+      return;
+    }
+
+    const distanceFromBottom = el.scrollHeight - el.scrollTop - el.clientHeight;
+    const isNearBottom = distanceFromBottom < 120;
+
+    if (wasActiveChanged) {
+      scrollToBottom();
+      return;
+    }
+
+    // Only auto-scroll on new messages if the user is near the bottom
+    if (isNearBottom) scrollToBottom();
   }, [activeIdx, conversations]);
 
   function scrollToBottom() {
-    if (messagesEndRef.current) {
+    scrollToBottomImmediate();
+  }
+
+  function scrollToBottomImmediate() {
+    const el = threadRef.current;
+    if (el) {
+      try {
+        const inputH = inputContainerRef.current ? inputContainerRef.current.offsetHeight : 0;
+        const extra = inputH + 12; // small gap so last message isn't flush to the input
+        const target = Math.max(0, el.scrollHeight - el.clientHeight - extra);
+        el.scrollTo({ top: target, behavior: "smooth" });
+      } catch (err) {
+        el.scrollTop = el.scrollHeight;
+      }
+    } else if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   }
@@ -107,30 +142,39 @@ export default function Messaging() {
   function sendMessage(text) {
     const t = text.trim();
     if (!t) return;
-    // prevent accidental duplicate sends (e.g., double event firing)
     const now = Date.now();
-    if (lastSentRef.current.text === t && now - lastSentRef.current.ts < 1000) {
-      return;
-    }
-    lastSentRef.current = { text: t, ts: now };
+    // quick guard using ref
+    if (lastSentRef.current.text === t && now - lastSentRef.current.ts < 1000) return;
+    // update conversations but double-check against last message in the active convo
     setConversations((prev) => {
       const next = [...prev];
       const conv = next[activeIdx];
-      conv.messages = [
-        ...conv.messages,
-        {
-          id: `${Date.now()}`,
-          sender: ME_ID,
-          text: text.trim(),
-          ts: new Date().toISOString(),
-        },
-      ];
+      const lastMsg = conv?.messages?.[conv.messages.length - 1];
+      if (lastMsg && lastMsg.sender === ME_ID && lastMsg.text === t) {
+        const lastTs = new Date(lastMsg.ts).getTime();
+        if (now - lastTs < 2000) {
+          // duplicate within 2s, ignore
+          return prev;
+        }
+      }
+
+      const newMsg = {
+        id: `${Date.now()}`,
+        sender: ME_ID,
+        text: t,
+        ts: new Date().toISOString(),
+      };
+
+      conv.messages = [...conv.messages, newMsg];
       // move conversation to top
       next.splice(activeIdx, 1);
       next.unshift(conv);
+      lastSentRef.current = { text: t, ts: now };
       return next;
     });
     setActiveIdx(0);
+    // ensure view scrolls to bottom after adding message
+    setTimeout(() => scrollToBottomImmediate(), 50);
   }
 
   const activeConv = conversations[activeIdx] || conversations[0];
@@ -200,7 +244,12 @@ export default function Messaging() {
           )}
 
           {/* Thread */}
-          <div className="flex-1 overflow-auto px-6 py-4 space-y-4" id="message-thread">
+          <div
+            ref={threadRef}
+            className="flex-1 overflow-auto px-6 py-4 space-y-4"
+            id="message-thread"
+            style={{ paddingBottom: "180px", scrollBehavior: "smooth" }}
+          >
             {activeConv && activeConv.messages.length === 0 && (
               <div className="text-sm text-[var(--fdm-text-muted)] italic">No messages. Start the conversation below.</div>
             )}
@@ -222,7 +271,7 @@ export default function Messaging() {
           </div>
 
           {/* Input */}
-          <div className="sticky bottom-0 z-10 px-6 pt-3 pb-4 border-t bg-[var(--fdm-bg)]" style={{ borderColor: "var(--fdm-border)" }}>
+          <div ref={inputContainerRef} className="sticky bottom-0 z-10 px-6 pt-3 pb-4 border-t bg-[var(--fdm-bg)]" style={{ borderColor: "var(--fdm-border)" }}>
             <MessageInput onSend={sendMessage} />
           </div>
         </div>
