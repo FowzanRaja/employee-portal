@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { formatTime } from "../lib/time";
 import SampritiImg from "../assets/pfp images/Sampriti.jpeg";
-import JoelImg from "../assets/pfp images/Joel.jpeg";
 import FowzanImg from "../assets/pfp images/Fowzan.jpeg";
 import AhmadImg from "../assets/pfp images/Ahmad.jpeg";
 import SuhanImg from "../assets/pfp images/Suhan.png";
@@ -11,7 +10,6 @@ const ME_ID = "me";
 
 const seededPeople = [
   { id: "sampriti", name: "Sampriti Patro", avatar: SampritiImg },
-  { id: "joel", name: "Joel Lima", avatar: JoelImg },
   { id: "fowzan", name: "Fowzan Raja", avatar: FowzanImg },
   { id: "ahmad", name: "Ahmad Ahmadzai", avatar: AhmadImg },
   { id: "suhan", name: "Suhan Erbil", avatar: SuhanImg },
@@ -26,12 +24,6 @@ function makeSampleMessages(person) {
         { id: `${person.id}-1`, sender: "them", text: `Hey — this is ${person.name}. I uploaded the onboarding docs to the portal. Could you take a look?`, ts: new Date(now - 2 * 24 * 60 * 60 * 1000).toISOString() },
         { id: `${person.id}-2`, sender: ME_ID, text: `Thanks — I'll review the docs this afternoon.`, ts: new Date(now - 24 * 60 * 60 * 1000).toISOString() },
         { id: `${person.id}-3`, sender: "them", text: `Also added a short bio and photo — let me know if it looks ok.`, ts: new Date(now - 2 * 60 * 60 * 1000).toISOString() },
-      ];
-    case "joel":
-      return [
-        { id: `${person.id}-1`, sender: "them", text: `Morning — I pushed the consultant handover notes to Drive. Need a quick review.`, ts: new Date(now - 3 * 24 * 60 * 60 * 1000).toISOString() },
-        { id: `${person.id}-2`, sender: ME_ID, text: `I'll read through and leave comments by EOD.`, ts: new Date(now - 18 * 60 * 60 * 1000).toISOString() },
-        { id: `${person.id}-3`, sender: "them", text: `Perfect — thanks. I also flagged the key dates in the doc.`, ts: new Date(now - 90 * 60 * 1000).toISOString() },
       ];
     case "fowzan":
       return [
@@ -73,6 +65,7 @@ export default function Messaging() {
   );
 
   const [activeIdx, setActiveIdx] = useState(0);
+  const lastSentRef = useRef({ text: null, ts: 0 });
   const [query, setQuery] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const messagesEndRef = useRef(null);
@@ -112,7 +105,14 @@ export default function Messaging() {
   }
 
   function sendMessage(text) {
-    if (!text.trim()) return;
+    const t = text.trim();
+    if (!t) return;
+    // prevent accidental duplicate sends (e.g., double event firing)
+    const now = Date.now();
+    if (lastSentRef.current.text === t && now - lastSentRef.current.ts < 1000) {
+      return;
+    }
+    lastSentRef.current = { text: t, ts: now };
     setConversations((prev) => {
       const next = [...prev];
       const conv = next[activeIdx];
@@ -138,7 +138,7 @@ export default function Messaging() {
   return (
     <div className="w-full h-full border rounded-md overflow-hidden" style={{ borderColor: "var(--fdm-border)" }}>
       {/* Top search bar */}
-      <div className="px-4 py-3 border-b flex items-center gap-3" style={{ background: "var(--fdm-surface)" }}>
+      <div className="px-4 py-3 border-b flex items-center gap-3" style={{ background: "var(--fdm-surface)", borderColor: "var(--fdm-border)" }}>
         <input
           aria-label="Search people or start chat"
           placeholder="Search people or start chat..."
@@ -171,12 +171,12 @@ export default function Messaging() {
                   style={{ borderBottom: "1px solid var(--fdm-border)" }}
                 >
                   <img src={c.person.avatar} alt={c.person.name} className="w-10 h-10 rounded-full object-cover" />
-                  <div className="flex-1">
+                  <div className="flex-1 min-w-0">
                     <div className="flex justify-between items-center">
                       <div className="font-medium text-[var(--fdm-text)]">{c.person.name}</div>
                       <div className="text-xs text-[var(--fdm-text-soft)]">{last ? formatTime(last.ts) : ""}</div>
                     </div>
-                    <div className="text-sm text-[var(--fdm-text-muted)] truncate">
+                    <div className="text-sm text-[var(--fdm-text-muted)] truncate whitespace-nowrap overflow-hidden">
                       {last ? last.text : <span className="italic text-[var(--fdm-text-soft)]">No messages yet</span>}
                     </div>
                   </div>
@@ -222,7 +222,7 @@ export default function Messaging() {
           </div>
 
           {/* Input */}
-          <div className="px-6 py-3 border-t" style={{ borderColor: "var(--fdm-border)" }}>
+          <div className="sticky bottom-0 z-10 px-6 pt-3 pb-4 border-t bg-[var(--fdm-bg)]" style={{ borderColor: "var(--fdm-border)" }}>
             <MessageInput onSend={sendMessage} />
           </div>
         </div>
@@ -245,34 +245,46 @@ function MessageInput({ onSend }) {
       if (val.trim()) {
         onSend(val);
         setVal("");
+        // reset height
+        if (inputRef.current) inputRef.current.style.height = "auto";
       }
     }
   }
 
+  function handleInput(e) {
+    const ta = e.target;
+    ta.style.height = "auto";
+    ta.style.height = Math.min(ta.scrollHeight, 160) + "px";
+    setVal(ta.value);
+  }
+
   return (
     <div className="flex items-center gap-3">
-      <textarea
-        ref={inputRef}
-        value={val}
-        onChange={(e) => setVal(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder="Write a message and press Enter to send..."
-        className="flex-1 px-3 py-2 rounded-md resize-none"
-        rows={1}
-        style={{ border: "1px solid var(--fdm-border)", background: "var(--fdm-bg)", color: "var(--fdm-text)" }}
-      />
-      <button
-        onClick={() => {
-          if (val.trim()) {
-            onSend(val);
-            setVal("");
-          }
-        }}
-        className="px-4 py-2 rounded-md"
-        style={{ background: "var(--fdm-lime)", color: "black" }}
-      >
-        Send
-      </button>
+      <div className="flex-1 flex items-stretch" style={{ border: "1px solid var(--fdm-border)", borderRadius: "8px", overflow: "hidden", background: "var(--fdm-bg)" }}>
+        <textarea
+          ref={inputRef}
+          value={val}
+          onChange={handleInput}
+          onKeyDown={handleKeyDown}
+          placeholder="Write a message and press Enter to send..."
+          className="flex-1 px-3 py-2 resize-none bg-transparent outline-none"
+          rows={2}
+          style={{ minHeight: "48px", maxHeight: "160px", border: 0, color: "var(--fdm-text)" }}
+        />
+        <button
+          onClick={() => {
+            if (val.trim()) {
+              onSend(val);
+              setVal("");
+              if (inputRef.current) inputRef.current.style.height = "auto";
+            }
+          }}
+          className="px-4 py-2"
+          style={{ borderLeft: "1px solid var(--fdm-border)", background: "var(--fdm-lime)", color: "black" }}
+        >
+          Send
+        </button>
+      </div>
     </div>
   );
 }

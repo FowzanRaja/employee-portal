@@ -31,4 +31,6 @@ export const navItems = [
   { to: '/policies', label: 'Policies', icon: ShieldCheck },
   { to: '/programme', label: 'Programme', icon: GraduationCap },
   { to: '/consultants', label: 'Schedule', icon: CalendarCheck },
+  { to: '/hr', label: 'HR Management', icon: UserCircle },
+  { to: '/it', label: 'IT Management', icon: Ticket },
 ]

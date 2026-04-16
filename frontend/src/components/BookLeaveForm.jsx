@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import CustomSelect from './CustomSelect'
 import Flatpickr from 'react-flatpickr'
 import 'flatpickr/dist/flatpickr.min.css'
+import { CheckCircle } from 'lucide-react'
 // Override flatpickr styles to match form (#2D2D2D)
 const flatpickrOverrides = `
 .flatpickr-calendar {
@@ -75,7 +76,33 @@ export default function BookLeaveForm() {
     return true
   }
 
+  const [showToast, setShowToast] = useState(false)
+  const [timestamp, setTimestamp] = useState('')
+
+  const handleSubmit = () => {
+    if (!canSubmit()) return
+    const now = new Date()
+    const timeStr = now.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true })
+
+    // placeholder submit action (could call API)
+    console.log('Leave Request Submitted', { leaveType, startDate, endDate, reason })
+
+    setTimestamp(timeStr)
+    setShowToast(true)
+
+    setTimeout(() => {
+      setShowToast(false)
+    }, 1500)
+
+    // reset form
+    setLeaveType('annual')
+    setStartDate(null)
+    setEndDate(null)
+    setReason('')
+  }
+
   return (
+    <>
     <section className="rounded-2xl border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5">
       <style>{flatpickrOverrides}</style>
       <div className="flex items-center justify-between">
@@ -186,11 +213,7 @@ export default function BookLeaveForm() {
           <button
             type="button"
             className={"fdm-btn fdm-btn-primary" + (!canSubmit() ? ' opacity-60 cursor-not-allowed' : '')}
-            onClick={() => {
-              if (!canSubmit()) return
-              // placeholder submit action
-              console.log('Submit Request', { leaveType, startDate, endDate, reason })
-            }}
+            onClick={handleSubmit}
             disabled={!canSubmit()}
           >
             Submit Request
@@ -198,5 +221,32 @@ export default function BookLeaveForm() {
         </div>
       </div>
     </section>
+
+    
+    {/* TOAST */}
+    <div
+      style={{
+        position: 'fixed',
+        top: '2rem',
+        left: '50%',
+        transform: showToast ? 'translate(-50%, 0)' : 'translate(-50%, -20px)',
+        opacity: showToast ? 1 : 0,
+        background: 'var(--fdm-surface)',
+        border: '1px solid var(--fdm-border)',
+        padding: '1rem 1.5rem',
+        borderRadius: '0.75rem',
+        boxShadow: '0 10px 25px rgba(0,0,0,0.3)',
+        transition: 'all 0.3s ease',
+        textAlign: 'center',
+        zIndex: 60,
+      }}
+    >
+      <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center', justifyContent: 'center' }}>
+        <CheckCircle size={18} style={{ color: '#84cc16' }} />
+        <span style={{ fontWeight: '600' }}>Leave request submitted</span>
+      </div>
+      <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>{timestamp}</p>
+    </div>
+    </>
   )
 }
