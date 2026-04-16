@@ -10,62 +10,74 @@ export default function LoginForm(){
   const [showPasswordError, setShowPasswordError] = useState(false);
   const [firstSubmit, setFirstSubmit] = useState(true);
 
-  const isValidEmail = (email) => {
-    return /\S+@\S+\.\S+/.test(email);
-  };
+  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email)
 
   const handleChange = (e) => {
-    if (firstSubmit){return}
-    if (e.target.name === "email") {
-      setShowEmailError(!isValidEmail(e.target.value));
-    } else{
-      setShowPasswordError(!e.target.value || e.target.value.length === 0);
+    if (firstSubmit) return
+    if (e.target.name === 'email') {
+      setShowEmailError(!isValidEmail(e.target.value))
+    } else {
+      setShowPasswordError(!e.target.value || e.target.value.length === 0)
     }
   }
 
   const submit = (e) => {
-    e.preventDefault();
-    setFirstSubmit(false);
-    const formData = new FormData(e.target);
-    const email = formData.get('email');
-    const password = formData.get('password');
+    e.preventDefault()
+    setFirstSubmit(false)
+    const formData = new FormData(e.target)
+    const email = formData.get('email')
+    const password = formData.get('password')
 
-    setShowEmailError(!isValidEmail(email));
-    setShowPasswordError(!password || password.length === 0);
-    let canSubmit = ((isValidEmail(email)) && !(!password || password.length === 0));
+    setShowEmailError(!isValidEmail(email))
+    setShowPasswordError(!password || password.length === 0)
+    const canSubmit = isValidEmail(email) && !!password
 
-    if (canSubmit){
-      navigate('/dashboard');
+    if (canSubmit) {
+      navigate('/dashboard')
     }
   }
 
-  return <div className="flex flex-col items-center justify-center p-4 h-screen"> {/* Whole view wrapper*/}
-    <form onSubmit={submit} className=" 
-    rounded-[28px] 
-    border 
-    border-[color:var(--fdm-border)] 
-    bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] 
-    p-5 
-    shadow-[0_18px_40px_rgba(0,0,0,0.24)]
-    w-5/8
-    h-auto
-    flex-col
-    items-center
-    justify-center"> {/* FORM DIV */}
+  return (
+    <section className="mx-auto flex h-screen w-full max-w-7xl items-center justify-center px-4">
+      <div className="w-full max-w-2xl">
+        <form onSubmit={submit} className="rounded-[28px] border border-[color:var(--fdm-border)] bg-[var(--fdm-surface)] p-10 shadow-[0_18px_40px_rgba(0,0,0,0.24)]">
+          <div className="relative mb-6">
+            <img src={fdmLogo} alt="FDM Logo" className="w-20 absolute left-2 top-1/2 -translate-y-1/2" />
+            <h1 className="text-3xl font-black text-[var(--fdm-text)] text-center">Login</h1>
+          </div>
 
-      <div className="flex items-center relative mb-6"> {/* Top line: Logo + Title */}
-          <img src={fdmLogo} alt="FDM Logo" className="w-22 absolute left-0"/> 
-          <p className="text-center text-4xl font-bold flex-1 w-full"> Login </p> 
-      </div>
-      <div className='mb-4'> <p className="text-center text-xl text-[#a3a3a3]"> Welcome to the FDM Employee Portal </p> </div>
-      <div className='flex flex-col items-center'>
-          <input placeholder="Email Address" name="email" onChange={handleChange} className={`transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 w-9/10 p-2 border ${showEmailError ? "border-red-500 focus:border-red-400 focus:ring-red-400" : "focus:border-[#c5ff00] focus:ring-[#c5ff00] border-[#303030] "} rounded-md bg-[#1a1a1a]`}></input>
-          {showEmailError && (<p className="text-red-500 text-s text-left w-18/20"> Please enter a valid email address. </p>)}
+          <div className="mt-4 flex flex-col gap-4">
+            <div>
+              <label className="text-xs text-[var(--fdm-text-muted)] mb-1 block">Email address</label>
+              <input
+                placeholder="you@example.com"
+                name="email"
+                onChange={handleChange}
+                className={`w-full rounded-md border border-[color:var(--fdm-border)] bg-[#1a1a1a] px-4 py-3 text-base text-[var(--fdm-text)] focus:outline-none focus:ring-1 ${showEmailError ? 'border-red-500 focus:border-red-400 focus:ring-red-400' : 'focus:border-[var(--fdm-lime)] focus:ring-[var(--fdm-lime)]'}`}
+              />
+              {showEmailError && <p className="text-red-500 text-xs mt-1">Please enter a valid email address.</p>}
+            </div>
 
-          <input placeholder="Password" type="password" name="password" onChange={handleChange} className={`transition-all duration-300 ease-in-out focus:outline-none focus:ring-1 w-9/10  p-2 border ${showEmailError ? "mt-2 " : "mt-6 "} ${showPasswordError ? "border-red-500 focus:border-red-400 focus:ring-red-400" : " focus:border-[#c5ff00] focus:ring-[#c5ff00] border-[#303030] mb-2"} rounded-md bg-[#1a1a1a]`}></input>
-          {showPasswordError && (<p className="text-red-500 text-s text-left w-18/20"> Please enter a password. </p>)}
+            <div>
+              <label className="text-xs text-[var(--fdm-text-muted)] mb-1 block">Password</label>
+              <input
+                placeholder="Password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+                className={`w-full rounded-md border border-[color:var(--fdm-border)] bg-[#1a1a1a] px-4 py-3 text-base text-[var(--fdm-text)] focus:outline-none focus:ring-1 ${showPasswordError ? 'border-red-500 focus:border-red-400 focus:ring-red-400' : 'focus:border-[var(--fdm-lime)] focus:ring-[var(--fdm-lime)]'}`}
+              />
+              {showPasswordError && <p className="text-red-500 text-xs mt-1">Please enter a password.</p>}
+            </div>
+
+            <div className="mt-6">
+              <button type="submit" className={`fdm-btn fdm-btn-primary w-full py-3 text-lg ${!(firstSubmit === false && !showEmailError && !showPasswordError) ? 'opacity-90' : ''}`}>
+                Login
+              </button>
+            </div>
+          </div>
+        </form>
       </div>
-      <div className="flex justify-center"> <button type="submit" className="transition-all duration-300 ease-in-out w-1/4 mt-6 mb-1 p-2 py-5 bg-[#c5ff00] text-black rounded-3xl hover:bg-[#a3dd00] hover:-translate-y-0.75"> <h3> Login </h3> </button> </div>
-    </form>
-  </div>
+    </section>
+  )
 }
