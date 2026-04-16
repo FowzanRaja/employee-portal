@@ -13,6 +13,7 @@ import {
   exampleUser,
   navItems,
 } from './sidebarConfig'
+import fdmLogo from '../assets/fdmLogo.png'
 
 function SidebarNavItem({ item, isCollapsed }) {
   const Icon = item.icon
@@ -29,7 +30,7 @@ function SidebarNavItem({ item, isCollapsed }) {
           isCollapsed ? 'justify-center px-0 py-3' : 'gap-3 px-4 py-3',
           isActive
             ? 'border-[color:var(--fdm-border-strong)] bg-[rgba(215,255,0,0.12)] text-[var(--fdm-text)] shadow-[0_14px_28px_rgba(0,0,0,0.22)]'
-            : 'border-transparent text-[var(--fdm-text-soft)] hover:border-[color:var(--fdm-border)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[var(--fdm-text)]',
+            : 'border-transparent text-[var(--fdm-text-soft)] hover:border-[color:var(--fdm-border)] hover:bg-[rgba(255,255,255,0.04)] hover:text-[var(--fdm-lime)]',
         ].join(' ')
       }
     >
@@ -38,9 +39,9 @@ function SidebarNavItem({ item, isCollapsed }) {
           <span
             className={[
               'flex h-10 w-10 items-center justify-center rounded-2xl transition-colors duration-200',
-              isActive
-                ? 'bg-[rgba(215,255,0,0.16)] text-[var(--fdm-lime)]'
-                : 'bg-[rgba(255,255,255,0.04)] text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-text)]',
+                isActive
+                  ? 'bg-[rgba(215,255,0,0.16)] text-[var(--fdm-lime)]'
+                  : 'bg-[rgba(255,255,255,0.04)] text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-lime)]',
             ].join(' ')}
           >
             <Icon size={18} strokeWidth={2.2} />
@@ -48,7 +49,7 @@ function SidebarNavItem({ item, isCollapsed }) {
 
           <span
             className={[
-              'overflow-hidden whitespace-nowrap transition-all duration-200 ease-out',
+              'overflow-hidden whitespace-nowrap transition-all duration-200 ease-out text-[var(--fdm-text-soft)] group-hover:text-[var(--fdm-lime)]',
               isCollapsed ? 'max-w-0 -translate-x-2 opacity-0' : 'max-w-[160px] translate-x-0 opacity-100',
             ].join(' ')}
           >
@@ -87,30 +88,22 @@ export default function Sidebar({
       <div className={['mb-8 flex', isCollapsed ? 'flex-col items-center gap-3' : 'items-center justify-between gap-3 px-1'].join(' ')}>
         <div
           className={[
-            'flex min-w-0 items-center rounded-[24px] border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] transition-all duration-300 ease-out',
-            isCollapsed ? 'justify-center p-3' : 'gap-3 px-4 py-3',
+            'flex min-w-0 items-center justify-center rounded-[24px] border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] transition-all duration-300 ease-out',
+            'h-14 w-14',
           ].join(' ')}
         >
-          <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--fdm-lime)] text-sm font-black tracking-[0.16em] text-[var(--fdm-text-dark)] shadow-[0_12px_28px_rgba(215,255,0,0.18)]">
-            FDM
-          </span>
-
-          <div
-            className={[
-              'min-w-0 overflow-hidden whitespace-nowrap transition-all duration-200 ease-out',
-              isCollapsed ? 'max-w-0 opacity-0' : 'max-w-[150px] opacity-100',
-            ].join(' ')}
-          >
-            <p className="text-sm font-semibold text-[var(--fdm-text)]">Employee Portal</p>
-            <p className="text-xs text-[var(--fdm-text-muted)]">Staff workspace</p>
-          </div>
+          <img
+            src={fdmLogo}
+            alt="FDM logo"
+            className="h-11 w-11 shrink-0 rounded-2xl object-contain"
+          />
         </div>
 
         <button
           type="button"
           onClick={() => setIsCollapsed((current) => !current)}
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
-          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] text-[var(--fdm-text-soft)] transition-colors duration-200 hover:border-[color:var(--fdm-border-strong)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--fdm-text)]"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--fdm-border)] bg-[rgba(255,255,255,0.03)] text-[var(--fdm-text-soft)] transition-colors duration-200 hover:border-[color:var(--fdm-border-strong)] hover:bg-[rgba(255,255,255,0.07)] hover:text-[var(--fdm-lime)]"
         >
           {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
@@ -123,25 +116,7 @@ export default function Sidebar({
           ))}
         </nav>
 
-        <div className="flex flex-col gap-4 border-t border-[color:var(--fdm-border)] px-1 pt-4 shrink-0">
-          <SidebarNavItem
-            item={{
-              to: '/messages',
-              label: 'Messaging',
-              icon: MessageSquare,
-            }}
-            isCollapsed={isCollapsed}
-          />
-
-          <SidebarNavItem
-            item={{
-              to: '/consultants',
-              label: 'Schedule',
-              icon: CalendarCheck,
-            }}
-            isCollapsed={isCollapsed}
-          />
-
+        <div className="flex flex-col gap-4 px-1 pt-4 shrink-0">
           <NavLink
             to="/profile"
             title={isCollapsed ? `${user.name} — ${user.role}` : undefined}
@@ -152,21 +127,22 @@ export default function Sidebar({
                 isCollapsed ? 'px-3 py-4' : 'px-4 py-4',
                 isActive
                   ? 'border-[rgba(215,255,0,0.28)] bg-[rgba(215,255,0,0.08)] shadow-[0_16px_36px_rgba(0,0,0,0.24)]'
-                  : 'border-[color:var(--fdm-border)] bg-[linear-gradient(180deg,rgba(255,255,255,0.045),rgba(255,255,255,0.02))] shadow-[0_16px_36px_rgba(0,0,0,0.24)] hover:border-[rgba(215,255,0,0.2)] hover:bg-[rgba(215,255,0,0.04)]',
+                  : 'border-[color:var(--fdm-border)] bg-[#171717] shadow-[0_16px_36px_rgba(0,0,0,0.24)] hover:border-[rgba(215,255,0,0.2)] hover:bg-[rgba(215,255,0,0.04)]',
               ].join(' ')
             }
           >
             <div className={['flex items-center', isCollapsed ? 'justify-center' : 'gap-3'].join(' ')}>
-              <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[rgba(215,255,0,0.12)] text-[var(--fdm-lime)]">
-                <UserCircle size={26} />
-                <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full border-2 border-[var(--fdm-surface)] bg-[var(--fdm-lime)]" />
+              <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[rgba(215,255,0,0.12)] text-[var(--fdm-lime)] overflow-hidden">
+                {user.avatar ? (
+                  <img src={user.avatar} alt={`${user.name} avatar`} className="h-full w-full object-cover" />
+                ) : (
+                  <UserCircle size={26} />
+                )}
               </div>
 
               <div
-                className={[
-                  'min-w-0 overflow-hidden whitespace-nowrap transition-all duration-200 ease-out',
-                  isCollapsed ? 'max-w-0 opacity-0' : 'max-w-[150px] opacity-100',
-                ].join(' ')}
+                className={['min-w-0 overflow-hidden whitespace-nowrap transition-all duration-200 ease-out', isCollapsed ? 'max-w-0 opacity-0' : 'opacity-100'].join(' ')}
+                style={isCollapsed ? undefined : { maxWidth: 'calc(100% - 96px)' }}
               >
                 <p className="truncate text-sm font-semibold text-[var(--fdm-text)]">{user.name}</p>
                 <p className="truncate text-xs text-[var(--fdm-text-muted)]">{user.role}</p>

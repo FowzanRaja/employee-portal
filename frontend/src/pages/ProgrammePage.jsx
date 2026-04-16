@@ -1,4 +1,5 @@
 import ProgrammeCard from '../components/ProgrammeCard'
+import Title from '../components/Title'
 import { 
     IterationCw,
     Medal,
@@ -8,36 +9,31 @@ import {
 const PROGRAMMES = [
   {
     slug: 'returns',
-    title: 'Returns',
+    title: 'Returners',
     description:
-      'For returners...',
+      'Programme for consultants rejoining after a career break or internal transition.',
     icon: IterationCw,
   },
   {
     slug: 'graduates',
     title: 'Graduates',
     description:
-      'For recent graduates...',
+      'Training programme designed for new graduates starting their consultancy journey.',
     icon: BookText,
   },
   {
     slug: 'xforces',
-    title: 'Xforces',
+    title: 'Ex-Forces',
     description:
-      'For ex-forces consultants...',
+      'Specialised programme supporting ex-forces consultants transitioning into technology roles.',
     icon: Medal,
   },
 ]
 
 export default function ProgrammePage() {
   return (
-    <section className="programme-page">
-      <header className="programme-page-header">
-        <h1 className="programme-page-title">Programmes</h1>
-        <p className="programme-page-subtitle">
-          Choose a training track to open the programme interface.
-        </p>
-      </header>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title badge="TRAINING" title="Programmes" subtitle="View and access your assigned training programmes." />
 
       <div className="programme-grid" role="list">
         {PROGRAMMES.map((programme) => (

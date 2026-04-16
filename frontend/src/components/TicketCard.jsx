@@ -1,6 +1,6 @@
-export default function TicketCard({ title, name, profilePic, priority, status, date, content }) {
+export default function TicketCard({ title, name, profilePic, priority, status, date, content, timestamp }) {
   return (
-    <div className="fdm-card announcement-card">
+    <div className="fdm-card announcement-card" style={{ borderColor: '#404040' }}>
 
       {/* AVATAR */}
       <div className="announcement-avatar" aria-hidden="true">
@@ -57,12 +57,12 @@ export default function TicketCard({ title, name, profilePic, priority, status, 
           Created by: {name}
         </p>
 
-        {/* DATE */}
+        {/* DATE + TIMESTAMP */}
         <p
           className="fdm-muted"
           style={{ fontSize: '0.75rem', marginBottom: '1rem' }}
         >
-          {date}
+          {date}{timestamp ? ` · ${timestamp}` : ''}
         </p>
 
         {/* CONTENT */}

@@ -11,7 +11,7 @@ export default function TicketTypeCard({ title, description, to, icon: Icon, but
       </p>
       {Icon && (
         <div className="programme-card-icon">
-          <Icon size={140} strokeWidth={1.5} />
+          <Icon size={96} strokeWidth={1.5} />
         </div>
       )}
       <button

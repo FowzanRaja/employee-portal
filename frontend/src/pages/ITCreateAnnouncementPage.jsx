@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Inbox, CheckCircle } from 'lucide-react';
+import Title from '../components/Title';
 import pfp2 from '../assets/pfp images/pfp2.png';
 
 export default function ITCreateAnnouncementPage() {
@@ -48,7 +49,7 @@ export default function ITCreateAnnouncementPage() {
 
       setTimeout(() => {
         setShowToast(false);
-        navigate('/it/announcements', { state: newAnnouncement });
+        navigate('/it', { state: newAnnouncement });
       }, 1500);
     }
   };
@@ -67,15 +68,13 @@ export default function ITCreateAnnouncementPage() {
   return (
     <section className="programme-page">
 
-      {/* TITLE */}
-      <h1 className="programme-page-title" style={{ marginBottom: '1.5rem' }}>
-        New Announcement
-      </h1>
+      <Title badge="Internal Communications" title="Announcements" subtitle="Publish announcements to staff." />
 
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-between',
+          marginTop: '1rem',
           marginBottom: '2rem',
         }}
       >
@@ -88,14 +87,7 @@ export default function ITCreateAnnouncementPage() {
           Back to IT
         </Link>
 
-        <Link
-          to="/it/announcements"
-          className="fdm-nav-btn"
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-        >
-          <Inbox size={18} />
-          My Announcements
-        </Link>
+        {/* My Announcements link removed — IT announcements page removed */}
       </div>
 
       {/* HR-STYLE FORM */}

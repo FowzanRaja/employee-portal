@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
-import pfp3 from '../assets/pfp images/pfp3.png';
+import JoelPic from '../assets/pfp images/Joel.jpeg';
+import CustomSelect from './CustomSelect';
 
 export default function TicketForm({ onSubmit }) {
   const [title, setTitle] = useState('');
@@ -21,14 +22,17 @@ export default function TicketForm({ onSubmit }) {
       return;
     }
 
+    const now = new Date();
+    const timeStr = now.toLocaleString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
     const newTicket = {
       id: Date.now(),
       title,
-      name: 'Ava Thompson',
-      profilePic: pfp3,
+      name: 'Joel Lima',
+      profilePic: JoelPic,
       priority,
       status: 'Open',
-      date: new Date().toLocaleDateString(),
+      date: `${now.toLocaleString('en-US', { month: 'long' })} ${now.getDate()} ${now.getFullYear()}`,
+      timestamp: timeStr,
       content,
     };
 
@@ -36,8 +40,7 @@ export default function TicketForm({ onSubmit }) {
       onSubmit(newTicket);
     }
 
-    const time = new Date().toLocaleTimeString();
-    setTimestamp(time);
+    setTimestamp(timeStr);
     setShowToast(true);
 
     setTimeout(() => {
@@ -53,41 +56,63 @@ export default function TicketForm({ onSubmit }) {
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="mb-8">
-        <input
-          type="text"
-          placeholder="Title"
-          className="w-full mb-2 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-
-        <textarea
-          placeholder="Description"
-          className="w-full mb-2 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-        />
-
-        <select
-          className="w-full mb-4 p-2 border border-gray-700 rounded bg-[#1a1a1a] text-white focus:outline-none focus:ring-2 focus:ring-lime-500"
-          value={priority}
-          onChange={(e) => setPriority(e.target.value)}
-        >
-          <option value="" disabled>
-            Select priority
-          </option>
-          <option value="low">Low</option>
-          <option value="medium">Medium</option>
-          <option value="high">High</option>
-        </select>
-
-        <div className="flex justify-center mt-4">
-          <button type="submit" className="announcement-button">
-            Submit Ticket
-          </button>
+      <section className="rounded-2xl border border-[color:var(--fdm-border-strong)] bg-[var(--fdm-surface)] p-5 mb-8">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm text-[var(--fdm-text-muted)]">Form</p>
+            <h3 className="mt-2 text-2xl font-black text-[var(--fdm-text)]">Create ticket</h3>
+          </div>
         </div>
-      </form>
+
+        <div className="mt-4 space-y-4">
+          <div>
+            <label className="text-sm text-[var(--fdm-text-muted)] mb-2 block">Title</label>
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              className="w-full rounded-lg border border-[color:var(--fdm-border)] bg-[#2D2D2D] px-3 py-2 text-sm text-[var(--fdm-text)]"
+            />
+          </div>
+
+          <div>
+            <label className="text-sm text-[var(--fdm-text-muted)] mb-2 block">Description</label>
+            <textarea
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              rows={5}
+              className="w-full rounded-lg border border-[color:var(--fdm-border)] bg-[#2D2D2D] px-3 py-2 text-sm text-[var(--fdm-text)] resize-vertical"
+            />
+          </div>
+
+          <div>
+            <CustomSelect
+              label="Priority"
+              options={[
+                { value: 'low', label: 'Low' },
+                { value: 'medium', label: 'Medium' },
+                { value: 'high', label: 'High' },
+              ]}
+              value={priority}
+              onChange={(v) => setPriority(v)}
+              shape="rect"
+            />
+          </div>
+
+          <div className="mt-4 flex justify-start">
+            {/** disable until all fields are filled */}
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={!(title.trim() && content.trim() && priority)}
+              aria-disabled={! (title.trim() && content.trim() && priority)}
+              className={`fdm-btn fdm-btn-primary ${!(title.trim() && content.trim() && priority) ? 'opacity-50 cursor-not-allowed' : ''}`}
+            >
+              Submit Ticket
+            </button>
+          </div>
+        </div>
+      </section>
 
       {/* TOAST */}
       <div

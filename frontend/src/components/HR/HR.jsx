@@ -1,5 +1,6 @@
 import { CalendarDays , Megaphone, ShieldCheck, Ticket } from "lucide-react";
-import HRActionCard from "./HRActionCard";
+import TicketTypeCard from '../../components/TicketManagementCard'
+import Title from '../Title'
 
 export default function HRDisplay() {
     const HR_SECTIONS =[
@@ -28,28 +29,26 @@ export default function HRDisplay() {
         }
     ]
 
-    return(
-        <div className="programme-page">
-            <header className="programme-page-header">
-                <h1 className="programme-page-title">HR Management</h1>
-                <p className="programme-page-subtitle"> Manage leave requests, Create announcements, and modify company policy. </p>
-            </header>
+    return (
+        <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+            <Title
+                badge="Human Resources"
+                title="HR Management"
+                subtitle="Manage leave requests, create announcements, and modify company policy."
+            />
 
             <div className="programme-grid">
                 {HR_SECTIONS.map((section) => (
-                    <HRActionCard
-                        key = {section.to}
-                        title = {section.title}
-                        description = {section.description}
-                        to = {section.to}
-                        icon = {section.icon}
-                        buttonLabel = {section.buttonLabel}
+                    <TicketTypeCard
+                        key={section.to}
+                        title={section.title}
+                        description={section.description}
+                        to={section.to}
+                        icon={section.icon}
+                        buttonText={section.buttonLabel}
                     />
-                ))
-                }
-
+                ))}
             </div>
-
-        </div>
+        </section>
     )
 }

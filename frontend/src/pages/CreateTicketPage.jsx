@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Inbox } from 'lucide-react';
 import { CheckCircle } from 'lucide-react';
 import TicketForm from '../components/TicketForm';
+import Title from '../components/Title'
 
 export default function CreateTicketPage() {
 
@@ -24,50 +25,32 @@ export default function CreateTicketPage() {
   };
 
   return (
-    <div className="flex h-screen">
-      <main className="flex-1 overflow-y-auto" style={{ padding: '3rem 2rem' }}>
-        <div style={{ maxWidth: '850px', marginInline: 'auto' }}>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title badge="IT Support" title="Create Ticket" subtitle="Submit a support request." />
 
-          {/* TITLE */}
-          <h1 className="fdm-section-title" style={{ marginBottom: '1.5rem' }}>
-            Create Ticket
-          </h1>
+      {/* NAV BAR */}
+      <div className="flex items-center justify-between">
+        <Link
+          to="/tickets"
+          className="fdm-nav-btn"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderRadius: '12px', background: '#262626', border: '1px solid var(--fdm-border-strong)' }}
+        >
+          <ArrowLeft size={18} />
+          Back to Tickets
+        </Link>
 
-          {/* NAV BAR */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: '2rem',
-            }}
-          >
-            {/* BACK BUTTON */}
-            <Link
-              to="/tickets"
-              className="fdm-nav-btn"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-            >
-              <ArrowLeft size={18} />
-              Back to Tickets
-            </Link>
+        <Link
+          to="/tickets/list"
+          className="fdm-nav-btn"
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', borderRadius: '12px', background: '#262626', border: '1px solid var(--fdm-border-strong)' }}
+        >
+          <Inbox size={18} />
+          My Tickets
+        </Link>
+      </div>
 
-            {/* MY TICKETS */}
-            <Link
-              to="/tickets/list"
-              className="fdm-nav-btn"
-              style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}
-            >
-              <Inbox size={18} />
-              My Tickets
-            </Link>
-          </div>
-
-          {/* FORM */}
-          <TicketForm onSubmit={handleAddTicket} />
-
-        </div>
-      </main>
+      {/* FORM */}
+      <TicketForm onSubmit={handleAddTicket} />
 
       {/* TOAST */}
       <div
@@ -104,6 +87,6 @@ export default function CreateTicketPage() {
           {timestamp}
         </p>
       </div>
-    </div>
+    </section>
   );
 }

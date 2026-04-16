@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { ArrowLeft} from 'lucide-react';
+import Title from '../Title'
 
 export default function HRAnnouncements() {
     const [firstSubmit, setFirstSubmit] = useState(true);
@@ -37,22 +38,21 @@ export default function HRAnnouncements() {
     }
 
     return(
-        <div className="announcement-page-container"> {/* Whole view wrapper*/}
-            <div className="flex flex-row items-center justify-between w-1/1">
-                <header className="programme-page-header">
-                    <h1 className="programme-page-title">Announcements</h1>
-                    <p className="programme-page-subtitle">  Publish announcements to staff. </p>
-                </header>
-                <Link
-                    to="/hr"
-                    className="fdm-nav-btn"
-                    style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', height: 'fit-content', justifyContent: 'center' }}
-                >
-                    <ArrowLeft size={18} />
-                    Back to HR Dashboard
-                </Link>
-            </div>
+        <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+            <div>
+                <Title badge="Internal Communications" title="Announcements" subtitle="Publish announcements to staff." />
 
+                <div className="mt-4">
+                    <Link
+                        to="/hr"
+                        className="fdm-nav-btn"
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', height: 'fit-content', justifyContent: 'center' }}
+                    >
+                        <ArrowLeft size={18} />
+                        Back to HR Dashboard
+                    </Link>
+                </div>
+            </div>
 
             <div className="announcements-section-container">
 
@@ -82,6 +82,6 @@ export default function HRAnnouncements() {
 
 
 
-        </div>
+    </section>
     )
 }

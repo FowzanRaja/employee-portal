@@ -1,5 +1,6 @@
 import TicketTypeCard from '../components/TicketManagementCard'
-import { Inbox, Archive, Megaphone, PlusCircle } from 'lucide-react';
+import { Inbox, Archive, PlusCircle } from 'lucide-react';
+import Title from '../components/Title'
 
 const IT_SECTIONS = [
   {
@@ -16,20 +17,10 @@ const IT_SECTIONS = [
     icon: Archive,
     buttonText: 'View Archive',
   },
-];
-
-const ANNOUNCEMENT_SECTIONS = [
-  {
-    to: '/it/announcements',
-    title: 'My Announcements',
-    description: 'View your announcements.',
-    icon: Megaphone,
-    buttonText: 'View Announcements',
-  },
   {
     to: '/it/announcements/new',
     title: 'Create Announcement',
-    description: 'Publish an announcement.',
+    description: 'Publish an internal announcement.',
     icon: PlusCircle,
     buttonText: 'Create New Announcement',
   },
@@ -37,17 +28,9 @@ const ANNOUNCEMENT_SECTIONS = [
 
 export default function ITPage() {
   return (
-    <section className="programme-page">
-      
-      {/* MAIN HEADER */}
-      <header className="programme-page-header">
-        <h1 className="programme-page-title">IT Management</h1>
-        <p className="programme-page-subtitle">
-          Manage support tickets and system issues.
-        </p>
-      </header>
+    <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
+      <Title badge="IT" title="IT Management" subtitle="View, manage, and resolve support tickets, and publish system announcements." />
 
-      {/* TICKETS SECTION */}
       <div className="programme-grid">
         {IT_SECTIONS.map((section) => (
           <TicketTypeCard
@@ -60,32 +43,6 @@ export default function ITPage() {
           />
         ))}
       </div>
-
-      {/* ANNOUNCEMENTS HEADER */}
-      <header
-        className="programme-page-header"
-        style={{ marginTop: '3rem' }}
-      >
-        <h2 className="programme-page-title">IT Announcements</h2>
-        <p className="programme-page-subtitle">
-          Manage and create internal announcements.
-        </p>
-      </header>
-
-      {/* ANNOUNCEMENTS GRID */}
-      <div className="programme-grid">
-        {ANNOUNCEMENT_SECTIONS.map((section) => (
-          <TicketTypeCard
-            key={section.to}
-            title={section.title}
-            description={section.description}
-            to={section.to}
-            icon={section.icon}
-            buttonText={section.buttonText}
-          />
-        ))}
-      </div>
-
     </section>
   )
 }

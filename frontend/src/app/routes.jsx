@@ -3,9 +3,9 @@ import AppShell from './AppShell'
 import AnnouncementsPage from '../pages/AnnouncementsPage'
 import ConsultantsPage from '../pages/ConsultantsPage'
 import DashboardPage from '../pages/DashboardPage'
-import LeavePage from '../pages/LeavePage'
+import LeaveBooking from '../pages/LeaveBooking'
 import LoginPage from '../pages/LoginPage'
-import MessagesPage from '../pages/MessagesPage/MessagesPage'
+import MessagesPage from '../pages/MessagesPage'
 import NotFound from '../pages/NotFound'
 import PolicyPage from '../pages/PolicyPage'
 import ProgrammePage from '../pages/ProgrammePage'
@@ -21,7 +21,6 @@ import HRPage from '../pages/HRPage'
 import HRLeavePage from '../pages/HRLeavePage'
 import HRPolicyPage from '../pages/HRPolicyPage'
 import HRAnnouncementPage from '../pages/HRAnnouncementsPage'
-import ITAnnouncementsPage from '../pages/ITAnnouncementsPage'
 import ITCreateAnnouncementPage from '../pages/ITCreateAnnouncementPage'
 
 export default function AppRoutes() {
@@ -33,26 +32,25 @@ export default function AppRoutes() {
 
       <Route path="/" element={<AppShell />}>
         <Route index element={<DashboardPage />} />
-        <Route path="dashboard" element={<Navigate to="/" replace />} />
+        <Route path="dashboard" element={<DashboardPage />} />
         <Route path="tickets" element={<TicketPage />} />
         <Route path="tickets/list" element={<TicketsListPage />} />
         <Route path="tickets/new" element={<CreateTicketPage />} />
         <Route path="policies" element={<PolicyPage />} />
-        <Route path="leave" element={<LeavePage />} />
+        <Route path="leave" element={<LeaveBooking />} />
         <Route path="announcements" element={<AnnouncementsPage />} />
         <Route path="messages" element={<MessagesPage />} />
         <Route path="consultants" element={<ConsultantsPage />} />
         <Route path="programme" element={<ProgrammePage />} />
         <Route path="programme/:programmeId" element={<ProgrammeViewPage />} />
         <Route path="profile" element={<ProfilePage />} />
-        <Route path="/leave-booking" element={<LeavePage />} />
+        <Route path="/leave-booking" element={<LeaveBooking />} />
         <Route path="hr" element={<HRPage />} />
         <Route path="hr/leave" element={<HRLeavePage />} />
         <Route path="hr/announcements" element={<HRAnnouncementPage />} />
         <Route path="hr/policy" element={<HRPolicyPage />} />
         <Route path="it" element={<ITPage />} />
         <Route path="it/:section" element={<ITViewPage />} />
-        <Route path="it/announcements" element={<ITAnnouncementsPage />} />
         <Route path="it/announcements/new" element={<ITCreateAnnouncementPage />} />
       </Route>
 

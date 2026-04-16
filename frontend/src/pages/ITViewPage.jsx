@@ -2,9 +2,13 @@ import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, Inbox, Archive } from 'lucide-react'
 import TicketCard from '../components/TicketCard'
-import pfp1 from '../assets/pfp images/pfp1.png'
-import pfp2 from '../assets/pfp images/pfp2.png'
-import pfp3 from '../assets/pfp images/pfp3.png'
+import Title from '../components/Title'
+import SampritiPic from '../assets/pfp images/Sampriti.jpeg'
+import JoelPic from '../assets/pfp images/Joel.jpeg'
+import FowzanPic from '../assets/pfp images/Fowzan.jpeg'
+import AhmadPic from '../assets/pfp images/Ahmad.jpeg'
+import SuhanPic from '../assets/pfp images/Suhan.png'
+import AlexanderPic from '../assets/pfp images/Alexander.jpeg'
 import { useState } from 'react'
 
 export default function ITViewPage() {
@@ -14,52 +18,68 @@ export default function ITViewPage() {
     {
       id: 1,
       title: 'Laptop not working',
-      name: 'Ava Thompson',
-      profilePic: pfp3,
+      name: 'Sampriti Patro',
+      profilePic: SampritiPic,
       priority: 'medium',
       status: 'Open',
       date: 'March 17 2026',
-      content: 'My laptop keeps crashing.',
+      timestamp: '10:24 AM',
+      content: "My laptop keeps crashing.",
     },
     {
       id: 2,
       title: 'Access request',
-      name: 'Ava Thompson',
-      profilePic: pfp3,
+      name: 'Joel Lima',
+      profilePic: JoelPic,
       priority: 'low',
       status: 'Closed',
       date: 'March 15 2026',
+      timestamp: '9:05 AM',
       content: 'Requesting HR access.',
     },
     {
       id: 3,
       title: 'Access issues',
-      name: 'Larry Barry',
-      profilePic: pfp1,
+      name: 'Fowzan Raja',
+      profilePic: FowzanPic,
       priority: 'medium',
       status: 'In Progress',
       date: 'March 6 2026',
+      timestamp: '1:42 PM',
       content: 'Unable to access internal tools on my laptop.',
     },
     {
       id: 4,
       title: 'VPN not connecting',
-      name: 'Dr Farry Marry',
-      profilePic: pfp2,
+      name: 'Ahmad Ahmadzai',
+      profilePic: AhmadPic,
       priority: 'high',
       status: 'Closed',
       date: 'March 5 2026',
+      timestamp: '4:10 PM',
       content: 'VPN connection fails when working remotely.',
     },
     {
       id: 5,
       title: 'Email sync issues',
-      name: 'Ava Thompson',
-      profilePic: pfp3,
+      name: 'Suhan Erbil',
+      profilePic: SuhanPic,
       priority: 'low',
       status: 'Closed',
       date: 'March 3 2026',
+      timestamp: '8:50 AM',
       content: 'Email inbox not updating since yesterday.',
+    },
+    {
+      id: 6,
+      title: 'Software license',
+      name: 'Alexander Michael-Iacovou',
+      profilePic: AlexanderPic,
+      priority: 'low',
+      status: 'Open',
+      date: 'March 2 2026',
+      timestamp: '11:30 AM',
+      content: 'Requesting license for new design tool.',
     },
   ])
 
@@ -85,10 +105,15 @@ export default function ITViewPage() {
   return (
     <section className="programme-page">
 
-      {/* TITLE */}
-      <h1 className="programme-page-title" style={{ marginBottom: '1.5rem' }}>
-        {section === 'open' ? 'Open Tickets' : 'Ticket Archive'}
-      </h1>
+      <Title
+        badge="IT"
+        title={section === 'open' ? 'Open Tickets' : 'Ticket Archive'}
+        subtitle={
+          section === 'open'
+            ? 'Manage active support requests awaiting action.'
+            : 'Browse resolved and closed tickets for reference.'
+        }
+      />
 
       {/* NAV BAR */}
       <div
@@ -96,6 +121,7 @@ export default function ITViewPage() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
+          marginTop: '1rem',
           marginBottom: '2rem',
         }}
       >

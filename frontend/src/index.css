@@ -398,6 +398,13 @@ p {
   border: 1px solid var(--fdm-border-strong);
 }
 
+/* Sidebar text selection uses brand lime instead of default blue */
+aside ::selection,
+aside *::selection {
+  background: rgba(215, 255, 0, 0.32);
+  color: #111;
+}
+
 .fdm-btn-outline:hover {
   background: rgba(255, 255, 255, 0.04);
 }
@@ -478,8 +485,7 @@ p {
 .fdm-nav-btn:hover {
   border-color: var(--fdm-lime-soft);
   color: var(--fdm-lime-soft);
-  background: rgba(215, 255, 0, 0.06);
-  box-shadow: 0 6px 16px rgba(215, 255, 0, 0.15);
+  /* background and glow intentionally removed to keep hover subtle */
 }
 
 /* 🔥 Optional active state */
@@ -515,8 +521,10 @@ p {
 .fdm-input:focus,
 .fdm-select:focus,
 .fdm-textarea:focus {
-  border-color: rgba(215, 255, 0, 0.7);
-  box-shadow: 0 0 0 4px rgba(215, 255, 0, 0.14);
+  border-color: var(--fdm-lime);
+  box-shadow:
+    0 0 0 1px rgba(215, 255, 0, 0.12),
+    0 0 70px rgba(215, 255, 0, 0.08);
 }
 
 .fdm-label {
@@ -893,6 +901,8 @@ p {
   padding: 1rem;
   background: var(--fdm-surface);
   transition: transform 0.2s ease, border-color 0.2s ease;
+  min-height: 220px;
+  max-height: 320px;
 }
 
 .programme-card:hover {
@@ -908,24 +918,34 @@ p {
 .programme-card-description {
   color: var(--fdm-text-soft);
   line-height: 1.5;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .programme-card-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% - 0.5rem);
-  aspect-ratio: 1;
+  width: calc(100% - 2rem);
+  height: 180px;
+  max-height: 220px;
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--fdm-border);
-  border-radius: 24px;
-  margin: 1rem auto;
+  border-radius: 16px;
+  margin: 0.75rem auto;
   color: var(--fdm-lime);
+  padding: 0.75rem; /* add inner spacing so icons don't touch edges */
+  box-sizing: border-box;
+}
+
+.programme-card-icon svg {
+  max-width: 100% !important;
+  width: auto !important;
+  height: calc(100% - 1.5rem) !important; /* fill container minus padding */
+  display: block;
 }
 
 .programme-card-button {
-  margin-top: auto;
+  margin-top: 0.75rem;
   border: 1px solid var(--fdm-border-strong);
   border-radius: 8px;
   background: transparent;
@@ -1006,8 +1026,24 @@ p {
 }
 
 .programme-main-description {
-  color: var(--fdm-text-soft);
+  color: var(--fdm-text);
   line-height: 1.6;
+}
+
+/* add spacing between paragraphs in programme content */
+.programme-main-description + .programme-main-description {
+  margin-top: 1rem;
+}
+
+/* spacing for lists inside programme content */
+.programme-main-description.list-disc {
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+.programme-main-description.list-disc li {
+  margin-top: 0.12rem;
+  margin-bottom: 0.12rem;
+  line-height: 1.45;
 }
 
 .programme-side-nav {
@@ -1053,7 +1089,8 @@ p {
   border-radius: 8px;
   background: transparent;
   color: var(--fdm-text);
-  padding: 0.55rem 0.8rem;
+  padding: 0.35rem 0.6rem;
+  min-width: 64px;
   cursor: pointer;
 }
 
@@ -1074,12 +1111,12 @@ p {
 }
 
 .programme-section-input {
-  width: 52px;
-  border: 1px solid var(--fdm-border-strong);
+  min-width: 140px;
+  border: none;
   border-radius: 8px;
   background: transparent;
   color: var(--fdm-text);
-  padding: 0.4rem;
+  padding: 0.4rem 0.6rem;
   text-align: center;
 }
 
@@ -1133,6 +1170,10 @@ p {
 .hr-section:hover {
   border-color: var(--fdm-lime-soft);
 }
+.hr-section {
+  min-width: 0;
+  box-sizing: border-box;
+}
 
 .hr-section:hover .hr-line{
   border-color: var(--fdm-lime-soft);
@@ -1168,7 +1209,7 @@ p {
   display: flex;
   flex-direction: row;
   gap: 0.75rem;
-  padding-right:2%;
+  padding-right:0.5rem;
   padding-bottom: 0.1em;
   border-bottom: 1px solid var(--fdm-border);
   border-radius: 2px;
@@ -1195,19 +1236,28 @@ p {
 }
 
 .leave-request-image-container{
-  width: 5%;
-  height: 100%;
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:0.5%;
+  margin:0.5rem 0.5rem 0.5rem 0.5rem;
+  flex: none;
 }
 
 .icon{
-  height: 80%;
-  width: 80%;
+  height: 32px;
+  width: 32px;
   object-fit: cover;
   color: var(--fdm-lime-soft);
+}
+
+.leave-request-avatar{
+  height: 40px;
+  width: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
 }
 
 #reason-text{
@@ -1330,6 +1380,7 @@ p {
   cursor:pointer;
 
   transition: all 0.3s ease-in-out;
+  margin-bottom: 1rem;
 }
 
 .announcement-button:hover{
@@ -1349,8 +1400,8 @@ p {
   display: flex;
   flex-direction: row;
 
-  gap: 5%;
-  padding:2%;
+  gap: 2.5%;
+  padding:0.5%;
   
   height:100%;
   width:100%;
@@ -1359,9 +1410,9 @@ p {
 .HR-policy-card{
   border-radius: 28px;
   border: 1px solid var(--fdm-border);
-  height: 80vh;
+  height: 75vh;
   width:60%;
-  padding: 1%;
+  padding: 1.25rem;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.045),
