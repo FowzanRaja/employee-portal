@@ -32,7 +32,7 @@ export default function HRDisplay() {
     return (
         <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
             <Title
-                badge="FDM Staff Portal"
+                badge="Human Resources"
                 title="HR Management"
                 subtitle="Manage leave requests, create announcements, and modify company policy."
             />

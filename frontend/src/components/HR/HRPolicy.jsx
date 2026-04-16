@@ -103,56 +103,62 @@ export default function HRPolicies() {
             id: 1,
             policyId: "PD-001",
             title: "Company Handbook",
-            createdAt: "10 Jan 2026",
+            createdAt: "January 10 2026 · 09:08 AM",
+            lastModified: "N/A",
             version: "v1.0",
-            thumbnail: "/images/download (1).jpeg",
+            thumbnail: "/images/Handbook.png",
         },
         {
             id: 2,
             policyId: "PD-002",
             title: "IT Guidelines",
-            createdAt: "28 Jan 2026",
+            createdAt: "January 28 2026 · 11:23 AM",
+            lastModified: "March 2 2026 · 09:14 AM",
             version: "v2.1",
-            thumbnail: "/images/download.jpeg",
+            thumbnail: "/images/IT.png",
         },
         {
             id: 3,
             policyId: "PD-003",
             title: "Leave Policy",
-            createdAt: "05 Feb 2026",
+            createdAt: "February 5 2026 · 02:21 PM",
+            lastModified: "February 6 2026 · 01:18 PM",
             version: "v1.3",
-            thumbnail: "/images/download (1).jpeg",
+            thumbnail: "/images/Leave.png",
         },
         {
             id: 4,
             policyId: "PD-004",
             title: "Code of Conduct",
-            createdAt: "01 Feb 2026",
+            createdAt: "February 1 2026 · 08:41 AM",
+            lastModified: "March 10 2026 · 08:25 AM",
             version: "v3.0",
-            thumbnail: "/images/download.jpeg",
+            thumbnail: "/images/Conduct.png",
         },
         {
             id: 5,
             policyId: "PD-005",
             title: "Remote Work Policy",
-            createdAt: "20 Feb 2026",
+            createdAt: "February 20 2026 · 05:39 PM",
+            lastModified: "February 21 2026 · 12:16 PM",
             version: "v2.0",
-            thumbnail: "/images/download (1).jpeg",
+            thumbnail: "/images/Remote.png",
         },
         {
             id: 6,
             policyId: "PD-006",
             title: "Health & Safety Policy",
-            createdAt: "29 Feb 2026",
+            createdAt: "February 29 2026 · 10:01 AM",
+            lastModified: "March 3 2026 · 02:06 PM",
             version: "v2.2",
-            thumbnail: "/images/download.jpeg",
+            thumbnail: "/images/Health.png",
         },
     ]);
 
     return(
         <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
             <div>
-                <Title badge="FDM Staff Portal" title="Policies" subtitle="Publish new or modify existing policy documents." />
+                <Title badge="Documents" title="Policies" subtitle="Publish new or modify existing policy documents." />
 
                 <div className="mt-4">
                     <Link
@@ -167,7 +173,7 @@ export default function HRPolicies() {
             </div>
 
             <div className="HR-policy-cards-container">
-                <div className="hr-section HR-policy-card" id="existing-docs">
+                <div className="hr-section HR-policy-card pt-4" id="existing-docs">
                     <h2 className="hr-section-title"> Modify existing documents </h2>
                     <hr className="hr-line"/>
                           <div className="thumb-grid-HR">
@@ -181,8 +187,8 @@ export default function HRPolicies() {
 
                                 <h3 className="thumb-title">{doc.title}</h3>
                                 <p className="thumb-date">Created at: {doc.createdAt}</p>
-                                <p className="thumb-size">Version: {doc.version}</p>
-                                <p className="thumb-id">ID: {doc.policyId}</p>
+                                <p className="thumb-date">Last modified: {doc.lastModified}</p>
+                                <p className="thumb-size">Version: {doc.version.replace(/^v/i, '')}</p>
 
                                 <button onClick={() => modify(doc.id)} className="document-btn">
                                 Modify

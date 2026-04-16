@@ -1170,6 +1170,10 @@ aside *::selection {
 .hr-section:hover {
   border-color: var(--fdm-lime-soft);
 }
+.hr-section {
+  min-width: 0;
+  box-sizing: border-box;
+}
 
 .hr-section:hover .hr-line{
   border-color: var(--fdm-lime-soft);
@@ -1205,7 +1209,7 @@ aside *::selection {
   display: flex;
   flex-direction: row;
   gap: 0.75rem;
-  padding-right:2%;
+  padding-right:0.5rem;
   padding-bottom: 0.1em;
   border-bottom: 1px solid var(--fdm-border);
   border-radius: 2px;
@@ -1232,17 +1236,19 @@ aside *::selection {
 }
 
 .leave-request-image-container{
-  width: 5%;
-  height: 100%;
+  width: 56px;
+  min-width: 56px;
+  height: 56px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin:0.5%;
+  margin:0.5rem 0.5rem 0.5rem 0.5rem;
+  flex: none;
 }
 
 .icon{
-  height: 80%;
-  width: 80%;
+  height: 32px;
+  width: 32px;
   object-fit: cover;
   color: var(--fdm-lime-soft);
 }
@@ -1367,6 +1373,7 @@ aside *::selection {
   cursor:pointer;
 
   transition: all 0.3s ease-in-out;
+  margin-bottom: 1rem;
 }
 
 .announcement-button:hover{
@@ -1386,8 +1393,8 @@ aside *::selection {
   display: flex;
   flex-direction: row;
 
-  gap: 5%;
-  padding:2%;
+  gap: 2.5%;
+  padding:0.5%;
   
   height:100%;
   width:100%;
@@ -1396,9 +1403,9 @@ aside *::selection {
 .HR-policy-card{
   border-radius: 28px;
   border: 1px solid var(--fdm-border);
-  height: 80vh;
+  height: 75vh;
   width:60%;
-  padding: 1%;
+  padding: 1.25rem;
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.045),

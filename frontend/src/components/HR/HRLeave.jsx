@@ -53,7 +53,7 @@ export default function HRLeave() {
     return (
         <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
             <div>
-                <Title badge="FDM Staff Portal" title="Review Leave Requests" subtitle="Approve or deny pending leave requests." />
+                <Title badge="Time Off" title="Review Leave Requests" subtitle="Approve or deny pending leave requests." />
 
                 <div className="mt-4">
                     <Link
@@ -93,9 +93,9 @@ export default function HRLeave() {
                 </div>
             </div>
 
-            <div className="flex flex-col lg:flex-row items-stretch gap-6"> {/* Approved and denied leave requests */}
+            <div className="flex flex-col items-stretch gap-6"> {/* Approved and denied leave requests (stacked) */}
 
-                <div className="hr-section flex-1"> {/* View Approved leave requests */}
+                <div className="hr-section flex-1 w-full"> {/* View Approved leave requests (full width) */}
                     <h2 className="hr-section-title"> Approved leave requests </h2>
                     <hr className="hr-line"/>
                     <div className="leave-requests-container">
@@ -119,7 +119,7 @@ export default function HRLeave() {
                     </div>
                 </div>
 
-                <div className="hr-section flex-1"> {/* View Denied leave requests */}
+                <div className="hr-section flex-1 w-full"> {/* View Denied leave requests (full width) */}
                     <h2 className="hr-section-title"> Denied leave requests </h2>
                     <hr className="hr-line"/>
                     <div className="leave-requests-container">

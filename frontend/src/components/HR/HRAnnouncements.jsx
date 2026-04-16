@@ -40,7 +40,7 @@ export default function HRAnnouncements() {
     return(
         <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 pb-10">
             <div>
-                <Title badge="FDM Staff Portal" title="Announcements" subtitle="Publish announcements to staff." />
+                <Title badge="Internal Communications" title="Announcements" subtitle="Publish announcements to staff." />
 
                 <div className="mt-4">
                     <Link
