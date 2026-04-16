@@ -1026,8 +1026,24 @@ aside *::selection {
 }
 
 .programme-main-description {
-  color: var(--fdm-text-soft);
+  color: var(--fdm-text);
   line-height: 1.6;
+}
+
+/* add spacing between paragraphs in programme content */
+.programme-main-description + .programme-main-description {
+  margin-top: 1rem;
+}
+
+/* spacing for lists inside programme content */
+.programme-main-description.list-disc {
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+.programme-main-description.list-disc li {
+  margin-top: 0.12rem;
+  margin-bottom: 0.12rem;
+  line-height: 1.45;
 }
 
 .programme-side-nav {
@@ -1073,7 +1089,8 @@ aside *::selection {
   border-radius: 8px;
   background: transparent;
   color: var(--fdm-text);
-  padding: 0.55rem 0.8rem;
+  padding: 0.35rem 0.6rem;
+  min-width: 64px;
   cursor: pointer;
 }
 
@@ -1094,12 +1111,12 @@ aside *::selection {
 }
 
 .programme-section-input {
-  width: 52px;
-  border: 1px solid var(--fdm-border-strong);
+  min-width: 140px;
+  border: none;
   border-radius: 8px;
   background: transparent;
   color: var(--fdm-text);
-  padding: 0.4rem;
+  padding: 0.4rem 0.6rem;
   text-align: center;
 }
 
