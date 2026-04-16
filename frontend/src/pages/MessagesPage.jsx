@@ -1,10 +1,12 @@
 import React from "react";
+import Messaging from "../components/Messaging";
 
 export default function MessagesPage() {
-	return (
-		<div className="p-4">
-			<h1 className="text-xl font-semibold">Messages</h1>
-			<p className="text-sm text-gray-500">No messages yet.</p>
-		</div>
-	);
+  return (
+    <div className="p-4 h-screen">
+      <div className="h-full">
+        <Messaging />
+      </div>
+    </div>
+  );
 }
