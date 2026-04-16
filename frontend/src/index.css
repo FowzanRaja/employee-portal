@@ -1253,6 +1253,13 @@ aside *::selection {
   color: var(--fdm-lime-soft);
 }
 
+.leave-request-avatar{
+  height: 40px;
+  width: 40px;
+  border-radius: 9999px;
+  object-fit: cover;
+}
+
 #reason-text{
   font-weight: 500;
   color: var(--fdm-text-soft)

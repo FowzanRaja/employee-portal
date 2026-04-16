@@ -1,10 +1,16 @@
 import {Check, X, CircleUser} from 'lucide-react';
 
-export default function LeaveRequest({id, name, reason, leaveType, startDate, endDate, employeeType, status, onApprove, onDeny}) {
+export default function LeaveRequest({id, name, reason, leaveType, startDate, endDate, employeeType, status, onApprove, onDeny, profilePic}) {
     return(
         <div className="hr-leave-request"> 
 
-            <div className="leave-request-image-container"> <CircleUser className="icon"/> </div>
+            <div className="leave-request-image-container">
+                {profilePic ? (
+                    <img src={profilePic} alt={`${name} avatar`} className="leave-request-avatar" />
+                ) : (
+                    <CircleUser className="icon"/>
+                )}
+            </div>
 
             <div className="leave-request-content-container">
                 <div className="leave-request-primary-info"> 
