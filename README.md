@@ -33,7 +33,7 @@ The system is built as a frontend prototype with mock data, prioritising user ex
 - Tailwind CSS
 - React Router
 
-### Backend (Planned)
+### Backend (Cancelled)
 - Firebase (Authentication + Firestore)
 
 ---
@@ -94,7 +94,16 @@ Some features are implemented using mock data due to the absence of a backend.
 
 ## Authors
 
-Developed as part of a group Software Engineering project.
+Developed by:
+- Fowzan Ahmed Raja – GitHub: FowzanRaja
+- Ahmad Rashed Ahmadzai – GitHub: Ahmad-R-A
+- Joel Maio Lima Da Fonseca – GitHub: JMaioLima
+- Lin Chen – GitHub: Linkc0
+- Sampriti Patro – GitHub: Sampr1ti
+- Alexander Michael-Iacovou – GitHub: ami0628
+- Suhan Erbil – GitHub: suhane16
+
+As part of a university group Software Engineering project.
 
 ---
 
