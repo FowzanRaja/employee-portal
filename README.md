@@ -12,6 +12,15 @@ The system is built as a frontend prototype with mock data, prioritising user ex
 
 ---
 
+## Demo Video
+
+A video demonstration of the FDM Employee Portal prototype is available here:
+
+[Watch the demo on YouTube](https://www.youtube.com/watch?v=IP3wmC9h0zs)
+
+---
+
+
 ## Features
 
 - User login (frontend validation)
